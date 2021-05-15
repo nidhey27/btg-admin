@@ -9,7 +9,7 @@ import { NavbarService } from '../services/navbar.service';
 })
 export class DashboardComponent implements OnInit {
 
-
+  isLoading = true;
   mainNavData: any = [];
   subNavData: any = [];
   constructor(private _http: HttpClient, private _nav: NavbarService) { }
@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
     window.scroll(0,0);
     await this._nav.getMainNav().then((res: any) => {
       res.subscribe((response: any) => {
-        this.mainNavData = response;
+        this.mainNavData = response.data;
       })
 
     }).catch(error => {
@@ -28,10 +28,12 @@ export class DashboardComponent implements OnInit {
     await this._nav.getSubNav().then((res: any) => {
       res.subscribe((response: any) => {
         this.subNavData = response.data
+        this.isLoading = false;
       })
 
     }).catch(error => {
       console.log(error)
+
     })
     
   }

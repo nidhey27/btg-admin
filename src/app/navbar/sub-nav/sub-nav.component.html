@@ -1,1 +1,96 @@
-<p>sub-nav works!</p>
+<div class="py-4">
+    <!-- <ul>
+        <li *ngFor="let nav of industrySolutionData">
+            {{ nav.name }}
+            <button type="button" class="btn ">
+                <i class="fa fa-pencil-square-o text-danger" aria-hidden="true"></i>
+            </button>
+            <button class="btn " (click)="getData('solutionMainCategory', nav._id)">
+                <i class="fa fa-plus text-danger" aria-hidden="true"></i>
+            </button>
+
+
+            <ul>
+                <li *ngFor="let main of solutionMainCategoryData">
+                    {{ main.name }}
+                </li>
+            </ul>
+
+        </li>
+    </ul> -->
+
+    
+    <div *ngIf="isLoading" class="text-center">
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+
+    <!-- First -->
+    <mat-accordion >
+        <mat-expansion-panel *ngFor="let nav of industrySolutionData" (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false">
+            <mat-expansion-panel-header (click)="getData('solutionMainCategory', nav._id)" class="disable_ripple">
+                <mat-panel-title class="my-2">
+                    {{ nav.name}}
+                </mat-panel-title>
+                <mat-panel-description style="justify-content: flex-end;">
+                    <button class="btn  mx-1" color="accent" ><i class="fa fa-plus " aria-hidden="true"></i></button>
+                    <button class="btn  mx-1" color="accent" ><i class="fa fa-pencil-square-o " aria-hidden="true"></i></button>
+                    <button class="btn  mx-1" color="accent" ><i class="fa fa-trash " aria-hidden="true"></i></button>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <!-- Second -->
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let sub of solutionMainCategoryData" (opened)="panelOpenState1 = true"
+                    (closed)="panelOpenState1 = false">
+                    <mat-expansion-panel-header (click)="getData('solutionSubCategory', sub._id)">
+                        <mat-panel-title class="my-2">
+                            {{ sub.name }}
+                        </mat-panel-title>
+                        <mat-panel-description style="justify-content: flex-end;">
+                            <button class="btn  " color="accent" ><i class="fa fa-plus " aria-hidden="true"></i></button>
+                            <button class="btn  mx-1" color="accent" ><i class="fa fa-pencil-square-o " aria-hidden="true"></i></button>
+                            <button class="btn  mx-1" color="accent" ><i class="fa fa-trash " aria-hidden="true"></i></button>
+
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <!-- Third -->
+                    <mat-accordion>
+                        <mat-expansion-panel *ngFor="let subCat of solutionSubCategoryData"
+                            (opened)="panelOpenState1 = true" (closed)="panelOpenState1 = false">
+                            <mat-expansion-panel-header (click)="getData('productMainCategory', subCat._id)">
+                                <mat-panel-title class="my-2">
+                                    {{ subCat.name }}
+                                </mat-panel-title>
+                                <mat-panel-description style="justify-content: flex-end;">
+                                    <button class="btn  " color="accent" ><i class="fa fa-plus " aria-hidden="true"></i> </button>
+                                    <button class="btn  mx-1" color="accent" ><i class="fa fa-pencil-square-o " aria-hidden="true"></i></button>
+                                    <button class="btn  mx-1" color="accent" ><i class="fa fa-trash " aria-hidden="true"></i></button>
+
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <p class="m-0" *ngFor="let prod of productMainCategoryData"> {{ prod.name }} <button class="btn  mx-1" color="accent" ><i class="fa fa-pencil-square-o " aria-hidden="true"></i></button>                     <button class="btn  mx-1" color="accent" ><i class="fa fa-trash " aria-hidden="true"></i></button>
+                            </p>
+                            <!-- Fourth -->
+                            <!-- <mat-accordion>
+                                <mat-expansion-panel *ngFor="let prod of productMainCategoryData"
+                                    (opened)="panelOpenState1 = true" (closed)="panelOpenState1 = false">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                           
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+
+                                </mat-expansion-panel>
+                            </mat-accordion> -->
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

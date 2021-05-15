@@ -8,7 +8,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
   styleUrls: ['./main-nav.component.scss']
 })
 export class MainNavComponent implements OnInit {
-  mainNavData: any;
+  mainNavData: any = [];
   isLoading = true;
   modalRef: BsModalRef;
   constructor(private _nav: NavbarService,private modalService: BsModalService) { }
@@ -16,9 +16,10 @@ export class MainNavComponent implements OnInit {
   ngOnInit(): void {
     window.scroll(0, 0);
 
-    this._nav.getMainNav().then(res => {
+    this._nav.getMainNav().then((res: any) => {
       res.subscribe((response: any) => {
-        this.mainNavData = response;
+        
+        this.mainNavData = response.data;
         console.log(this.mainNavData)
         this.isLoading = false;
       })

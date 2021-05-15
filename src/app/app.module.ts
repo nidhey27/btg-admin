@@ -20,6 +20,9 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MainNavComponent } from './navbar/main-nav/main-nav.component';
 import { SubNavComponent } from './navbar/sub-nav/sub-nav.component';
+import { GlobalConstants } from './common/global-constants';
+
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -46,10 +49,11 @@ import { SubNavComponent } from './navbar/sub-nav/sub-nav.component';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatExpansionModule,
     ModalModule.forRoot()
-    
+
   ],
-  providers: [BsModalRef],
+  providers: [BsModalRef, GlobalConstants],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

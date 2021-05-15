@@ -14,4 +14,18 @@ export class NavbarService {
   async getSubNav() {
     return await this._http.get(`${environment.apiUrl}api/navbar/industry-solution-for`)
   }
+  async getIndustrySolutionFor() {
+    return await this._http.get(`${environment.apiUrl}api/navbar/industry-solution-for`)
+  }
+
+  async getsolutionMainCategoryFor(id) {
+    return await this._http.get(`${environment.apiUrl}api/navbar/solution-main-category/${id}`)
+  }
+
+  async getsolutionSubCategoryFor(id) {
+    return await this._http.get(`${environment.apiUrl}api/navbar/solution-sub-category/${id}`)
+  }
+  async getproductMainCategory(id) {
+    return await this._http.get(`${environment.apiUrl}api/navbar/product-main-category/${id}`)
+  }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-
+import { GlobalConstants } from '../common/global-constants';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   errorMsg: String = '';
   successMsg: String = '';
   submit = false;
-  constructor(private formBuilder: FormBuilder, public router: Router, private _auth: AuthService) { }
+  constructor(public gVar : GlobalConstants, private formBuilder: FormBuilder, public router: Router, private _auth: AuthService) { }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
@@ -24,11 +24,11 @@ export class LoginComponent implements OnInit {
 
     });
 
-    if(localStorage.getItem('id') != null){
+    if (localStorage.getItem('id') != null) {
       this.router.navigateByUrl('dashboard');
     }
   }
-  
+
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
@@ -41,8 +41,9 @@ export class LoginComponent implements OnInit {
 
     this._auth.login({ email, password }).then(res => {
       res.subscribe((response: any) => {
-        if(response.status){
-          this.errorMsg= "";
+        if (response.status) {
+          this.errorMsg = "";
+          this.gVar.isLoggeddIn = true;
           this.successMsg = 'Login Successful';
           this.submit = false;
           console.log(response)
@@ -51,18 +52,18 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('id', response.data.id)
 
           this.router.navigateByUrl('dashboard');
-        }else{
+        } else {
           this.submit = false;
-          this.successMsg= "";
+          this.successMsg = "";
           this.errorMsg = response.message;
         }
-        
+
       })
     }).catch(error => {
       this.submit = false;
       console.log(error)
     })
-   
+
     // console.log(email, password)
   }
 

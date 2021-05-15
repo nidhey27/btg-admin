@@ -26,3 +26,8 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(184, 184, 184);
 }
+
+::ng-deep .mat-ink-bar {
+    background-color: #d73141 !important;
+}
+

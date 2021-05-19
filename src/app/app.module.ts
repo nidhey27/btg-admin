@@ -23,6 +23,8 @@ import { SubNavComponent } from './navbar/sub-nav/sub-nav.component';
 import { GlobalConstants } from './common/global-constants';
 
 import { MatExpansionModule } from '@angular/material/expansion';
+import { FormCardComponent } from './form-card/form-card.component';
+
 
 @NgModule({
   declarations: [
@@ -32,9 +34,11 @@ import { MatExpansionModule } from '@angular/material/expansion';
     FooterComponent,
     NavbarComponent,
     MainNavComponent,
-    SubNavComponent
+    SubNavComponent,
+    FormCardComponent
   ],
   imports: [
+  
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

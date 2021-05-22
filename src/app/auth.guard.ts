@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
       let name = localStorage.getItem('name');
       let id = localStorage.getItem('id');
       let auth_token = localStorage.getItem('auth-token');
-      console.log(name,id,auth_token)
+      // console.log(name,id,auth_token)
       if (auth_token != null && id != null && name != null){
         this.gVar.isLoggeddIn = true;
         resolve(true);

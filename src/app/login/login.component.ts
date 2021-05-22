@@ -44,12 +44,14 @@ export class LoginComponent implements OnInit {
         if (response.status) {
           this.errorMsg = "";
           this.gVar.isLoggeddIn = true;
+          this.gVar.adminName = response.data.name;
           this.successMsg = 'Login Successful';
           this.submit = false;
           console.log(response)
           localStorage.setItem('auth-token', response.data.accessToken)
           localStorage.setItem('name', response.data.name)
           localStorage.setItem('id', response.data.id)
+          localStorage.setItem('role', response.data.role)
 
           this.router.navigateByUrl('dashboard');
         } else {

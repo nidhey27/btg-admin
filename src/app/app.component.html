@@ -1,7 +1,8 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav *ngIf="gVar.isLoggeddIn"   #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false  ">
-    <mat-toolbar ><small>
+  <mat-sidenav *ngIf="gVar.isLoggeddIn" #drawer class="sidenav" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false  ">
+    <mat-toolbar><small>
         <svg xmlns="http://www.w3.org/2000/svg" width="128" height="46" viewBox="0 0 128 46" fill="none">
           <g clip-path="url(#clip0)">
             <path
@@ -61,54 +62,53 @@
           </defs>
         </svg>
       </small></mat-toolbar>
-    <mat-nav-list >
+    <mat-nav-list>
       <a mat-list-item class="mt-4" routerLink="/dashboard">
         <p class="mb-0 p-0">Dashboard</p>
       </a>
-      <a mat-list-item  routerLink="/navbar">
+      <a mat-list-item routerLink="/navbar">
         <p class="mb-0 p-0">Navbar</p>
       </a>
-      
+
       <a mat-list-item routerLink="/dashboard" *ngFor="let m of mainNavData">
         <p class="mb-0 p-0">{{ m.name }}</p>
       </a>
       <a mat-list-item routerLink="/dashboard" *ngFor="let m of subNavData">
         <p class="mb-0 p-0">{{ m.name }}</p>
       </a>
-      <a mat-list-item (click)="logout()">
-
-        <p class="mb-0 p-0">Log Out</p>
-
-      </a>
-
-
-
-
-
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar *ngIf="gVar.isLoggeddIn">
-      <button  type="button" class="btn text-white " aria-label="Toggle sidenav" mat-icon-button
+      <button type="button" class="btn text-white " aria-label="Toggle sidenav" mat-icon-button
         (click)="drawer.toggle()" *ngIf="isHandset$">
         <mat-icon aria-label="Side nav toggle icon"><i class="fa fa-bars fa-x"></i></mat-icon>
       </button>
-      <span   class="mx-4"> <input type="text" class="form-control" placeholder="Search"> </span>
+      <span class="mx-4"> <input type="text" class="form-control" placeholder="Search"> </span>
 
-      <div style="margin-left: auto;" class="d-inline-flex"><h2 class="text-white mx-3 my-auto">Welcome, BTG Admin</h2>
+      <div style="margin-left: auto;" class="d-inline-flex">
+        <h2 class="text-white mx-3 my-auto">Welcome, {{gVar.adminName}} </h2>
 
         <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
-          <circle cx="19" cy="19" r="19" fill="white"/>
-          <path d="M28.3334 29.5V27.1667C28.3334 25.929 27.8417 24.742 26.9665 23.8668C26.0913 22.9917 24.9044 22.5 23.6667 22.5H14.3334C13.0957 22.5 11.9087 22.9917 11.0335 23.8668C10.1584 24.742 9.66669 25.929 9.66669 27.1667V29.5" fill="#081D1F"/>
-          <path d="M28.3334 29.5V27.1667C28.3334 25.929 27.8417 24.742 26.9665 23.8668C26.0913 22.9917 24.9044 22.5 23.6667 22.5H14.3334C13.0957 22.5 11.9087 22.9917 11.0335 23.8668C10.1584 24.742 9.66669 25.929 9.66669 27.1667V29.5" stroke="#081D1F" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M19 17.8333C21.5773 17.8333 23.6666 15.744 23.6666 13.1667C23.6666 10.5893 21.5773 8.5 19 8.5C16.4227 8.5 14.3333 10.5893 14.3333 13.1667C14.3333 15.744 16.4227 17.8333 19 17.8333Z" fill="#081D1F" stroke="#081D1F" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <circle cx="19" cy="19" r="19" fill="white" />
+          <path
+            d="M28.3334 29.5V27.1667C28.3334 25.929 27.8417 24.742 26.9665 23.8668C26.0913 22.9917 24.9044 22.5 23.6667 22.5H14.3334C13.0957 22.5 11.9087 22.9917 11.0335 23.8668C10.1584 24.742 9.66669 25.929 9.66669 27.1667V29.5"
+            fill="#081D1F" />
+          <path
+            d="M28.3334 29.5V27.1667C28.3334 25.929 27.8417 24.742 26.9665 23.8668C26.0913 22.9917 24.9044 22.5 23.6667 22.5H14.3334C13.0957 22.5 11.9087 22.9917 11.0335 23.8668C10.1584 24.742 9.66669 25.929 9.66669 27.1667V29.5"
+            stroke="#081D1F" stroke-linecap="round" stroke-linejoin="round" />
+          <path
+            d="M19 17.8333C21.5773 17.8333 23.6666 15.744 23.6666 13.1667C23.6666 10.5893 21.5773 8.5 19 8.5C16.4227 8.5 14.3333 10.5893 14.3333 13.1667C14.3333 15.744 16.4227 17.8333 19 17.8333Z"
+            fill="#081D1F" stroke="#081D1F" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+
+        <button (click)="logout()" class="btn mx-2 p-1 "><i class="fa fa-power-off fa-2x text-white "
+            aria-hidden="true"></i></button>
       </div>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
     <app-footer></app-footer>
   </mat-sidenav-content>
-  
-</mat-sidenav-container>
 
+</mat-sidenav-container>

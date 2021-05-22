@@ -2,5 +2,6 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export class GlobalConstants {
-    public  isLoggeddIn = false;
+    public isLoggeddIn = false;
+    public adminName = "BTG Admin"; 
 } 

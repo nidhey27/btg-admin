@@ -1,0 +1,8 @@
+ul li {
+    counter-reset: section;
+}
+
+ul li ::before {
+    counter-increment: section; /* On incrémente le compteur section */
+    content: counter(section); /* On affiche le compteur */
+}

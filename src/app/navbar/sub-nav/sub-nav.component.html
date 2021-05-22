@@ -26,61 +26,106 @@
         </div>
     </div>
 
-    <button class="btn btn-danger mt-5 mb-5" (click)="openFormDialog('industry_solution')"> <i
-        class="fa fa-plus " aria-hidden="true"></i> Add Industry Solution</button>
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-danger mb-3" (click)="openFormDialog('industry_solution')"> <i class="fa fa-plus "
+                aria-hidden="true"></i> Add Industry Solution</button>
+    </div>
     <!-- First -->
     <mat-accordion>
-        <mat-expansion-panel *ngFor="let nav of industrySolutionData" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel *ngFor="let nav of industrySolutionData" (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false">
             <mat-expansion-panel-header (click)="getData('solutionMainCategory', nav._id)" class="disable_ripple">
                 <mat-panel-title class="my-2">
                     {{ nav.name}}
                 </mat-panel-title>
                 <mat-panel-description style="justify-content: flex-end;">
-                    <button class="btn  mx-1" color="accent" (click)="openFormDialog('add',nav._id,undefined, 'solution_main_category')"><i
+                    <button class="btn  mx-1" color="accent"
+                        (click)="openFormDialog('add',nav._id,undefined, 'solution_main_category')"><i
                             class="fa fa-plus " aria-hidden="true"></i></button>
-                    <button class="btn  mx-1" color="accent" (click)="openFormDialog('edit',nav._id,undefined, 'industry_solutions_for')"><i
+                    <button class="btn  mx-1" color="accent"
+                        (click)="openFormDialog('edit',nav._id,undefined, 'industry_solutions_for')"><i
                             class="fa fa-pencil-square-o " aria-hidden="true"></i></button>
-                    <button class="btn  mx-1" color="accent" (click)="deleteNav(nav._id,'industry_solutions_for')"><i class="fa fa-trash " aria-hidden="true"></i></button>
+                    <button class="btn  mx-1" color="accent" (click)="deleteNav(nav._id,'industry_solutions_for')"><i
+                            class="fa fa-trash " aria-hidden="true"></i></button>
                 </mat-panel-description>
             </mat-expansion-panel-header>
-
+            <div *ngIf="flag && solutionMainCategoryData.length == 0" class="text-center">
+                <div class="spinner-border text-danger" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <div *ngIf="solutionMainCategoryData.length == 0 && !flag" class="text-center">
+                <div class="text-danger" role="status">
+                   <h6>No Data Found</h6>
+                </div>
+            </div>
             <!-- Second -->
             <mat-accordion>
-                <mat-expansion-panel *ngFor="let sub of solutionMainCategoryData" (opened)="panelOpenState1 = true" (closed)="panelOpenState1 = false">
+                <mat-expansion-panel *ngFor="let sub of solutionMainCategoryData" (opened)="panelOpenState1 = true"
+                    (closed)="panelOpenState1 = false">
                     <mat-expansion-panel-header (click)="getData('solutionSubCategory', sub._id)">
                         <mat-panel-title class="my-2">
                             {{ sub.name }}
                         </mat-panel-title>
                         <mat-panel-description style="justify-content: flex-end;">
-                            <button class="btn  " (click)="openFormDialog('add',sub._id,sub.parentId, 'solution_sub_category')" color="accent"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                            <button class="btn  mx-1" (click)="openFormDialog('edit',sub._id,sub.parentId, 'solution_main_category')" color="accent"><i class="fa fa-pencil-square-o " aria-hidden="true"></i></button>
-                            <button class="btn  mx-1" (click)="deleteNav(sub._id,'solution_main_category')" color="accent"><i class="fa fa-trash "
-                                    aria-hidden="true"></i></button>
+                            <button class="btn  "
+                                (click)="openFormDialog('add',sub._id,sub.parentId, 'solution_sub_category')"
+                                color="accent"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                            <button class="btn  mx-1"
+                                (click)="openFormDialog('edit',sub._id,sub.parentId, 'solution_main_category')"
+                                color="accent"><i class="fa fa-pencil-square-o " aria-hidden="true"></i></button>
+                            <button class="btn  mx-1" (click)="deleteNav(sub._id,'solution_main_category')"
+                                color="accent"><i class="fa fa-trash " aria-hidden="true"></i></button>
 
                         </mat-panel-description>
                     </mat-expansion-panel-header>
+
+                    <div *ngIf="flag && solutionSubCategoryData.length == 0" class="text-center">
+                        <div class="spinner-border text-danger" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                    <div *ngIf="solutionSubCategoryData.length == 0 && !flag" class="text-center">
+                        <div class="text-danger" role="status">
+                           <h6>No Data Found</h6>
+                        </div>
+                    </div>
                     <!-- Third -->
                     <mat-accordion>
-                        <mat-expansion-panel *ngFor="let subCat of solutionSubCategoryData" (opened)="panelOpenState1 = true" (closed)="panelOpenState1 = false">
+                        <mat-expansion-panel *ngFor="let subCat of solutionSubCategoryData"
+                            (opened)="panelOpenState1 = true" (closed)="panelOpenState1 = false">
                             <mat-expansion-panel-header (click)="getData('productMainCategory', subCat._id)">
                                 <mat-panel-title class="my-2">
                                     {{ subCat.name }}
                                 </mat-panel-title>
                                 <mat-panel-description style="justify-content: flex-end;">
-                                    <button class="btn " color="accent" (click)="openFormDialog('add',subCat._id,subCat.parentId, 'product_main_category')"><i
+                                    <button class="btn " color="accent"
+                                        (click)="openFormDialog('add',subCat._id,subCat.parentId, 'product_main_category')"><i
                                             class="fa fa-plus" aria-hidden="true"></i> </button>
-                                    <button class="btn  mx-1" color="accent" (click)="openFormDialog('edit',subCat._id,subCat.parentId, 'solution_sub_category')"><i
+                                    <button class="btn  mx-1" color="accent"
+                                        (click)="openFormDialog('edit',subCat._id,subCat.parentId, 'solution_sub_category')"><i
                                             class="fa fa-pencil-square-o " aria-hidden="true"></i></button>
-                                    <button class="btn  mx-1" (click)="deleteNav(subCat._id,'solution_sub_category')" color="accent"><i class="fa fa-trash "
-                                            aria-hidden="true"></i></button>
+                                    <button class="btn  mx-1" (click)="deleteNav(subCat._id,'solution_sub_category')"
+                                        color="accent"><i class="fa fa-trash " aria-hidden="true"></i></button>
 
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
-
+                            <div *ngIf="flag && productMainCategoryData.length == 0" class="text-center">
+                                <div class="spinner-border text-danger" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <div *ngIf="productMainCategoryData.length == 0 && !flag" class="text-center">
+                                <div class="text-danger" role="status">
+                                   <h6>No Data Found</h6>
+                                </div>
+                            </div>
                             <p class="m-0" *ngFor="let prod of productMainCategoryData"> {{ prod.name }}
-                                <button class="btn  mx-1" color="accent" (click)="openFormDialog('edit',prod._id,prod.parentId, 'product_main_category')"><i
+                                <button class="btn  mx-1" color="accent"
+                                    (click)="openFormDialog('edit',prod._id,prod.parentId, 'product_main_category')"><i
                                         class="fa fa-pencil-square-o " aria-hidden="true"></i></button>
-                                <button class="btn  mx-1" color="accent" (click)="deleteNav(prod._id,'product_main_category')"><i class="fa fa-trash "
+                                <button class="btn  mx-1" color="accent"
+                                    (click)="deleteNav(prod._id,'product_main_category')"><i class="fa fa-trash "
                                         aria-hidden="true"></i></button>
                             </p>
                             <!-- Fourth -->

@@ -63,17 +63,17 @@
         </svg>
       </small></mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item class="mt-4" routerLink="/dashboard">
+      <a mat-list-item class="mt-4 " routerLinkActive="activeTest" routerLink="/dashboard" [routerLinkActiveOptions]="{ exact: true }" >
         <p class="mb-0 p-0">Dashboard</p>
       </a>
-      <a mat-list-item routerLink="/navbar">
+      <a mat-list-item routerLink="/navbar" routerLinkActive="activeTest"  [routerLinkActiveOptions]="{ exact: true }">
         <p class="mb-0 p-0">Navbar</p>
       </a>
 
-      <a mat-list-item routerLink="/dashboard" *ngFor="let m of mainNavData">
+      <a mat-list-item routerLink="/{{m.name}}" *ngFor="let m of mainNavData" routerLinkActive="activeTest"  [routerLinkActiveOptions]="{ exact: true }">
         <p class="mb-0 p-0">{{ m.name }}</p>
       </a>
-      <a mat-list-item routerLink="/dashboard" *ngFor="let m of subNavData">
+      <a mat-list-item routerLink="/" *ngFor="let m of subNavData" routerLinkActive="activeTest" [routerLinkActiveOptions]="{ exact: true }">
         <p class="mb-0 p-0">{{ m.name }}</p>
       </a>
     </mat-nav-list>

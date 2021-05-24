@@ -1,0 +1,115 @@
+<div class="container">
+    <div *ngIf="isLoading" class="text-center">
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <div  *ngIf="!isLoading && type == 'role'" >
+        <form [formGroup]="changeRole" (ngSubmit)="changeAdminRole()">
+
+
+            <div class="form-group">
+
+                <mat-form-field class="example-full-width w-100">
+                    <mat-label>Admin Name</mat-label>
+                    <input matInput type="text" placeholder="Admin Name..." autocomplete formControlName="adminName">
+                </mat-form-field>
+
+
+                <mat-error
+                    *ngIf="(!changeRole.controls['adminName'].valid) && (changeRole.controls['adminName'].touched) || (changeRole.hasError('email') && !changeRole.hasError('required'))"
+                    class="text-danger">Please enter name.</mat-error>
+            </div>
+            <div class="form-group">
+                <mat-form-field  class="example-full-width w-100 ">
+                    <mat-label>Admin Email</mat-label>
+                    <input style="color: var(--danger)" readonly matInput type="email" placeholder="Admin Email..." autocomplete
+                        formControlName="adminEmail">
+                </mat-form-field>
+
+                <mat-error
+                    *ngIf="(!changeRole.controls['adminEmail'].valid) && (changeRole.controls['adminEmail'].touched) || (changeRole.hasError('email') && !changeRole.hasError('required'))"
+                    class="text-danger">Valid email is required.</mat-error>
+            </div>
+            <div class="form-group">
+
+                <mat-form-field class="example-full-width w-100">
+                    <mat-label>Admin Privilages</mat-label>
+                    <mat-select formControlName="adminPrivilages" matNativeControl required>
+                        <mat-option value="2">View Only</mat-option>
+                        <mat-option value="0">All Priviliges</mat-option>
+                        <mat-option value="1">Mid Priviliges</mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+                <mat-error
+                    *ngIf="(!changeRole.controls['adminPrivilages'].valid) && (changeRole.controls['adminPrivilages'].touched) || (changeRole.hasError('email') && !changeRole.hasError('required'))"
+                    class="text-danger">Please select privilages.</mat-error>
+            </div>
+            <!-- <div class="form-group">
+                 <mat-form-field class="example-full-width w-100">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" placeholder="****" autocomplete formControlName="adminPassword" >
+                </mat-form-field>
+        
+                <mat-error
+                    *ngIf="(!makeAction.controls['adminPassword'].valid) && (makeAction.controls['adminPassword'].touched) || (makeAction.hasError('email') && !makeAction.hasError('required'))"
+                    class="text-danger">Password must be 8 characters long.</mat-error>
+            </div> -->
+            <div class="form-group">
+                <button class="btn btn-danger mt-2">Update</button>
+            </div>
+
+            <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+                {{ successMsg }}
+            </div>
+        
+            <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+                {{ errorMsg }}
+            </div>
+        </form>
+    </div>
+
+    <div  *ngIf="!isLoading && type == 'password'" >
+        <form [formGroup]="changePass" (ngSubmit)="changeAdminPass()">
+
+
+            
+            <div class="form-group">
+                 <mat-form-field class="example-full-width w-100">
+                    <mat-label>New Password</mat-label>
+
+                    <!-- password
+confirmPassword -->
+                    <input matInput type="password" placeholder="****" autocomplete formControlName="password" >
+                </mat-form-field>
+        
+                <mat-error
+                    *ngIf="(!changePass.controls['password'].valid) && (changePass.controls['password'].touched) || (changePass.hasError('password') && !changePass.hasError('required'))"
+                    class="text-danger">Password must be 8 characters long.</mat-error>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="example-full-width w-100">
+                   <mat-label>Confirm Password</mat-label>
+                   <input matInput type="password" placeholder="****" autocomplete formControlName="confirmPassword" >
+               </mat-form-field>
+       
+               <mat-error
+                   *ngIf="(!changePass.controls['confirmPassword'].valid) && (changePass.controls['confirmPassword'].touched) || (changePass.hasError('confirmPassword') && !changePass.hasError('required'))"
+                   class="text-danger">Password does not match.</mat-error>
+           </div>
+            <div class="form-group">
+                <button class="btn btn-danger mt-2">Update</button>
+            </div>
+
+            <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+                {{ successMsg }}
+            </div>
+        
+            <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+                {{ errorMsg }}
+            </div>
+        </form>
+    </div>
+</div>

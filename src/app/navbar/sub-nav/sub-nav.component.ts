@@ -3,6 +3,8 @@ import { NavbarService } from 'src/app/services/navbar.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormCardComponent } from 'src/app/form-card/form-card.component';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+
+import { GlobalConstants } from '../../common/global-constants';
 @Component({
   selector: 'app-sub-nav',
   templateUrl: './sub-nav.component.html',
@@ -19,7 +21,7 @@ export class SubNavComponent implements OnInit {
 
   panelOpenState = false;
   panelOpenState1 = false;
-  constructor(private _nav: NavbarService, public dialog: MatDialog) { }
+  constructor(private _nav: NavbarService, public dialog: MatDialog,public gVar: GlobalConstants) { }
 
 
 

@@ -21,9 +21,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MainNavComponent } from './navbar/main-nav/main-nav.component';
 import { SubNavComponent } from './navbar/sub-nav/sub-nav.component';
 import { GlobalConstants } from './common/global-constants';
-
+import {MatSelectModule} from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FormCardComponent } from './form-card/form-card.component';
+import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
+import { MakeActionComponent } from './make-action/make-action.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { FormCardComponent } from './form-card/form-card.component';
     NavbarComponent,
     MainNavComponent,
     SubNavComponent,
-    FormCardComponent
+    FormCardComponent,
+    ManageAdminsComponent,
+    MakeActionComponent
   ],
   imports: [
   
@@ -54,6 +58,7 @@ import { FormCardComponent } from './form-card/form-card.component';
     FormsModule,
     ReactiveFormsModule,
     MatExpansionModule,
+    MatSelectModule,
     ModalModule.forRoot()
 
   ],

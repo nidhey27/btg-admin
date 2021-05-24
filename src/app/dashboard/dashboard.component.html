@@ -6,21 +6,23 @@
         </div>
     </div>
 
-    <div class="row mx-auto">
+    <div  class="row mx-auto">
 
-        <div class="text-center d-flex justify-content-center">
+        <div *ngIf="gVar.role == 0" class="text-center d-flex justify-content-center">
             <div class="col-3">
-                <mat-card class="card  border-bottom-danger ">
-                    <div class="p-1">
-                        <div class="row">
-                            <div class="col-12 ">
-                                <i class="fa fa-user fa-2x text-danger" aria-hidden="true"></i>
-                                <h6 class="text-center">Manage Admins</h6>
+                <a routerLink="/manage-admin">
+                    <mat-card class="card  border-bottom-danger ">
+                        <div class="p-1">
+                            <div class="row">
+                                <div class="col-12 ">
+                                    <i class="fa fa-user fa-2x text-danger" aria-hidden="true"></i>
+                                    <h6 class="text-center">Manage Admins</h6>
+                                </div>
+
                             </div>
-                            
                         </div>
-                    </div>
-                </mat-card>
+                    </mat-card>
+                </a>
             </div>
         </div>
 

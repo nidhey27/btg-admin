@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <div class="d-flex justify-content-end">
+    <div *ngIf="gVar.role == 0 || gVar.role == 1" class="d-flex justify-content-end">
         <button class="btn btn-danger mb-3" (click)="openFormDialog('industry_solution')"> <i class="fa fa-plus "
                 aria-hidden="true"></i> Add Industry Solution</button>
     </div>
@@ -38,7 +38,7 @@
                 <mat-panel-title class="my-2">
                     {{ nav.name}}
                 </mat-panel-title>
-                <mat-panel-description style="justify-content: flex-end;">
+                <mat-panel-description *ngIf="gVar.role == 0 || gVar.role == 1" style="justify-content: flex-end;">
                     <button class="btn  mx-1" color="accent"
                         (click)="openFormDialog('add',nav._id,undefined, 'solution_main_category')"><i
                             class="fa fa-plus " aria-hidden="true"></i></button>
@@ -67,7 +67,7 @@
                         <mat-panel-title class="my-2">
                             {{ sub.name }}
                         </mat-panel-title>
-                        <mat-panel-description style="justify-content: flex-end;">
+                        <mat-panel-description *ngIf="gVar.role == 0 || gVar.role == 1" style="justify-content: flex-end;">
                             <button class="btn  "
                                 (click)="openFormDialog('add',sub._id,sub.parentId, 'solution_sub_category')"
                                 color="accent"><i class="fa fa-plus" aria-hidden="true"></i></button>
@@ -98,7 +98,7 @@
                                 <mat-panel-title class="my-2">
                                     {{ subCat.name }}
                                 </mat-panel-title>
-                                <mat-panel-description style="justify-content: flex-end;">
+                                <mat-panel-description *ngIf="gVar.role == 0 || gVar.role == 1" style="justify-content: flex-end;">
                                     <button class="btn " color="accent"
                                         (click)="openFormDialog('add',subCat._id,subCat.parentId, 'product_main_category')"><i
                                             class="fa fa-plus" aria-hidden="true"></i> </button>
@@ -121,10 +121,10 @@
                                 </div>
                             </div>
                             <p class="m-0" *ngFor="let prod of productMainCategoryData"> {{ prod.name }}
-                                <button class="btn  mx-1" color="accent"
+                                <button *ngIf="gVar.role == 0 || gVar.role == 1" class="btn  mx-1" color="accent"
                                     (click)="openFormDialog('edit',prod._id,prod.parentId, 'product_main_category')"><i
                                         class="fa fa-pencil-square-o " aria-hidden="true"></i></button>
-                                <button class="btn  mx-1" color="accent"
+                                <button *ngIf="gVar.role == 0 || gVar.role == 1" class="btn  mx-1" color="accent"
                                     (click)="deleteNav(prod._id,'product_main_category')"><i class="fa fa-trash "
                                         aria-hidden="true"></i></button>
                             </p>

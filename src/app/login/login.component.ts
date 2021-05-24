@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
           this.errorMsg = "";
           this.gVar.isLoggeddIn = true;
           this.gVar.adminName = response.data.name;
+          this.gVar.role = response.data.role;
           this.successMsg = 'Login Successful';
           this.submit = false;
           console.log(response)

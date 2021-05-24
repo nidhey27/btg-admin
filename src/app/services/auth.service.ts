@@ -6,9 +6,51 @@ import { environment } from '../../environments/environment';
 })
 export class AuthService {
 
+
   constructor(private _http: HttpClient) { }
 
   async login(body: any) {
     return await this._http.post(`${environment.apiUrl}api/auth/login`, body)
+  }
+
+  async getAllAdmin() {
+    return await this._http.get(`${environment.apiUrl}api/auth/admins`, {
+      headers: {
+        "auth-token": localStorage.getItem('auth-token')
+      }
+    })
+  }
+
+  async registerAdmin(body:any) {
+    return await this._http.post(`${environment.apiUrl}api/auth/register`, body , {
+      headers: {
+        "auth-token": localStorage.getItem('auth-token')
+      }
+    })
+  }
+
+  async getOneAdmin(id) {
+    return await this._http.get(`${environment.apiUrl}api/auth/admins/${id}`, {
+      headers: {
+        "auth-token": localStorage.getItem('auth-token')
+      }
+    })
+  }
+
+
+  async changePass(body:any , id) {
+    return await this._http.put(`${environment.apiUrl}api/auth/change-password/${id}`,body , {
+      headers: {
+        "auth-token": localStorage.getItem('auth-token')
+      }
+    })
+  }
+
+  async changeRole(body:any , id) {
+    return await this._http.put(`${environment.apiUrl}api/auth/manage-role/${id}`, body, {
+      headers: {
+        "auth-token": localStorage.getItem('auth-token')
+      }
+    })
   }
 }

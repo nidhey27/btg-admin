@@ -17,9 +17,13 @@ export class ManageAdminsComponent implements OnInit {
   errorMsg: string;
   successMsg: string;
   btnName: String = "Add Admins";
+  isLoading = true;
+  adminId: String = '';
   constructor(private _auth: AuthService, private formBuilder: FormBuilder, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    window.scroll(0,0);
+    this.adminId = localStorage.getItem('id');
 
     this.adminForm = this.formBuilder.group({
       adminName: ['', [Validators.required]],
@@ -33,6 +37,8 @@ export class ManageAdminsComponent implements OnInit {
       res.subscribe((resp: any) => {
         console.log(resp)
         this.adminsData = resp.data
+
+        this.isLoading = false;
       })
     }).catch(error => {
       console.error(error)

@@ -35,17 +35,17 @@
             <div class="form-group">
 
                 <mat-form-field class="example-full-width w-100">
-                    <mat-label>Admin Privilages</mat-label>
+                    <mat-label>Admin Privileges</mat-label>
                     <mat-select formControlName="adminPrivilages" matNativeControl required>
                         <mat-option value="2">View Only</mat-option>
-                        <mat-option value="0">All Priviliges</mat-option>
-                        <mat-option value="1">Mid Priviliges</mat-option>
+                        <mat-option value="0">All Privileges</mat-option>
+                        <mat-option value="1">Mid Privileges</mat-option>
 
                     </mat-select>
                 </mat-form-field>
                 <mat-error
                     *ngIf="(!changeRole.controls['adminPrivilages'].valid) && (changeRole.controls['adminPrivilages'].touched) || (changeRole.hasError('email') && !changeRole.hasError('required'))"
-                    class="text-danger">Please select privilages.</mat-error>
+                    class="text-danger">Please select privileges.</mat-error>
             </div>
             <!-- <div class="form-group">
                  <mat-form-field class="example-full-width w-100">

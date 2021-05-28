@@ -15,7 +15,9 @@
                 <mat-label for="name">Name</mat-label>
                 <input matInput placeholder="Ex: Size & Creeping" formControlName="name" type="text">
             </mat-form-field>
-            <mat-error *ngIf="(!navBarForm.controls['name'].valid) && (navBarForm.controls['name'].touched) || (navBarForm.hasError('name') && !navBarForm.hasError('required'))" class="text-danger">This field is required.</mat-error>
+            <mat-error
+                *ngIf="(!navBarForm.controls['name'].valid) && (navBarForm.controls['name'].touched) || (navBarForm.hasError('name') && !navBarForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
 
         </div>
 
@@ -40,7 +42,9 @@
                 <mat-label for="name">Name</mat-label>
                 <input matInput placeholder="Ex: Size & Creeping" formControlName="name" type="text">
             </mat-form-field>
-            <mat-error *ngIf="(!navBarForm.controls['name'].valid) && (navBarForm.controls['name'].touched) || (navBarForm.hasError('name') && !navBarForm.hasError('required'))" class="text-danger">This field is required.</mat-error>
+            <mat-error
+                *ngIf="(!navBarForm.controls['name'].valid) && (navBarForm.controls['name'].touched) || (navBarForm.hasError('name') && !navBarForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
 
         </div>
 
@@ -65,7 +69,9 @@
                 <mat-label for="name">Name</mat-label>
                 <input matInput placeholder="Ex: Pulp" formControlName="name" type="text">
             </mat-form-field>
-            <mat-error *ngIf="(!navBarForm.controls['name'].valid) && (navBarForm.controls['name'].touched) || (navBarForm.hasError('name') && !navBarForm.hasError('required'))" class="text-danger">This field is required.</mat-error>
+            <mat-error
+                *ngIf="(!navBarForm.controls['name'].valid) && (navBarForm.controls['name'].touched) || (navBarForm.hasError('name') && !navBarForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
 
         </div>
 
@@ -79,4 +85,9 @@
             {{ errorMsg }}
         </div>
     </form>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+
+    </mat-dialog-actions>
 </div>

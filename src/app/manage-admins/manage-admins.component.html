@@ -1,11 +1,11 @@
 <div class="container py-4">
 
     <div class="d-flex justify-content-end ">
-        <button *ngIf="btnName == 'Add Admins'" class="btn btn-danger my-2" (click)="addAdmin()"><i class="fa fa-plus text-white "
-                aria-hidden="true"></i> &nbsp;{{ btnName }}</button>
+        <button *ngIf="btnName == 'Add Admins'" class="btn btn-danger my-2" (click)="addAdmin()"><i
+                class="fa fa-plus text-white " aria-hidden="true"></i> &nbsp;{{ btnName }}</button>
 
-        <button *ngIf="btnName == 'View Admins'" class="btn btn-danger my-2" (click)="addAdmin()"><i class="fa fa-info text-white "
-                aria-hidden="true"></i> &nbsp;{{ btnName }}</button>
+        <button *ngIf="btnName == 'View Admins'" class="btn btn-danger my-2" (click)="addAdmin()"><i
+                class="fa fa-info text-white " aria-hidden="true"></i> &nbsp;{{ btnName }}</button>
     </div>
 
     <table *ngIf="!toggle" class="table table-striped">
@@ -14,22 +14,35 @@
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
-                <th scope="col">Privilages</th>
+                <th scope="col">Privileges</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
+        <div *ngIf="isLoading" class="text-center">
+            <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
         <tbody>
+            
             <tr *ngFor="let a of adminsData; let i = index">
-                <th scope="row">{{ i + 1 }}</th>
+
+                
+                    
+           
+                <td scope="row">{{ i + 1 }}</td>
                 <td>{{ a.name }}</td>
                 <td>{{ a.email }}</td>
-                <td>{{ a.role == 0 ? 'All Priviliges' : a.role == 1 ? 'Mid Priviliges' : 'View Only' }}</td>
-                <td>
+                <td>{{ a.role == 0 ? 'All Privileges' : a.role == 1 ? 'Mid Privileges' : 'View Only' }}</td>
+                <td *ngIf="adminId != a._id">
                     <select (change)="action($event , a._id)" name="" id="" class="form-control">
                         <option value="">Select..</option>
-                        <option value="password" >Change Password</option>
+                        <option value="password">Change Password</option>
                         <option value="role">Change Role</option>
                     </select>
+                </td>
+                <td *ngIf="adminId == a._id">
+                    <b>N/A</b>
                 </td>
             </tr>
 
@@ -47,23 +60,25 @@
         <mat-card-content>
             <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
 
-                
+
                 <div class="form-group">
 
                     <mat-form-field class="example-full-width w-100">
                         <mat-label>Admin Name</mat-label>
-                        <input matInput type="text" placeholder="Admin Name..." autocomplete formControlName="adminName" >
+                        <input matInput type="text" placeholder="Admin Name..." autocomplete
+                            formControlName="adminName">
                     </mat-form-field>
-                    
-    
+
+
                     <mat-error
                         *ngIf="(!adminForm.controls['adminName'].valid) && (adminForm.controls['adminName'].touched) || (adminForm.hasError('email') && !adminForm.hasError('required'))"
                         class="text-danger">Please enter name.</mat-error>
                 </div>
                 <div class="form-group">
-                     <mat-form-field class="example-full-width w-100">
+                    <mat-form-field class="example-full-width w-100">
                         <mat-label>Admin Email</mat-label>
-                        <input matInput type="email" placeholder="Admin Email..." autocomplete formControlName="adminEmail" >
+                        <input matInput type="email" placeholder="Admin Email..." autocomplete
+                            formControlName="adminEmail">
                     </mat-form-field>
 
                     <mat-error
@@ -71,7 +86,7 @@
                         class="text-danger">Valid email is required.</mat-error>
                 </div>
                 <div class="form-group">
-                     <!-- <mat-form-field class="example-full-width w-100">
+                    <!-- <mat-form-field class="example-full-width w-100">
                         <mat-label>Admin Privilages</mat-label>
                         <select name="role" formControlName="adminPrivilages" id="" class="form-control">
                             <option value="">Select</option>
@@ -79,23 +94,23 @@
                             <option value="0">Superadmin</option>
                         </select>
                     </mat-form-field> -->
-                    <mat-form-field  class="example-full-width w-100">
-                        <mat-label>Admin Privilages</mat-label>
+                    <mat-form-field class="example-full-width w-100">
+                        <mat-label>Admin Privileges</mat-label>
                         <mat-select formControlName="adminPrivilages" matNativeControl required>
-                          <mat-option value="2">View Only</mat-option>
-                          <mat-option value="0">All Priviliges</mat-option>
-                          <mat-option value="1">Mid Priviliges</mat-option>
-                          
+                            <mat-option value="2">View Only</mat-option>
+                            <mat-option value="0">All Privileges</mat-option>
+                            <mat-option value="1">Mid Priviliges</mat-option>
+
                         </mat-select>
-                      </mat-form-field>
+                    </mat-form-field>
                     <mat-error
                         *ngIf="(!adminForm.controls['adminPrivilages'].valid) && (adminForm.controls['adminPrivilages'].touched) || (adminForm.hasError('email') && !adminForm.hasError('required'))"
-                        class="text-danger">Please select privilages.</mat-error>
+                        class="text-danger">Please select privileges.</mat-error>
                 </div>
                 <div class="form-group">
-                     <mat-form-field class="example-full-width w-100">
+                    <mat-form-field class="example-full-width w-100">
                         <mat-label>Password</mat-label>
-                        <input matInput type="password" placeholder="****" autocomplete formControlName="adminPassword" >
+                        <input matInput type="password" placeholder="****" autocomplete formControlName="adminPassword">
                     </mat-form-field>
 
                     <mat-error
@@ -116,14 +131,14 @@
             </form>
         </mat-card-content>
 
-        
+
     </mat-card>
 
     <b>Note:</b>
     <ul>
-        <li><b>View Only:</b> Can only View Content (Useless Site Pr bhi dikhta BSDK)</li>
-        <li><b>All Priviliges:</b> Can perform all opertions including managing Admins.</li>
-        <li><b>Mid Priviliges:</b> Can perfrom all opertaion.</li>
+        <li><b>View Only:</b> Can only View Content</li>
+        <li><b>All Privileges:</b> Can perform all operations including managing Admins.</li>
+        <li><b>Mid Privileges:</b> Can perfrom all operations except managing Admins.</li>
     </ul>
 
 

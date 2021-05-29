@@ -26,6 +26,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FormCardComponent } from './form-card/form-card.component';
 import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
 import { MakeActionComponent } from './make-action/make-action.component';
+import { SubCatagoryComponent } from './sub-catagory/sub-catagory.component';
+import { GetSubCatagoryComponent } from './get-sub-catagory/get-sub-catagory.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { MakeActionComponent } from './make-action/make-action.component';
     SubNavComponent,
     FormCardComponent,
     ManageAdminsComponent,
-    MakeActionComponent
+    MakeActionComponent,
+    SubCatagoryComponent,
+    GetSubCatagoryComponent
   ],
   imports: [
   

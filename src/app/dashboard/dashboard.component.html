@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <div  class="row mx-auto">
+    <div class="row mx-auto">
 
         <div *ngIf="gVar.role == 0" class="text-center d-flex justify-content-center">
             <div class="col-3">
@@ -26,31 +26,36 @@
             </div>
         </div>
 
-        <h3 class="text-center" *ngIf="mainNavData.length == 0 && subNavData.length">Please Wait, Getting things
-            Ready!...</h3>
+
         <div class="col-3 my-2" *ngFor="let nav of mainNavData">
-            <a class="text-danger" routerLink="#aaa"><mat-card class="card border-bottom-danger ">
-                <div class="p-2">
-                    <div class="row">
-                        <div class="col-8">
-                            <h6>{{ nav.name }}</h6>
+            <a class="text-danger">
+                <mat-card class="card border-bottom-danger ">
+                    <div class="p-2">
+                        <div class="row">
+                            <div class="col-8">
+                                <h6>{{ nav.name }}</h6>
+                            </div>
+                            <div class="col-4"><a class="text-danger">Edit</a></div>
                         </div>
-                        <div class="col-4"><a class="text-danger" routerLink="#bbb">Edit</a></div>
                     </div>
-                </div>
-            </mat-card></a>
+                </mat-card>
+            </a>
         </div>
+
+
         <div class="col-3 my-2" *ngFor="let nav of subNavData">
-            <mat-card class="card border-bottom-danger ">
-                <div class="p-2">
-                    <div class="row">
-                        <div class="col-8">
-                            <h6>{{ nav.name }}</h6>
+            <a routerLink="/get-sub-cat/{{nav._id}}" [queryParams]="{type : 'solutionMainCategory'}">
+                <mat-card class="card border-bottom-danger">
+                    <div class="p-2">
+                        <div class="row">
+                            <div class="col-8">
+                                <h6>{{ nav.name }}</h6>
+                            </div>
+                            <div class="col-4"><a class="text-danger" routerLink="/sub-cat/{{nav._id}}">Edit</a></div>
                         </div>
-                        <div class="col-4"><a class="text-danger" href="#">Edit</a></div>
                     </div>
-                </div>
-            </mat-card>
+                </mat-card>
+            </a>
         </div>
     </div>
 </div>

@@ -16,7 +16,8 @@ export class AuthService {
   async getAllAdmin() {
     return await this._http.get(`${environment.apiUrl}api/auth/admins`, {
       headers: {
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -24,7 +25,8 @@ export class AuthService {
   async registerAdmin(body:any) {
     return await this._http.post(`${environment.apiUrl}api/auth/register`, body , {
       headers: {
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -32,7 +34,8 @@ export class AuthService {
   async getOneAdmin(id) {
     return await this._http.get(`${environment.apiUrl}api/auth/admins/${id}`, {
       headers: {
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -41,7 +44,8 @@ export class AuthService {
   async changePass(body:any , id) {
     return await this._http.put(`${environment.apiUrl}api/auth/change-password/${id}`,body , {
       headers: {
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -49,7 +53,8 @@ export class AuthService {
   async changeRole(body:any , id) {
     return await this._http.put(`${environment.apiUrl}api/auth/manage-role/${id}`, body, {
       headers: {
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }

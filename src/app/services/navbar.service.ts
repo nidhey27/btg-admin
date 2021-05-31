@@ -36,7 +36,8 @@ export class NavbarService {
   async addIndustrySolutionFor(body:any) {
     return await this._http.post(`${environment.apiUrl}api/navbar/add/industry-solution-for` , body , {
       headers:{
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -44,7 +45,8 @@ export class NavbarService {
   async addsolutionMainCategoryFor(body:any , id) {
     return await this._http.post(`${environment.apiUrl}api/navbar/add/solution-main-category/${id}` , body , {
       headers:{
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -54,7 +56,8 @@ export class NavbarService {
   async addsolutionSubCategoryFor(body:any , id) {
     return await this._http.post(`${environment.apiUrl}api/navbar/add/solution-sub-category/${id}` , body , {
       headers:{
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -62,7 +65,8 @@ export class NavbarService {
   async addproductMainCategory(body:any , id) {
     return await this._http.post(`${environment.apiUrl}api/navbar/add/product-main-category/${id}` , body , {
       headers:{
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -72,7 +76,8 @@ export class NavbarService {
   async updateIndustrySolutionFor(body:any,id) {
     return await this._http.put(`${environment.apiUrl}api/navbar/update/industry-solution-for/${id}`, body , {
       headers:{
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -80,7 +85,8 @@ export class NavbarService {
   async updatesolutionMainCategoryFor(body:any,id) {
     return await this._http.put(`${environment.apiUrl}api/navbar/update/solution-main-category/${id}`, body , {
       headers:{
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -88,7 +94,8 @@ export class NavbarService {
   async updatesolutionSubCategoryFor(body:any,id) {
     return await this._http.put(`${environment.apiUrl}api/navbar/update/solution-sub-category/${id}`, body , {
       headers:{
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -96,7 +103,8 @@ export class NavbarService {
   async updateproductMainCategory(body:any,id) {
     return await this._http.put(`${environment.apiUrl}api/navbar/update/product-main-category/${id}`, body , {
       headers:{
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -106,7 +114,8 @@ export class NavbarService {
   async deleteIndustrySolutionFor(id) {
     return await this._http.delete(`${environment.apiUrl}api/navbar/industry-solution-for/${id}` , {
       headers:{
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -114,7 +123,8 @@ export class NavbarService {
   async deletesolutionMainCategoryFor(id) {
     return await this._http.delete(`${environment.apiUrl}api/navbar/solution-main-category/${id}`, {
       headers:{
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -123,7 +133,8 @@ export class NavbarService {
   async deletesolutionSubCategoryFor(id) {
     return await this._http.delete(`${environment.apiUrl}api/navbar/solution-sub-category/${id}` , {
       headers:{
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }
@@ -131,7 +142,8 @@ export class NavbarService {
   async deleteproductMainCategory(id) {
     return await this._http.delete(`${environment.apiUrl}api/navbar/product-main-category/${id}` , {
       headers:{
-        "auth-token": localStorage.getItem('auth-token')
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
       }
     })
   }

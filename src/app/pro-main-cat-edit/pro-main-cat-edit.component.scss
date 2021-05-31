@@ -1,0 +1,32 @@
+img {
+    width: 50%;
+    height: 100%;
+}
+
+.my-4 {
+    margin: 36px 0 !important;
+}
+
+.contact-home {
+    width: 100% !important;
+    height: 50vh;
+    // background: url('../../assets/hero/conatct.png') no-repeat;
+}
+
+li {
+    margin-left: 2% !important;
+}
+
+p {
+    text-align: justify !important;
+}
+
+
+
+.red-title-banner {
+    height: auto !important;
+    background-color: var(--danger);
+    margin-top: 1rem;
+    padding: 10px 0;
+    text-align: center;
+}

@@ -21,13 +21,16 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MainNavComponent } from './navbar/main-nav/main-nav.component';
 import { SubNavComponent } from './navbar/sub-nav/sub-nav.component';
 import { GlobalConstants } from './common/global-constants';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FormCardComponent } from './form-card/form-card.component';
 import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
 import { MakeActionComponent } from './make-action/make-action.component';
 import { SubCatagoryComponent } from './sub-catagory/sub-catagory.component';
 import { GetSubCatagoryComponent } from './get-sub-catagory/get-sub-catagory.component';
+import { GetSubSubCategoryComponent } from './get-sub-sub-category/get-sub-sub-category.component';
+import { GetProductMainCategoryComponent } from './get-product-main-category/get-product-main-category.component';
+import { ProMainCatEditComponent } from './pro-main-cat-edit/pro-main-cat-edit.component';
 
 
 @NgModule({
@@ -43,10 +46,13 @@ import { GetSubCatagoryComponent } from './get-sub-catagory/get-sub-catagory.com
     ManageAdminsComponent,
     MakeActionComponent,
     SubCatagoryComponent,
-    GetSubCatagoryComponent
+    GetSubCatagoryComponent,
+    GetSubSubCategoryComponent,
+    GetProductMainCategoryComponent,
+    ProMainCatEditComponent
   ],
   imports: [
-  
+
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

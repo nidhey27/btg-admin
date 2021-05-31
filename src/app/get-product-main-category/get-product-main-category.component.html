@@ -4,8 +4,7 @@
 
 <div class="container py-4">
 
-    <button  class="btn btn-danger" (click)="goBack()">Back</button>
-
+<button class="btn btn-danger" (click)="goBack()">Back</button>
 
     <div *ngIf="isLoading" class="text-center">
         <div class="spinner-border text-danger" role="status">
@@ -19,8 +18,8 @@
             <span class="text-danger">{{message}}</span>
         </div>
 
-        <div class="col-3 my-2" *ngFor="let subNav of solutionMainCategoryData; let i = index">
-            <a [routerLink]="['/get-sub-sub-cat',subNav._id]" >
+        <div class="col-3 my-2" *ngFor="let subNav of productMainCategory; let i = index">
+            <a routerLink="/get-prod-main-cat/{{subNav._id}}" >
 
             <!-- <a routerLink="/dashboard"><button *ngIf="i == 0" class="btn btn-danger">Back</button></a> -->
 
@@ -30,7 +29,7 @@
                         <div class="col-8">
                             <h6>{{ subNav.name }}</h6>
                         </div>
-                        <div class="col-4"><a class="text-danger" routerLink="/sub-cat/subNav._id">Edit</a></div>
+                        <div class="col-4"><a class="text-danger" routerLink="/edit-pro-main-cat/{{subNav._id}}">Edit</a></div>
                     </div>
                 </div>
             </mat-card>

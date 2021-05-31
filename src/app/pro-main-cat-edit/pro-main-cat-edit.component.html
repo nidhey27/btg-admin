@@ -6,7 +6,7 @@
     </div>
 
     <div class="red-title-banner">
-        <h2 class="text-white" data-fieldName="heading" (blur)="onKey($event)" contenteditable> Product Name</h2>
+        <h2 class="text-white" data-fieldName="heading" (blur)="onKey($event)" contenteditable [innerHTML]="productData?.heading || 'Product Name'"> </h2>
     </div>
 
     <section style="padding: 50px 0;">
@@ -17,36 +17,31 @@
 
 
                 <div class="col-sm-7">
-                    <h4 contenteditable data-fieldName="subHeadingOne" style="font-weight: 600;" (blur)="onKey($event)">Heading 1</h4>
+                    <h4 contenteditable data-fieldName="subHeadingOne" style="font-weight: 600;" (blur)="onKey($event)" [innerHTML]="productData?.subHeadingOne || 'Heading 1'"></h4>
 
-                    <p data-fieldName="descriptionOne" class="text-justify" contenteditable="" (blur)="onKey($event)">Lorem Ipsum is simply dummy text
-                        of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                        text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                        make a type specimen book. It has survived not only five centuries, but also the leap into
-                        electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                        publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p data-fieldName="descriptionOne" class="text-justify" contenteditable="" (blur)="onKey($event)" [innerHTML]="productData?.descriptionOne || 'abc'"></p>
                 </div>
                 <div class="col-sm-1"></div>
-                <div class="col-sm-4"> <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
-                        alt="" class="img-fluid" style="width: 100%;"></div>
+
+                <div class="col-sm-4"> <img src="{{url}}" alt="" class="img-fluid" style="width: 100%;height: auto;">
+                    <input (change)="uploadProImg($event)" type="file" name="" id="" class="btn btn-danger">
+                </div>
+
+
+
 
 
                 <div class="col-sm-7">
-                    <h4 contenteditable data-fieldName="subHeadingTwo"
-                    (blur)="onKey($event)" style="font-weight: 600;" class="mt-5">Heading 2</h4>
+                    <h4 contenteditable data-fieldName="subHeadingTwo" (blur)="onKey($event)" style="font-weight: 600;" class="mt-5" [innerHTML]="productData?.subHeadingTwo || 'Heading 2'">Heading 2</h4>
 
-                    <p data-fieldName="descriptionTwo"
-                    (blur)="onKey($event)" class="text-justify" contenteditable="" (keyup)="onKey($event)">Descrition here...</p>
+                    <p data-fieldName="descriptionTwo" (blur)="onKey($event)" class="text-justify" contenteditable="" (keyup)="onKey($event)" [innerHTML]="productData?.descriptionTwo || 'Descrition here...'">
+                        Descrition here...</p>
 
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
-                    <h4 contenteditable data-fieldName="subHeadingThree"
-                    (blur)="onKey($event)" style="font-weight: 600;" class="mt-5">Heading 3</h4>
-                    <p contenteditable data-fieldName="descriptionThree"
-                    (blur)="onKey($event)" class="text-justify" contenteditable="" (keyup)="onKey($event)">Descrition here...</p>
+                    <h4 contenteditable data-fieldName="subHeadingThree" (blur)="onKey($event)" style="font-weight: 600;" class="mt-5" [innerHTML]="productData?.subHeadingThree || 'Heading 3'">Heading 3</h4>
+                    <p contenteditable data-fieldName="descriptionThree" (blur)="onKey($event)" class="text-justify" contenteditable="" (keyup)="onKey($event)" [innerHTML]="productData?.descriptionThree || 'Descrition here...'">Descrition here...</p>
                 </div>
 
             </div>
@@ -56,19 +51,19 @@
 
 
     <!-- DataSHeet Start-->
-    <!-- <section style="padding:50px 0;">
+    <section style="padding:50px 0;">
         <div class="container">
             <div class="data-sheet">
-    
+
                 <div class="text-center">
                     <button class="btn btn-lg my-2 btn-danger">See Product Sheet MEK-3000</button>
                     <p class="mb-0  my-2" style="text-align: center !important;">Also previous MEK generation is available
                     </p>
                     <button class="btn btn-lg my-2 btn-danger">See Product Sheet MEK-2500</button>
                 </div>
-    
+
             </div>
         </div>
-    </section> -->
+    </section>
     <!-- DataSHeet End-->
 </div>

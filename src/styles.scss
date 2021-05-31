@@ -1,9 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
-*{
-    --danger : #D73141;
+* {
+    --danger: #D73141;
 }
-
 
 html,
 body {
@@ -44,4 +43,14 @@ body {
     display: flex;
     align-items: center;
     font-size: 1em !important;
+}
+
+.data-sheet {
+    text-align: center;
+    background-image: url('./assets/data-sheet/datanewsheet.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 150px 0;
+    margin: 10px 0;
+    ;
 }

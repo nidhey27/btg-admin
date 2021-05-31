@@ -9,9 +9,12 @@ import { ProductService } from '../services/product.service';
 })
 export class ProMainCatEditComponent implements OnInit {
   id: String;
+  imagePath: any;
+  url: string | ArrayBuffer = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png';
 
-  constructor(private _product: ProductService, private _activatedRoute: ActivatedRoute) { }
-  dataForm = [];
+  constructor(private _product: ProductService, private _activatedRoute: ActivatedRoute, private _proService: ProductService) { }
+  dataForm:any = {};
+  productData:any = [];
   ngOnInit(): void {
     window.scroll(0, 0)
     // Get id
@@ -20,14 +23,28 @@ export class ProMainCatEditComponent implements OnInit {
       this.id = params['id']
 
     });
+
+    this._proService.getProduct(this.id).then((res: any) => {
+      res.subscribe((response: any) => {
+        if(response?.status)
+          this.productData = response.data
+
+          console.log(this.productData)
+      })
+
+    }).catch(error => {
+      console.error(error)
+    })
+
+
   }
-  sub = {};
+
   onKey(data) {
     let val = data.target.innerHTML
     let key = data.target.getAttribute('data-fieldName')
     // console.log(key)
-    this.sub[key] = val;
-    console.log(this.sub)
+    this.dataForm[key] = val;
+    console.log(this.dataForm)
   }
 
   goBack() {
@@ -35,17 +52,36 @@ export class ProMainCatEditComponent implements OnInit {
   }
 
   async update() {
-    (await this._product.addProduct(this.sub, this.id)).subscribe((resp: any) => {
+    
+    (await this._product.addProduct(this.dataForm, this.id)).subscribe((resp: any) => {
       console.log(resp)
     })
 
-    // //  (await this._nav.getsolutionMainCategoryFor(element._id)).subscribe((resp2:any) => {
+  }
 
+  uploadProImg(event){
+    console.log(event.target.files[0]);
 
+    const files = event.target.files;
+    if (files.length === 0)
+        return;
+    const mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+        
+        return;
+    }
 
-    //   let pushData = {main: element, sub: resp2?.data}
-    //   this.industrySolutuonMain.push(pushData)
-    // })
+    const reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+        this.url = reader.result; 
+        console.log(this.url);
+    }
+
+    
+    
+    
   }
 
 }

@@ -17,4 +17,9 @@ export class ProductService {
       }
     })
   }
+
+  async getProduct(id) {
+    return await this._http.get(`${environment.apiUrl}api/product/get/${id}`)
+  }
 }
+

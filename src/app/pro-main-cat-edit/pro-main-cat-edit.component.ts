@@ -11,10 +11,10 @@ export class ProMainCatEditComponent implements OnInit {
   id: String;
   imagePath: any;
   url: string | ArrayBuffer = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png';
-
+  isLoading: boolean = true;
   constructor(private _product: ProductService, private _activatedRoute: ActivatedRoute, private _proService: ProductService) { }
-  dataForm:any = {};
-  productData:any = [];
+  dataForm:any = {}; 
+  productData:any = []; 
   ngOnInit(): void {
     window.scroll(0, 0)
     // Get id
@@ -28,7 +28,7 @@ export class ProMainCatEditComponent implements OnInit {
       res.subscribe((response: any) => {
         if(response?.status)
           this.productData = response.data
-
+          this.isLoading = false
           console.log(this.productData)
       })
 

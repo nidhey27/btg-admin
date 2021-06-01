@@ -1,15 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
 * {
-    --danger: #D73141;
+    --danger: #d73141;
 }
 
 html,
 body {
-    height: 100%;
+    height: 100%; 
 }
 
-body {
+body { 
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
@@ -47,10 +47,19 @@ body {
 
 .data-sheet {
     text-align: center;
-    background-image: url('./assets/data-sheet/datanewsheet.png');
+    background-image: url("./assets/data-sheet/datanewsheet.png");
     background-repeat: no-repeat;
     background-size: cover;
     padding: 150px 0;
     margin: 10px 0;
-    ;
+}
+
+.loader {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url("./assets/btg-loader.gif") 50% 50% no-repeat rgb(255, 255, 255);
 }

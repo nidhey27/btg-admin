@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
 
+// Kr dera na revert back sbr
+
 @Component({
   selector: 'app-pro-main-cat-edit',
   templateUrl: './pro-main-cat-edit.component.html',
@@ -76,7 +78,7 @@ export class ProMainCatEditComponent implements OnInit {
     reader.readAsDataURL(files[0]); 
     reader.onload = (_event) => { 
         this.url = reader.result; 
-        console.log(this.url);
+        
     }
 
     

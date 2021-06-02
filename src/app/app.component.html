@@ -81,7 +81,7 @@
   <mat-sidenav-content>
     <mat-toolbar *ngIf="gVar.isLoggeddIn">
       <button type="button" class="btn text-white " aria-label="Toggle sidenav" mat-icon-button
-        (click)="drawer.toggle()" *ngIf="isHandset$">
+        (click)="toggle()" *ngIf="isHandset$">
         <mat-icon aria-label="Side nav toggle icon"><i class="fa fa-bars fa-x"></i></mat-icon>
       </button>
       <span class="mx-4"> <input type="text" class="form-control" placeholder="Search"> </span>

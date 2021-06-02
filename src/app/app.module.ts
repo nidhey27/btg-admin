@@ -33,6 +33,7 @@ import { GetProductMainCategoryComponent } from './get-product-main-category/get
 import { ProMainCatEditComponent } from './pro-main-cat-edit/pro-main-cat-edit.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { ProMainCatEditComponent } from './pro-main-cat-edit/pro-main-cat-edit.c
     GetSubCatagoryComponent,
     GetSubSubCategoryComponent,
     GetProductMainCategoryComponent,
-    ProMainCatEditComponent
+    ProMainCatEditComponent,
+
   ],
   imports: [
 

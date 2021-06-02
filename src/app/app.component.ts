@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -8,12 +8,14 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { NavbarService } from './services/navbar.service';
 import { GlobalConstants } from './common/global-constants';
+import { MatSidenav } from '@angular/material/sidenav';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @ViewChild('drawer') drawer: MatSidenav;
   title = 'btgadmin';
 
   mainNavData: any = [];
@@ -54,4 +56,8 @@ export class AppComponent {
     console.log("---ngAfterViewInit() Demo---");
     this.isLoggedIn = this.gVar.isLoggeddIn;
   }
+
+  toggle(){
+    this.drawer.toggle();  
+ }
 }

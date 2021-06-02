@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
 
-// Kr dera na revert back sbr
 
 @Component({
   selector: 'app-pro-main-cat-edit',
@@ -10,6 +9,7 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./pro-main-cat-edit.component.scss']
 })
 export class ProMainCatEditComponent implements OnInit {
+  
   id: String;
   imagePath: any;
   url: string | ArrayBuffer = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png';
@@ -26,6 +26,8 @@ export class ProMainCatEditComponent implements OnInit {
 
     });
 
+
+    // Get Products Data
     this._proService.getProduct(this.id).then((res: any) => {
       res.subscribe((response: any) => {
         if(response?.status)

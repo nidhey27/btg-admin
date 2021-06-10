@@ -31,7 +31,8 @@ import { GetSubCatagoryComponent } from './get-sub-catagory/get-sub-catagory.com
 import { GetSubSubCategoryComponent } from './get-sub-sub-category/get-sub-sub-category.component';
 import { GetProductMainCategoryComponent } from './get-product-main-category/get-product-main-category.component';
 import { ProMainCatEditComponent } from './pro-main-cat-edit/pro-main-cat-edit.component';
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { EditProductComponent } from './edit-product/edit-product.component'; // Editor
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { ProMainCatEditComponent } from './pro-main-cat-edit/pro-main-cat-edit.c
     GetSubSubCategoryComponent,
     GetProductMainCategoryComponent,
     ProMainCatEditComponent,
+    EditProductComponent,
 
   ],
   imports: [
@@ -71,6 +73,7 @@ import { ProMainCatEditComponent } from './pro-main-cat-edit/pro-main-cat-edit.c
     ReactiveFormsModule,
     MatExpansionModule,
     MatSelectModule,
+    AngularEditorModule,
     ModalModule.forRoot()
 
   ],

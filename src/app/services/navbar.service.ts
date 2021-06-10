@@ -63,7 +63,7 @@ export class NavbarService {
   }
 
   async addproductMainCategory(body:any , id) {
-    return await this._http.post(`${environment.apiUrl}api/navbar/add/product-main-category/${id}` , body , {
+    return await this._http.post(`http://192.168.29.121:3000/api/navbar/add/product-main-category/${id}` , body , {
       headers:{
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')

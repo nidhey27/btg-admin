@@ -9,6 +9,7 @@ import { GetSubSubCategoryComponent } from './get-sub-sub-category/get-sub-sub-c
 import { LoginComponent } from './login/login.component';
 import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PreviewComponent } from './preview/preview.component';
 import { ProMainCatEditComponent } from './pro-main-cat-edit/pro-main-cat-edit.component';
 import { SubCatagoryComponent } from './sub-catagory/sub-catagory.component';
 
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'get-sub-sub-cat/:id' , component:GetSubSubCategoryComponent , canActivate:[AuthGuard]},
   {path:'get-prod-main-cat/:id' , component:GetProductMainCategoryComponent , canActivate:[AuthGuard]},
   {path:'edit-pro-main-cat/:id' , component:ProMainCatEditComponent , canActivate:[AuthGuard]},
-  {path:'edit-product/:id' , component:EditProductComponent , canActivate:[AuthGuard]}
+  {path:'edit-product/:id' , component:EditProductComponent , canActivate:[AuthGuard]},
+  {path:'preview' , component:PreviewComponent , canActivate:[AuthGuard]}
 ];
 
 @NgModule({

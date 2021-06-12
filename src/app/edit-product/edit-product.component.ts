@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ProductService } from '../services/product.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { PreviewService } from '../services/preview.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -42,19 +43,35 @@ export class EditProductComponent implements OnInit {
     ]
   };
   url: any;
+
+  editSection: any = [
+    { id: 1, data: "", toggle: false },
+    { id: 2, data: "", toggle: false },
+    { id: 3, data: "", toggle: false },
+    { id: 4, data: "", toggle: false },
+    { id: 5, data: "", toggle: false },
+    { id: 6, data: "", toggle: false },
+    { id: 7, data: "", toggle: false },
+    { id: 8, data: "", toggle: false },
+    { id: 9, data: "", toggle: false },
+    { id: 10, data: "", toggle: false },
+    { id: 11, data: "", toggle: false },
+    { id: 12, data: "", toggle: false },
+  ]
+
   heading: any;
-  sectionOne: String = '';
-  sectionTwo: String = '';
-  sectionThree: String = '';
-  sectionFour: String = '';
-  sectionFive: String = '';
-  sectionSix: String = '';
-  sectionSeven: String = '';
-  sectionEight: String = '';
-  sectionNine: String = '';
-  sectionTen: String = '';
-  sectionEleven: String = '';
-  sectionTwelve: String = '';
+  // sectionOne: String = '';
+  // sectionTwo: String = '';
+  // sectionThree: String = '';
+  // sectionFour: String = '';
+  // sectionFive: String = '';
+  // sectionSix: String = '';
+  // sectionSeven: String = '';
+  // sectionEight: String = '';
+  // sectionNine: String = '';
+  // sectionTen: String = '';
+  // sectionEleven: String = '';
+  // sectionTwelve: String = '';
 
   // Edit On Variables
 
@@ -70,11 +87,21 @@ export class EditProductComponent implements OnInit {
   editSectionTen: boolean = false;
   editSectionEleven: boolean = false;
   editSectionTwelve: boolean = false;
-  
+
+  toggleEdit(index){
+    for(let i = 0; i < this.editSection.length; i++){
+      if(index == i)
+        this.editSection[i].toggle = !this.editSection[i].toggle
+      else
+        this.editSection[i].toggle = false
+    }
+  }
 
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _proService: ProductService
+    private _proService: ProductService,
+    private _preview: PreviewService,
+    private _route: Router
   ) { }
 
   ngOnInit(): void {
@@ -99,6 +126,16 @@ export class EditProductComponent implements OnInit {
   }
 
 
+  preview(){
+    console.log(this.heading);
+    
+    this._preview.saveData(this.editSection,this.heading).then(() => {
+      // this._route.navigate(['/preview'])
+      console.log(this.editSection)
+      this._route.navigate([]).then(result => { window.open('#/preview?type=product', '_blank'); });
+    })
+  }
+
   getProduct() {
     // Get Products Data
     this._proService.getProduct(this.id).then((res: any) => {
@@ -108,18 +145,20 @@ export class EditProductComponent implements OnInit {
         this.isLoading = false
         console.log(this.productData)
         this.heading = this.productData?.heading
-        this.sectionOne = this.productData?.sectionOne
-        this.sectionTwo = this.productData?.sectionTwo
-        this.sectionThree = this.productData?.sectionThree
-        this.sectionFour = this.productData?.sectionFour
-        this.sectionFive = this.productData?.sectionFive
-        this.sectionSix = this.productData?.sectionSix
-        this.sectionSeven = this.productData?.sectionSeven
-        this.sectionEight = this.productData?.sectionEight
-        this.sectionNine = this.productData?.sectionNine
-        this.sectionTen = this.productData?.sectionTen
-        this.sectionEleven = this.productData?.sectionEleven
-        this.sectionTwelve = this.productData?.sectionTwelve
+        this.editSection[0].data = this.productData?.sectionOne
+        this.editSection[1].data = this.productData?.sectionTwo
+        this.editSection[2].data = this.productData?.sectionThree
+        this.editSection[3].data = this.productData?.sectionFour
+        this.editSection[4].data = this.productData?.sectionFive
+        this.editSection[5].data = this.productData?.sectionSix
+        this.editSection[6].data = this.productData?.sectionSeven
+        this.editSection[7].data = this.productData?.sectionEight
+        this.editSection[8].data = this.productData?.sectionNine
+        this.editSection[9].data = this.productData?.sectionTen
+        this.editSection[10].data = this.productData?.sectionEleven
+        this.editSection[11].data = this.productData?.sectionTwelve
+
+        
 
         // for (const [key, value] of Object.entries(this.productData)) {
         //   // console.log(`Key : ${key}`);
@@ -143,18 +182,18 @@ export class EditProductComponent implements OnInit {
     let body = {
       heading: this.heading,
       parentId: this.id,
-      sectionOne: this.sectionOne, 
-      sectionTwo: this.sectionTwo, 
-      sectionThree: this.sectionThree, 
-      sectionFour: this.sectionFour, 
-      sectionFive: this.sectionFive, 
-      sectionSix: this.sectionSix, 
-      sectionSeven: this.sectionSeven, 
-      sectionEight: this.sectionEight, 
-      sectionNine: this.sectionNine, 
-      sectionTen: this.sectionTen, 
-      sectionEleven: this.sectionEleven, 
-      sectionTwelve: this.sectionTwelve, 
+      sectionOne: this.editSection[0].data, 
+      sectionTwo: this.editSection[1].data, 
+      sectionThree: this.editSection[2].data, 
+      sectionFour: this.editSection[3].data, 
+      sectionFive: this.editSection[4].data, 
+      sectionSix: this.editSection[5].data, 
+      sectionSeven: this.editSection[6].data, 
+      sectionEight: this.editSection[7].data, 
+      sectionNine: this.editSection[8].data, 
+      sectionTen: this.editSection[9].data, 
+      sectionEleven: this.editSection[10].data, 
+      sectionTwelve: this.editSection[11].data, 
     };
 
     console.log(body);

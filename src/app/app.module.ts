@@ -32,7 +32,10 @@ import { GetSubSubCategoryComponent } from './get-sub-sub-category/get-sub-sub-c
 import { GetProductMainCategoryComponent } from './get-product-main-category/get-product-main-category.component';
 import { ProMainCatEditComponent } from './pro-main-cat-edit/pro-main-cat-edit.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { EditProductComponent } from './edit-product/edit-product.component'; // Editor
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { PreviewComponent } from './preview/preview.component';
+import { PreviewNavbarComponent } from './preview-navbar/preview-navbar.component';
+import { NavbarTrimPipe } from './navbar-trim.pipe'; // Editor
 
 
 @NgModule({
@@ -53,6 +56,9 @@ import { EditProductComponent } from './edit-product/edit-product.component'; //
     GetProductMainCategoryComponent,
     ProMainCatEditComponent,
     EditProductComponent,
+    PreviewComponent,
+    PreviewNavbarComponent,
+    NavbarTrimPipe,
 
   ],
   imports: [

@@ -1,0 +1,19 @@
+.red-title-banner {
+    height: auto !important;
+    background-color: var(--danger);
+    // margin-top: 1rem;
+    margin-top: 10rem;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.mat-drawer-container {
+    background-color: white !important;
+    color: rgba(0,0,0,.87);
+}
+
+ul,
+p {
+    list-style-type: none;
+    color: gray;
+}

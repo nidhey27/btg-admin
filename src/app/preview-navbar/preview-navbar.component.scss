@@ -1,0 +1,200 @@
+a {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #ea2f29;
+}
+
+h1 {
+    font: 1.7em;
+    line-height: 110%;
+    color: #000;
+}
+
+p {
+    margin: 0 0 20px;
+}
+
+input {
+    outline: none;
+}
+
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -webkit-box-sizing: content-box;
+    font-family: inherit;
+    font-size: 100%;
+}
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+    display: none;
+}
+
+input[type="search"] {
+    background: url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+    border: 0;
+    padding: 9px 10px 9px 32px;
+    content: "Heck";
+    width: 55px;
+    -webkit-border-radius: 10em;
+    -moz-border-radius: 10em;
+    border-radius: 10em;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+input[type="search"]:focus {
+    width: 130px;
+    background-color: #fff;
+    border-color: #ea2f29;
+    -webkit-box-shadow: 0 0 5px #ea2f29;
+    -moz-box-shadow: 0 0 5px #ea2f29;
+    box-shadow: 0 0 5px #ea2f29;
+}
+
+input:-moz-placeholder {
+    color: #999;
+}
+
+input::-webkit-input-placeholder {
+    color: #999;
+}
+
+
+/* Demo 2 */
+
+#demo-2 input[type="search"] {
+    width: 15px;
+    padding-left: 10px;
+    color: transparent;
+    cursor: pointer;
+}
+
+#demo-2 input[type="search"]:hover {
+    background-color: #fff;
+}
+
+#demo-2 input[type="search"]:focus {
+    width: 130px;
+    padding-left: 32px;
+    color: #000;
+    background-color: #fff;
+    cursor: auto;
+}
+
+#demo-2 input:-moz-placeholder {
+    color: transparent;
+}
+
+#demo-2 input::-webkit-input-placeholder {
+    color: transparent;
+}
+
+@media only screen and (max-width: 600px) {
+    #demo-2 {
+        width: 100% !important;
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    #contact-btn {
+        position: fixed;
+        top: 90% !important;
+        left: 65% !important;
+        z-index: 1000;
+    }
+    .sub-nav-items {
+        width: 100%;
+        overflow-x: scroll;
+        overflow-y: visible;
+        /* padding: 0.5rem 0rem; */
+    }
+    .dropdown .dropdown-menu {
+        position: relative;
+    }
+    #sub-nav {
+        overflow-x: scroll;
+        width: 100%
+    }
+}
+
+td {
+    border: 0;
+    white-space: nowrap;
+}
+
+#sub-nav {
+    padding: 0 1rem;
+    border: 0;
+    white-space: nowrap;
+    display: inline-flex;
+    width: 100%;
+}
+
+.sub-nav-link {
+    display: inline-block !important;
+    /* padding: 0.5rem 1rem; */
+}
+
+
+/* .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0.5em;
+	border: 0 !important;
+	z-index: -1 !important;
+	
+	z-index: 10000  !important;
+} */
+
+.dropdown .dropdown-menu {
+    display: hidden;
+    margin-top: 0em;
+    border: 0 !important;
+    z-index: 100000 !important;
+    border-radius: 0 !important;
+    z-index: 10000 !important;
+}
+
+.dropdown-toggle::after {
+    border-top: 0em solid !important;
+    border-radius: 0 !important;
+}
+
+.navbar-nav li:hover>ul.dropdown-menu {
+    display: block;
+}
+
+.nav-link {
+    white-space: nowrap !important;
+    color: black !important;
+}
+
+a:hover {
+    color: #ea2f29 !important;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+}
+
+
+/* rotate caret on hover */
+
+.dropdown-menu>li>a:hover:after {
+    text-decoration: underline;
+    transform: rotate(-90deg);
+}
+
+ul li {
+    text-transform: capitalize;
+}

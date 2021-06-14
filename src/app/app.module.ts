@@ -36,7 +36,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { PreviewComponent } from './preview/preview.component';
 import { PreviewNavbarComponent } from './preview-navbar/preview-navbar.component';
 import { NavbarTrimPipe } from './navbar-trim.pipe'; // Editor
-
+import {DragDropModule} from '@angular/cdk/drag-drop'; // Drag and Drop
 
 @NgModule({
   declarations: [
@@ -80,8 +80,8 @@ import { NavbarTrimPipe } from './navbar-trim.pipe'; // Editor
     MatExpansionModule,
     MatSelectModule,
     AngularEditorModule,
-    ModalModule.forRoot()
-
+    ModalModule.forRoot(),
+    DragDropModule
   ],
   providers: [BsModalRef, GlobalConstants],
   bootstrap: [AppComponent]

@@ -10,7 +10,7 @@ export class ProductService {
 
 
   async addProduct(body, pid) {
-    return this._http.put(`http://192.168.29.121:3000/api/product/${pid}`, body, {
+    return this._http.put(`${environment.apiUrl}api/product/${pid}`, body, {
       headers:{
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
@@ -19,7 +19,7 @@ export class ProductService {
   }
 
   async getProduct(id) {
-    return await this._http.get(`http://192.168.29.121:3000/api/product/get/${id}`)
+    return await this._http.get(`${environment.apiUrl}api/product/get/${id}`)
   }
 }
 

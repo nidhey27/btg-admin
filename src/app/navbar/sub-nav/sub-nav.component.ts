@@ -3,6 +3,7 @@ import { NavbarService } from 'src/app/services/navbar.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormCardComponent } from 'src/app/form-card/form-card.component';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop'; //Drag And Drop
 
 import { GlobalConstants } from '../../common/global-constants';
 @Component({
@@ -40,6 +41,12 @@ export class SubNavComponent implements OnInit {
         this._nav.getsolutionMainCategoryFor(id).then((res: any) => {
           res.subscribe((response: any) => {
             this.solutionMainCategoryData = response.data;
+            this.solutionMainCategoryData = this.solutionMainCategoryData.sort(function(a,b){
+              return ((a['order'] < b['order']) ? -1 : ((a['order'] > b['order']) ? 1 : 0));
+            });
+            this.solutionMainCategoryData.forEach((isd,index) => {
+              isd.order = index;          
+            });
             this.flag = false;
             // console.log(this.solutionMainCategoryData)
           })
@@ -54,6 +61,12 @@ export class SubNavComponent implements OnInit {
         this._nav.getsolutionSubCategoryFor(id).then((res: any) => {
           res.subscribe((response: any) => {
             this.solutionSubCategoryData = response.data;
+            this.solutionSubCategoryData = this.solutionSubCategoryData.sort(function(a,b){
+              return ((a['order'] < b['order']) ? -1 : ((a['order'] > b['order']) ? 1 : 0));
+            });
+            this.solutionSubCategoryData.forEach((isd,index) => {
+              isd.order = index;          
+            });
             this.flag = false;
             // console.log(this.solutionSubCategoryData)
           })
@@ -68,6 +81,12 @@ export class SubNavComponent implements OnInit {
         this._nav.getproductMainCategory(id).then((res: any) => {
           res.subscribe((response: any) => {
             this.productMainCategoryData = response.data;
+            this.productMainCategoryData = this.productMainCategoryData.sort(function(a,b){
+              return ((a['order'] < b['order']) ? -1 : ((a['order'] > b['order']) ? 1 : 0));
+            });
+            this.productMainCategoryData.forEach((isd,index) => {
+              isd.order = index;          
+            });
             this.flag = false;
             // console.log(this.productMainCategoryData)
           })
@@ -83,7 +102,16 @@ export class SubNavComponent implements OnInit {
     this._nav.getIndustrySolutionFor().then((res: any) => {
       res.subscribe((response: any) => {
         this.industrySolutionData = response.data;
+        this.industrySolutionData = this.industrySolutionData.sort(function(a,b){
+          return ((a['order'] < b['order']) ? -1 : ((a['order'] > b['order']) ? 1 : 0));
+        });
+        this.industrySolutionData.forEach((isd,index) => {
+          isd.order = index;          
+        });
         this.isLoading = false;
+        console.log('industrySolutionData');
+        console.log(this.industrySolutionData);
+        
       })
 
     }).catch(error => {
@@ -229,6 +257,50 @@ export class SubNavComponent implements OnInit {
         )
       }
     })
+  }
+
+  // Drag and Grop Function
+  async drag(event: CdkDragDrop<string[]>, category = 'industry') {
+    
+    if( category == 'industry'){
+      moveItemInArray(this.industrySolutionData, event.previousIndex, event.currentIndex);
+      this.industrySolutionData.forEach((isd,index) => {
+        isd.order = index;         
+      });
+
+      (await this._nav.updateOrder(this.industrySolutionData, category)).subscribe( (res:any) => {
+        console.log(res);
+      })
+
+    }else if( category == 'solutionMainCategory' ){
+      moveItemInArray(this.solutionMainCategoryData, event.previousIndex, event.currentIndex);
+      this.solutionMainCategoryData.forEach((isd,index) => {
+        isd.order = index;         
+      });
+
+      (await this._nav.updateOrder(this.solutionMainCategoryData, category)).subscribe( (res:any) => {
+        console.log(res);
+      })
+    }else if( category == 'solutionMainCategory' ){
+      moveItemInArray(this.solutionSubCategoryData, event.previousIndex, event.currentIndex);
+      this.solutionSubCategoryData.forEach((isd,index) => {
+        isd.order = index;         
+      });
+
+      (await this._nav.updateOrder(this.solutionSubCategoryData, category)).subscribe( (res:any) => {
+        console.log(res);
+      })
+    }else if( category == 'product' ){
+      moveItemInArray(this.productMainCategoryData, event.previousIndex, event.currentIndex);
+      this.productMainCategoryData.forEach((isd,index) => {
+        isd.order = index;         
+      });
+
+      (await this._nav.updateOrder(this.productMainCategoryData, category)).subscribe( (res:any) => {
+        console.log(res);
+      })
+    }
+
   }
 
 }

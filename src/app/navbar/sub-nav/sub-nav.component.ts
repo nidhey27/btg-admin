@@ -281,7 +281,7 @@ export class SubNavComponent implements OnInit {
       (await this._nav.updateOrder(this.solutionMainCategoryData, category)).subscribe( (res:any) => {
         console.log(res);
       })
-    }else if( category == 'solutionMainCategory' ){
+    }else if( category == 'solutionSubCategory' ){
       moveItemInArray(this.solutionSubCategoryData, event.previousIndex, event.currentIndex);
       this.solutionSubCategoryData.forEach((isd,index) => {
         isd.order = index;         

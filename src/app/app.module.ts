@@ -36,7 +36,9 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { PreviewComponent } from './preview/preview.component';
 import { PreviewNavbarComponent } from './preview-navbar/preview-navbar.component';
 import { NavbarTrimPipe } from './navbar-trim.pipe'; // Editor
-import {DragDropModule} from '@angular/cdk/drag-drop'; // Drag and Drop
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { EditSubcategoryComponent } from './edit-subcategory/edit-subcategory.component';
+import { EditMaincategoryComponent } from './edit-maincategory/edit-maincategory.component'; // Drag and Drop
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop'; // Drag and Drop
     PreviewComponent,
     PreviewNavbarComponent,
     NavbarTrimPipe,
+    EditSubcategoryComponent,
+    EditMaincategoryComponent,
 
   ],
   imports: [

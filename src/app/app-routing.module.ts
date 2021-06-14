@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditMaincategoryComponent } from './edit-maincategory/edit-maincategory.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { EditSubcategoryComponent } from './edit-subcategory/edit-subcategory.component';
 import { GetProductMainCategoryComponent } from './get-product-main-category/get-product-main-category.component';
 import { GetSubCatagoryComponent } from './get-sub-catagory/get-sub-catagory.component';
 import { GetSubSubCategoryComponent } from './get-sub-sub-category/get-sub-sub-category.component';
@@ -25,6 +27,8 @@ const routes: Routes = [
   {path:'get-prod-main-cat/:id' , component:GetProductMainCategoryComponent , canActivate:[AuthGuard]},
   {path:'edit-pro-main-cat/:id' , component:ProMainCatEditComponent , canActivate:[AuthGuard]},
   {path:'edit-product/:id' , component:EditProductComponent , canActivate:[AuthGuard]},
+  {path:'edit-subcategory/:id' , component:EditSubcategoryComponent , canActivate:[AuthGuard]},
+  {path:'edit-maincatergory/:id' , component:EditMaincategoryComponent , canActivate:[AuthGuard]},
   {path:'preview' , component:PreviewComponent , canActivate:[AuthGuard]}
 ];
 

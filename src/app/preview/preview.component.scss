@@ -12,11 +12,24 @@
     color: rgba(0,0,0,.87);
 }
 
-ul,
+footer ul,
 p {
+
     list-style-type: none;
     color: gray;
 }
+footer ul {
+    padding-left: 0px !important;
+}
 footer ul li{
     font-size: 12px;
+    list-style-type: none;
+    color: gray;
+}
+
+.contact-home {
+    width: 100% !important;
+    height: 50vh !important;
+    background: url('../../assets/hero/conatct.png') no-repeat center center !important;
+    background-size: cover !important;
 }

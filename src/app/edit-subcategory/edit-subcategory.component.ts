@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { ProductService } from '../services/product.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { PreviewService } from '../services/preview.service';
+import { SolutionSubCategoryService } from '../services/solution-sub-category.service';
 @Component({
   selector: 'app-edit-subcategory',
   templateUrl: './edit-subcategory.component.html',
@@ -61,7 +61,7 @@ export class EditSubcategoryComponent implements OnInit {
 
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _proService: ProductService,
+    private _subCatService: SolutionSubCategoryService,
     private _preview: PreviewService,
     private _route: Router
 
@@ -106,13 +106,13 @@ export class EditSubcategoryComponent implements OnInit {
     this._preview.saveData(this.editSection,this.heading).then(() => {
       // this._route.navigate(['/preview'])
       console.log(this.editSection)
-      this._route.navigate([]).then(result => { window.open('#/preview?type=product', '_blank'); });
+      this._route.navigate([]).then(result => { window.open('#/preview?type=solutionsubcategory', '_blank'); });
     })
   }
 
   getProduct() {
     // Get Products Data
-    this._proService.getProduct(this.id).then((res: any) => {
+    this._subCatService.getSolutionSubCategory(this.id).then((res: any) => {
       res.subscribe((response: any) => {
         if (response?.status)
           this.productData = response.data
@@ -174,7 +174,7 @@ export class EditSubcategoryComponent implements OnInit {
     
 
     // return 0;
-    (await this._proService.addProduct(body, this.id)).subscribe((resp: any) => {
+    (await this._subCatService.addSolutionSubCategory(body, this.id)).subscribe((resp: any) => {
       console.log(resp)
 
       if (resp?.status) {

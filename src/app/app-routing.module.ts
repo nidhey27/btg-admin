@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:'edit-pro-main-cat/:id' , component:ProMainCatEditComponent , canActivate:[AuthGuard]},
   {path:'edit-product/:id' , component:EditProductComponent , canActivate:[AuthGuard]},
   {path:'edit-subcategory/:id' , component:EditSubcategoryComponent , canActivate:[AuthGuard]},
-  {path:'edit-maincatergory/:id' , component:EditMaincategoryComponent , canActivate:[AuthGuard]},
+  {path:'edit-maincategory/:id' , component:EditMaincategoryComponent , canActivate:[AuthGuard]},
   {path:'preview' , component:PreviewComponent , canActivate:[AuthGuard]}
 ];
 

@@ -33,7 +33,7 @@ export class GetSubCatagoryComponent implements OnInit {
     this._activatedRoute.params.subscribe(params => {
 
       this.id = params['id']
-      
+      this.getData(this.type, this.id);
     });
 
 

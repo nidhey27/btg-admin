@@ -1,0 +1,110 @@
+<div class="container">
+
+    <div *ngIf="isLoading" class="text-center">
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <!-- {{type}} {{navId}} {{category}} -->
+
+    <form *ngIf="!isLoading && type=='add'" [formGroup]="eventsForm" (ngSubmit)="addForm()">
+        <div class="form-group">
+            <b>Add Events</b>
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Name</mat-label>
+                <input matInput placeholder="Enter Name" formControlName="name" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!eventsForm.controls['name'].valid) && (eventsForm.controls['name'].touched) || (eventsForm.hasError('name') && !eventsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Description</mat-label>
+                <textarea matInput placeholder="Enter Description" formControlName="description" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!eventsForm.controls['description'].valid) && (eventsForm.controls['description'].touched) || (eventsForm.hasError('description') && !eventsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+            
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>First campaign</mat-label>
+                <mat-date-range-input
+                    [formGroup]="eventsForm"
+                    [rangePicker]="campaignOnePicker"
+                    [comparisonStart]="campaignTwo.value.start"
+                    [comparisonEnd]="campaignTwo.value.end">
+                    <input matStartDate placeholder="Start date" formControlName="start_date">
+                    <input matEndDate placeholder="End date" formControlName="end_date">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+                <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+                </mat-form-field>
+
+                <mat-error
+                *ngIf="(!eventsForm.controls['start_date'].valid) && (eventsForm.controls['start_date'].touched) || (eventsForm.hasError('start_date') && !eventsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+                <mat-error
+                *ngIf="(!eventsForm.controls['end_date'].valid) && (eventsForm.controls['end_date'].touched) || (eventsForm.hasError('end_date') && !eventsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+            
+            
+        </div>
+
+        <button [disabled]="submit" class="btn btn-danger w-100 my-2">Add</button>
+
+        <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+            {{ successMsg }}
+        </div>
+
+        <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+            {{ errorMsg }}
+        </div>
+    </form>
+
+    <!-- edit -->
+
+    <form *ngIf="!isLoading && type=='edit'" [formGroup]="eventsForm" (ngSubmit)="editForm()">
+        <div class="form-group">
+            <b>Add Events</b>
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Heading</mat-label>
+                <input matInput placeholder="Enter Heading" formControlName="heading" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!eventsForm.controls['heading'].valid) && (eventsForm.controls['heading'].touched) || (eventsForm.hasError('heading') && !eventsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Description</mat-label>
+                <textarea matInput placeholder="Enter Description" formControlName="description" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!eventsForm.controls['description'].valid) && (eventsForm.controls['description'].touched) || (eventsForm.hasError('description') && !eventsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <input type="file" accept="image/*" (change)="setImage($event)">
+            
+            
+        </div>
+
+        <button [disabled]="submit" class="btn btn-danger w-100 my-2">Update</button>
+
+        <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+            {{ successMsg }}
+        </div>
+
+        <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+            {{ errorMsg }}
+        </div>
+    </form>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+
+    </mat-dialog-actions>
+</div>

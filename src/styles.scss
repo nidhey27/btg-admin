@@ -63,3 +63,10 @@ body {
     z-index: 9999;
     background: url("./assets/btg-loader.gif") 50% 50% no-repeat rgb(255, 255, 255);
 }
+.description {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

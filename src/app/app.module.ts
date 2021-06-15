@@ -38,8 +38,15 @@ import { PreviewNavbarComponent } from './preview-navbar/preview-navbar.componen
 import { NavbarTrimPipe } from './navbar-trim.pipe'; // Editor
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { EditSubcategoryComponent } from './edit-subcategory/edit-subcategory.component';
-import { EditMaincategoryComponent } from './edit-maincategory/edit-maincategory.component'; // Drag and Drop
-
+import { EditMaincategoryComponent } from './edit-maincategory/edit-maincategory.component';
+import { NewAndPressComponent } from './new-and-press/new-and-press.component';
+import { AddNewsComponent } from './new-and-press/add-news/add-news.component';
+import { TesmonialsComponent } from './tesmonials/tesmonials.component';
+import { AddEditTestimonialsComponent } from './tesmonials/add-edit-testimonials/add-edit-testimonials.component';
+import { HomeComponent } from './home/home.component';
+import { EventsComponent } from './events/events.component';
+import { AddEditEventsComponent } from './events/add-edit-events/add-edit-events.component'; // Drag and Drop
+import {MatDatepickerModule} from '@angular/material/datepicker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +70,13 @@ import { EditMaincategoryComponent } from './edit-maincategory/edit-maincategory
     NavbarTrimPipe,
     EditSubcategoryComponent,
     EditMaincategoryComponent,
+    NewAndPressComponent,
+    AddNewsComponent,
+    TesmonialsComponent,
+    AddEditTestimonialsComponent,
+    HomeComponent,
+    EventsComponent,
+    AddEditEventsComponent,
 
   ],
   imports: [
@@ -85,7 +99,8 @@ import { EditMaincategoryComponent } from './edit-maincategory/edit-maincategory
     MatSelectModule,
     AngularEditorModule,
     ModalModule.forRoot(),
-    DragDropModule
+    DragDropModule,
+    MatDatepickerModule
   ],
   providers: [BsModalRef, GlobalConstants],
   bootstrap: [AppComponent]

@@ -1,0 +1,17 @@
+.description {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.edit-btn{
+    position: absolute;
+    right: 0.2rem;
+    z-index: 10;
+}
+.delete-btn{
+    position: absolute;
+    right: 3.5rem;
+    z-index: 10;
+}

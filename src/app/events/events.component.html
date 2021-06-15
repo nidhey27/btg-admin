@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="col-12 col-sm-12 col-md-12 p-4">
+        <button class="btn btn-danger" (click)="openFormDialog('add')">Add</button>
+    </div>
+</div>
+
+
+<section style="padding: 50px 0;">
+    <div class="container">
+        <div class="row mx-auto">
+            <div class="col-sm-9">
+
+                <div class="row">
+                    <div class="col-sm-6 position-relative" style="margin-bottom: 5rem;" *ngFor="let e of events;let i = index">
+                        <button (click)="delete('delete', e._id)" color="accent" class="delete-btn btn btn-danger mx-1">
+                            <i aria-hidden="true" class="fa fa-trash"></i>
+                        </button>
+                        <button (click)="openFormDialog('edit', e._id)" color="accent" class="edit-btn btn btn-danger mx-1">
+                            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+                        </button>
+                        <div class="card" id="card" style="border: none !important;">
+                            <div class="card-body">
+                                <h3 class="card-title mb-5">{{e.name}}</h3>
+                                <div class="d-flex mb-4">
+                                    <h6 style="font-size: 14px;"><i class="fa fa-calendar-o text-danger" style="font-size: 20px;" aria-hidden="true"></i> {{e.start_date | date: 'dd'}} - {{ e.end_date | date: "MMM d, y" }}</h6>
+                                    <h6 style="font-size: 14px;" class="ml-3"><i class="fa fa-map-marker text-danger" style="font-size: 20px;" aria-hidden="true"></i> {{e.venue}}</h6>
+                                </div>
+
+                                <p style="word-spacing: 0px;">{{e.description}}</p>
+                                <a href="#" class="card-link" [innerHTML]="e.button"></a>
+                                <a href="{{ e.url }}" target="_blank" class="card-link float-right visit-site">Visit Site</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- <div class="col-sm-3">
+
+                <div style="border: 2px solid black;padding:20px 20px;" class="mb-5">
+                    <div style="border: 2px dashed black;padding:20px 30px;text-align: center;">
+                        <h5> ONGOING <br> <span class="font-weight-bold">EVENTS</span></h5>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid black;padding:20px 20px;" class="mb-5">
+                    <div style="border: 2px dashed black;padding:20px 30px;text-align: center;">
+                        <h5> UPCOMING <span class="font-weight-bold">EVENTS</span></h5>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid black;padding:20px 20px;">
+                    <div style="border: 2px dashed black;padding:20px 30px;text-align: center;">
+                        <h5> PAST <br> <span class="font-weight-bold">EVENTS</span></h5>
+                    </div>
+                </div>
+
+            </div> -->
+
+
+
+        </div>
+
+    </div>
+</section>

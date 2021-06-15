@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // apiUrl: "https://btg-app.herokuapp.com/"
-  apiUrl: 'http://192.168.29.121:3000/'
+  apiUrl: "https://btg-app.herokuapp.com/"
+  // apiUrl: 'http://192.168.29.121:3000/'
 };
 
 /*

@@ -28,28 +28,14 @@
                 *ngIf="(!seeForm.controls['description'].valid) && (seeForm.controls['description'].touched) || (seeForm.hasError('description') && !seeForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
 
-            <div class="row">
-                <div class="col-2 d-flex justify-content-center align-items-center">
-                    <p><mat-checkbox color="danger" formControlName="video_url_check">Video Url</mat-checkbox></p>
-                </div>
-                <div class="col-10">
-                    <mat-form-field class="example-full-width w-100">
-                        <mat-label for="name">Video Url</mat-label>
-                        <input matInput placeholder="Enter Video Url" formControlName="video_url" [attr.disabled]="video_url_check" type="text">
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-2 d-flex justify-content-center align-items-center">
-                    <p><mat-checkbox color="danger" formControlName="blob_data_check">Upload Video</mat-checkbox></p>
-                </div>
-                <div class="col-10">
-                    
-                        <input type="file" accept="video/*" (change)="setImage($event)">
-                    
-                </div>
-            </div>
+            <mat-form-field class="example-full-width w-100">
+                <mat-label for="name">Video Url</mat-label>
+                <input matInput placeholder="Enter Video Url" formControlName="video_url" type="text">
+            </mat-form-field>
+            
+            <mat-error
+                *ngIf="(!seeForm.controls['video_url'].valid) && (seeForm.controls['video_url'].touched) || (seeForm.hasError('video_url') && !seeForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
             
             
         </div>
@@ -88,29 +74,14 @@
                 *ngIf="(!seeForm.controls['description'].valid) && (seeForm.controls['description'].touched) || (seeForm.hasError('description') && !seeForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
 
-            <div class="row">
-                <div class="col-2 d-flex justify-content-center align-items-center">
-                    <p><mat-checkbox color="danger" formControlName="video_url_check">Video Url</mat-checkbox></p>
-                </div>
-                <div class="col-10">
-                    <mat-form-field class="example-full-width w-100">
-                        <mat-label for="name">Video Url</mat-label>
-                        <input matInput placeholder="Enter Video Url" formControlName="video_url" [attr.disabled]="video_url_check" type="text">
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-2 d-flex justify-content-center align-items-center">
-                    <p><mat-checkbox color="danger" formControlName="blob_data_check">Upload Video</mat-checkbox></p>
-                </div>
-                <div class="col-10">
-                    
-                        <input type="file" accept="video/*" (change)="setImage($event)">
-                    
-                </div>
-            </div>
+            <mat-form-field class="example-full-width w-100">
+                <mat-label for="name">Video Url</mat-label>
+                <input matInput placeholder="Enter Video Url" formControlName="video_url" type="text">
+            </mat-form-field>
             
+            <mat-error
+                *ngIf="(!seeForm.controls['video_url'].valid) && (seeForm.controls['video_url'].touched) || (seeForm.hasError('video_url') && !seeForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
             
         </div>
 

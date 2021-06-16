@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { ContactusComponent } from './contactus/contactus.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditMaincategoryComponent } from './edit-maincategory/edit-maincategory.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
@@ -16,6 +17,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NewAndPressComponent } from './new-and-press/new-and-press.component';
 import { PreviewComponent } from './preview/preview.component';
 import { ProMainCatEditComponent } from './pro-main-cat-edit/pro-main-cat-edit.component';
+import { SeeWhatWeDoComponent } from './see-what-we-do/see-what-we-do.component';
 import { SubCatagoryComponent } from './sub-catagory/sub-catagory.component';
 import { TesmonialsComponent } from './tesmonials/tesmonials.component';
 
@@ -37,7 +39,9 @@ const routes: Routes = [
   {path:'News & Press Release' , component:NewAndPressComponent , canActivate:[AuthGuard]},
   {path:'testimonials' , component:TesmonialsComponent , canActivate:[AuthGuard]},
   {path:'Home' , component:HomeComponent , canActivate:[AuthGuard]},
-  {path:'Events' , component:EventsComponent , canActivate:[AuthGuard]}
+  {path:'Events' , component:EventsComponent , canActivate:[AuthGuard]},
+  {path:'see-what-we-do' , component:SeeWhatWeDoComponent , canActivate:[AuthGuard]},
+  {path:'contactus' , component:ContactusComponent , canActivate:[AuthGuard]}
 ];
 
 @NgModule({

@@ -40,15 +40,18 @@ export class AddEditEventsComponent implements OnInit {
       description: ['', [Validators.required]]
     });
 
-    this.getSingleNews();
+    if(this.id){
+      this.getSingleNews();
+    }
   }
 
   async addForm() {
     if (this.eventsForm.invalid) {
       return;
     }
-
+    
     this.submit = true;
+    
       await (await (this._event.addEVent(this.eventsForm.value))).subscribe((response: any) => {
         if (response?.status) {
           this.errorMsg = "";
@@ -74,7 +77,9 @@ export class AddEditEventsComponent implements OnInit {
     }
 
     this.submit = true;
-      await (await (this._event.editEvent(this.eventsForm.value, this.id))).subscribe((response: any) => {
+      console.log(this.eventsForm.value);
+      
+      await (await (this._event.editEvent(this.id, this.eventsForm.value))).subscribe((response: any) => {
         if (response?.status) {
           this.errorMsg = "";
 
@@ -87,34 +92,12 @@ export class AddEditEventsComponent implements OnInit {
           this.submit = false;
           this.successMsg = "";
           this.errorMsg = response.message;
-        }
+        }this.id
       },(error: any) => {
 
       })
   }
 
-  async setImage(e){
-    if (e.target.files) {
-      const file = e.target.files[0];
-      const type = file.type;
-      await this.changeFile(file).then((base64: string): any => {
-        console.log(base64);
-        
-          this.eventsForm.patchValue({
-            image: base64
-          })
-      });
-    } 
-  }
-
-  changeFile(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-    });
-  }
 
   async getSingleNews(){
     (await (this._event.getSingleEvent(this.id))).subscribe( (res:any) => {
@@ -128,6 +111,7 @@ export class AddEditEventsComponent implements OnInit {
         url: res.data.url,
         description: res.data.description
       })
+      console.log(this.eventsForm.value)
     })
   }
 

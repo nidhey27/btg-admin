@@ -47,6 +47,14 @@ import { HomeComponent } from './home/home.component';
 import { EventsComponent } from './events/events.component';
 import { AddEditEventsComponent } from './events/add-edit-events/add-edit-events.component'; // Drag and Drop
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { SeeWhatWeDoComponent } from './see-what-we-do/see-what-we-do.component';
+import { AddEditSeeWhatWeDoComponent } from './see-what-we-do/add-edit-see-what-we-do/add-edit-see-what-we-do.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { UrlSanitizePipe } from './pipes/url-sanitize.pipe';
+import { ContactusComponent } from './contactus/contactus.component';
+import { EditComponent } from './contactus/edit/edit.component';
+import { EditContactusComponent } from './contactus/edit-contactus/edit-contactus.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +85,13 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     HomeComponent,
     EventsComponent,
     AddEditEventsComponent,
-
+    SeeWhatWeDoComponent,
+    AddEditSeeWhatWeDoComponent,
+    UrlSanitizePipe,
+    ContactusComponent,
+    EditComponent,
+    EditContactusComponent,
+    
   ],
   imports: [
 
@@ -100,6 +114,11 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     AngularEditorModule,
     ModalModule.forRoot(),
     DragDropModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule
+  ],
+  exports: [
     MatDatepickerModule
   ],
   providers: [BsModalRef, GlobalConstants],

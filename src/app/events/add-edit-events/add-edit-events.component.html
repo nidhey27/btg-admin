@@ -27,14 +27,11 @@
             <mat-error
                 *ngIf="(!eventsForm.controls['description'].valid) && (eventsForm.controls['description'].touched) || (eventsForm.hasError('description') && !eventsForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
-            
+
+            <br>
             <mat-form-field class="example-form-field" appearance="fill">
                 <mat-label>First campaign</mat-label>
-                <mat-date-range-input
-                    [formGroup]="eventsForm"
-                    [rangePicker]="campaignOnePicker"
-                    [comparisonStart]="campaignTwo.value.start"
-                    [comparisonEnd]="campaignTwo.value.end">
+                <mat-date-range-input [formGroup]="eventsForm" [rangePicker]="campaignOnePicker">
                     <input matStartDate placeholder="Start date" formControlName="start_date">
                     <input matEndDate placeholder="End date" formControlName="end_date">
                 </mat-date-range-input>
@@ -42,15 +39,43 @@
                 <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
                 </mat-form-field>
 
-                <mat-error
+            <mat-error
                 *ngIf="(!eventsForm.controls['start_date'].valid) && (eventsForm.controls['start_date'].touched) || (eventsForm.hasError('start_date') && !eventsForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
 
                 <mat-error
                 *ngIf="(!eventsForm.controls['end_date'].valid) && (eventsForm.controls['end_date'].touched) || (eventsForm.hasError('end_date') && !eventsForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
-            
-            
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="type">
+                    <mat-option [value]="1">Upcoming</mat-option>
+                    <mat-option [value]="2">Ongoing</mat-option>
+                    <mat-option [value]="0">Past</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!eventsForm.controls['start_date'].valid) && (eventsForm.controls['start_date'].touched) || (eventsForm.hasError('start_date') && !eventsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Url</mat-label>
+                <input matInput placeholder="Enter Url" formControlName="url" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!eventsForm.controls['url'].valid) && (eventsForm.controls['url'].touched) || (eventsForm.hasError('url') && !eventsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Venue</mat-label>
+                <input matInput placeholder="Enter Venue" formControlName="venue" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!eventsForm.controls['venue'].valid) && (eventsForm.controls['venue'].touched) || (eventsForm.hasError('venue') && !eventsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
         </div>
 
         <button [disabled]="submit" class="btn btn-danger w-100 my-2">Add</button>
@@ -68,14 +93,14 @@
 
     <form *ngIf="!isLoading && type=='edit'" [formGroup]="eventsForm" (ngSubmit)="editForm()">
         <div class="form-group">
-            <b>Add Events</b>
+            <b>Edit Event</b>
             <mat-form-field class="example-full-width w-100">
 
-                <mat-label for="name">Heading</mat-label>
-                <input matInput placeholder="Enter Heading" formControlName="heading" type="text">
+                <mat-label for="name">Name</mat-label>
+                <input matInput placeholder="Enter Name" formControlName="name" type="text">
             </mat-form-field>
             <mat-error
-                *ngIf="(!eventsForm.controls['heading'].valid) && (eventsForm.controls['heading'].touched) || (eventsForm.hasError('heading') && !eventsForm.hasError('required'))"
+                *ngIf="(!eventsForm.controls['name'].valid) && (eventsForm.controls['name'].touched) || (eventsForm.hasError('name') && !eventsForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
 
             <mat-form-field class="example-full-width w-100">
@@ -87,9 +112,54 @@
                 *ngIf="(!eventsForm.controls['description'].valid) && (eventsForm.controls['description'].touched) || (eventsForm.hasError('description') && !eventsForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
 
-            <input type="file" accept="image/*" (change)="setImage($event)">
-            
-            
+            <br>
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>Dates</mat-label>
+                <mat-date-range-input [formGroup]="eventsForm" [rangePicker]="campaignOnePicker">
+                    <input matStartDate placeholder="Start date" formControlName="start_date">
+                    <input matEndDate placeholder="End date" formControlName="end_date">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+                <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+                </mat-form-field>
+
+            <mat-error
+                *ngIf="(!eventsForm.controls['start_date'].valid) && (eventsForm.controls['start_date'].touched) || (eventsForm.hasError('start_date') && !eventsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+                <mat-error
+                *ngIf="(!eventsForm.controls['end_date'].valid) && (eventsForm.controls['end_date'].touched) || (eventsForm.hasError('end_date') && !eventsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="type">
+                    <mat-option [value]="1">Upcoming</mat-option>
+                    <mat-option [value]="2">Ongoing</mat-option>
+                    <mat-option [value]="0">Past</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!eventsForm.controls['start_date'].valid) && (eventsForm.controls['start_date'].touched) || (eventsForm.hasError('start_date') && !eventsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Url</mat-label>
+                <input matInput placeholder="Enter Url" formControlName="url" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!eventsForm.controls['url'].valid) && (eventsForm.controls['url'].touched) || (eventsForm.hasError('url') && !eventsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Venue</mat-label>
+                <input matInput placeholder="Enter Venue" formControlName="venue" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!eventsForm.controls['venue'].valid) && (eventsForm.controls['venue'].touched) || (eventsForm.hasError('venue') && !eventsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
         </div>
 
         <button [disabled]="submit" class="btn btn-danger w-100 my-2">Update</button>

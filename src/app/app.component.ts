@@ -22,6 +22,7 @@ export class AppComponent {
   subNavData: any;
   isLoggedIn : boolean;
   constructor(public gVar: GlobalConstants,private breakpointObserver: BreakpointObserver, public _router: Router, private _http: HttpClient, private _nav: NavbarService) {
+    
     this._nav.getMainNav().then((res: any) => {
       res.subscribe((response: any) => {
         this.mainNavData = response.data;

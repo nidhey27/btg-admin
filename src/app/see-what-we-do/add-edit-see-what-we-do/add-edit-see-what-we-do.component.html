@@ -1,0 +1,132 @@
+<div class="container">
+
+    <div *ngIf="isLoading" class="text-center">
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <!-- {{type}} {{navId}} {{category}} -->
+
+    <form *ngIf="!isLoading && type=='add'" [formGroup]="seeForm" (ngSubmit)="addForm()">
+        <div class="form-group">
+            <b>Add See What We Do</b>
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Heading</mat-label>
+                <input matInput placeholder="Enter Heading" formControlName="heading" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!seeForm.controls['heading'].valid) && (seeForm.controls['heading'].touched) || (seeForm.hasError('heading') && !seeForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Description</mat-label>
+                <textarea matInput placeholder="Enter Description" formControlName="description" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!seeForm.controls['description'].valid) && (seeForm.controls['description'].touched) || (seeForm.hasError('description') && !seeForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <div class="row">
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <p><mat-checkbox color="danger" formControlName="video_url_check">Video Url</mat-checkbox></p>
+                </div>
+                <div class="col-10">
+                    <mat-form-field class="example-full-width w-100">
+                        <mat-label for="name">Video Url</mat-label>
+                        <input matInput placeholder="Enter Video Url" formControlName="video_url" [attr.disabled]="video_url_check" type="text">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <p><mat-checkbox color="danger" formControlName="blob_data_check">Upload Video</mat-checkbox></p>
+                </div>
+                <div class="col-10">
+                    
+                        <input type="file" accept="video/*" (change)="setImage($event)">
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+
+        <button [disabled]="submit" class="btn btn-danger w-100 my-2">Add</button>
+
+        <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+            {{ successMsg }}
+        </div>
+
+        <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+            {{ errorMsg }}
+        </div>
+    </form>
+
+    <!-- edit -->
+
+    <form *ngIf="!isLoading && type=='edit'" [formGroup]="seeForm" (ngSubmit)="editForm()">
+        <div class="form-group">
+            <b>Edit See What We Do</b>
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Heading</mat-label>
+                <input matInput placeholder="Enter Heading" formControlName="heading" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!seeForm.controls['heading'].valid) && (seeForm.controls['heading'].touched) || (seeForm.hasError('heading') && !seeForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Description</mat-label>
+                <textarea matInput placeholder="Enter Description" formControlName="description" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!seeForm.controls['description'].valid) && (seeForm.controls['description'].touched) || (seeForm.hasError('description') && !seeForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <div class="row">
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <p><mat-checkbox color="danger" formControlName="video_url_check">Video Url</mat-checkbox></p>
+                </div>
+                <div class="col-10">
+                    <mat-form-field class="example-full-width w-100">
+                        <mat-label for="name">Video Url</mat-label>
+                        <input matInput placeholder="Enter Video Url" formControlName="video_url" [attr.disabled]="video_url_check" type="text">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <p><mat-checkbox color="danger" formControlName="blob_data_check">Upload Video</mat-checkbox></p>
+                </div>
+                <div class="col-10">
+                    
+                        <input type="file" accept="video/*" (change)="setImage($event)">
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+
+        <button [disabled]="submit" class="btn btn-danger w-100 my-2">Update</button>
+
+        <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+            {{ successMsg }}
+        </div>
+
+        <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+            {{ errorMsg }}
+        </div>
+    </form>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+
+    </mat-dialog-actions>
+</div>

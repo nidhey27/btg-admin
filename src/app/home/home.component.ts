@@ -9,29 +9,30 @@ import { HomeService } from '../services/home.service';
 })
 export class HomeComponent implements OnInit {
   @ViewChild('countries') countries;
+  // @ViewChild('hoverCountry') hoverCountry;
+  hoverCountry = "Yoo";
   constructor(
-    private _map: HomeService
+    private _home: HomeService
   ) { }
 
   selectedCountries:any = [];
 
   async ngOnInit() {
     console.log('init');
-    
+    // (await this._home.getCarousal()).subscribe( (res:any) => {
+    //   console.log(res);
+      
+    // })
     
   }
 
-  async addCountry(name){
-    (await this._map.addMap(name)).subscribe( (res:any) => {
-      console.log(res);
-    })
-  }
 
   async ngAfterViewInit(){
-    await this.initMap(this._map); 
+    await this.initMap(this._home); 
   }
 
   async initMap(map){
+    
     async function addCountry(name){
       (await map.addMap(name)).subscribe( (res:any) => {
         console.log(res);
@@ -44,6 +45,10 @@ export class HomeComponent implements OnInit {
       })
     }
 
+    async function hoverCountry(name){
+      this.hoverCountry = "name" 
+    }
+
     console.log(this.countries.nativeElement);
 
     var countryElements = this.countries.nativeElement.childNodes;
@@ -51,6 +56,7 @@ export class HomeComponent implements OnInit {
     (await map.getMap()).subscribe( (res:any) => {
       console.log(res);
       this.selectedCountries = res.data;
+
        this.selectedCountries.forEach(element => {
          console.log(element.name);
          for (var i = 0; i < countryCount; i++){
@@ -69,7 +75,16 @@ export class HomeComponent implements OnInit {
     
     for (var i = 0; i < countryCount; i++) {
       let fuck = i;
+      let ct = countryElements[fuck].getAttribute('data-name');
+      console.log(ct)
+      countryElements[fuck].setAttribute('matTooltip',ct);
+
+      countryElements[i].onmouseover = function() {
+        this.hoverCountry = this.getAttribute('data-name')
+        console.log(this.hoverCountry);
+      }
       countryElements[i].onclick = function() {
+        alert('yo')
         // alert('You clicked on ' + this.getAttribute('data-name'));
         let cName = this.getAttribute('data-name');
           if( countryElements[fuck].style.fill == 'rgb(70, 83, 84)' ){
@@ -85,6 +100,8 @@ export class HomeComponent implements OnInit {
       }
  
     }
+    
+    console.log(this.countries.nativeElement);
   }
 
 }

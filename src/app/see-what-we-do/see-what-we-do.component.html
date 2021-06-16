@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="col-12 col-sm-12 col-md-12 p-4">
+        <button class="btn btn-danger" (click)="openFormDialog('add')">Add</button>
+    </div>
+</div>
+<div class="container">
+    <div class="row m-auto">
+        <div class="col-sm-4 position-relative" *ngFor="let v of videos">
+            <button (click)="delete(v._id)" color="accent" class="delete-btn btn btn-danger mx-1">
+                <i aria-hidden="true" class="fa fa-trash"></i>
+            </button>
+            <button (click)="openFormDialog('edit', v._id)" color="accent" class="edit-btn btn btn-danger mx-1">
+                <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+            </button>
+            <div class="mx-4 my-4">
+                <iframe [src]="sanitize(v.video_url)" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                <h6 class="text-left font-weight-bold">{{v.heading}}</h6>
+                <p class="text-left">{{v.description}}
+                </p>
+            </div>
+        </div>        
+    </div>
+</div>

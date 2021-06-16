@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="col-12 col-sm-12 col-md-12 p-4">
+        <button class="btn btn-danger" (click)="openFormDialog('add')">Add</button>
+    </div>
+</div>
+<div class="container">
+    <div  class="row">
+        <div *ngFor="let n of news"  class="col-sm-4 position-relative" style="margin-bottom: 5rem;">
+            <button (click)="delete('delete', n._id)" color="accent" class="delete-btn btn btn-danger mx-1">
+                <i aria-hidden="true" class="fa fa-trash"></i>
+            </button>
+            <button (click)="openFormDialog('edit', n._id)" color="accent" class="edit-btn btn btn-danger mx-1">
+                <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+            </button>
+            <div  id="card" class="card" style="border: none !important;">
+                <div  class="card-body">
+                    <h6 class="font-weight-bold card-title mb-5">{{ n.heading }}</h6>
+                    <div  class="d-flex mb-4">
+                        <h6  style="font-size: 14px;"><i 
+                                aria-hidden="true" class="fa fa-calendar-o text-danger"
+                                style="font-size: 20px;"></i> {{ n.date | date }}</h6>
+                        <!-- <h6  class="ml-3" style="font-size: 14px;"><i
+                                aria-hidden="true"
+                                class="fa fa-map-marker text-danger" style="font-size: 20px;"></i>
+                            Atlanta, GA USA</h6> -->
+                    </div>
+                        <p class="description" style="word-spacing: 0px;">{{ n.description }}</p>
+                        <a
+                        routerLink="/news_and_events/{{ n.id }}"  class="card-link pb-4 float-right visit-site">View More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

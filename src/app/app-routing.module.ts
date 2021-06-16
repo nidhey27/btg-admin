@@ -1,17 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { ContactusComponent } from './contactus/contactus.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditMaincategoryComponent } from './edit-maincategory/edit-maincategory.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { EditSubcategoryComponent } from './edit-subcategory/edit-subcategory.component';
+import { EventsComponent } from './events/events.component';
 import { GetProductMainCategoryComponent } from './get-product-main-category/get-product-main-category.component';
 import { GetSubCatagoryComponent } from './get-sub-catagory/get-sub-catagory.component';
 import { GetSubSubCategoryComponent } from './get-sub-sub-category/get-sub-sub-category.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { NewAndPressComponent } from './new-and-press/new-and-press.component';
 import { PreviewComponent } from './preview/preview.component';
 import { ProMainCatEditComponent } from './pro-main-cat-edit/pro-main-cat-edit.component';
+import { SeeWhatWeDoComponent } from './see-what-we-do/see-what-we-do.component';
 import { SubCatagoryComponent } from './sub-catagory/sub-catagory.component';
+import { TesmonialsComponent } from './tesmonials/tesmonials.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -25,7 +33,15 @@ const routes: Routes = [
   {path:'get-prod-main-cat/:id' , component:GetProductMainCategoryComponent , canActivate:[AuthGuard]},
   {path:'edit-pro-main-cat/:id' , component:ProMainCatEditComponent , canActivate:[AuthGuard]},
   {path:'edit-product/:id' , component:EditProductComponent , canActivate:[AuthGuard]},
-  {path:'preview' , component:PreviewComponent , canActivate:[AuthGuard]}
+  {path:'edit-subcategory/:id' , component:EditSubcategoryComponent , canActivate:[AuthGuard]},
+  {path:'edit-maincategory/:id' , component:EditMaincategoryComponent , canActivate:[AuthGuard]},
+  {path:'preview' , component:PreviewComponent , canActivate:[AuthGuard]},
+  {path:'News & Press Release' , component:NewAndPressComponent , canActivate:[AuthGuard]},
+  {path:'testimonials' , component:TesmonialsComponent , canActivate:[AuthGuard]},
+  {path:'Home' , component:HomeComponent , canActivate:[AuthGuard]},
+  {path:'Events' , component:EventsComponent , canActivate:[AuthGuard]},
+  {path:'see-what-we-do' , component:SeeWhatWeDoComponent , canActivate:[AuthGuard]},
+  {path:'contactus' , component:ContactusComponent , canActivate:[AuthGuard]}
 ];
 
 @NgModule({

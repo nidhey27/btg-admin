@@ -37,7 +37,7 @@ export class PreviewNavbarComponent implements OnInit {
         
         if (response?.status && response?.status == true)
           this.industrySolutuonForData = response?.data
-          // console.log(response?.data);
+          console.log(response?.data);
         })
     }).catch(error => {
       console.error(error)

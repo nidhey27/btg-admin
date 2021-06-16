@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="col-12 col-sm-12 col-md-12 p-4">
+        <button class="btn btn-danger" (click)="openFormDialog('add')">Add</button>
+        <!-- <button class="btn btn-danger" (click)="openFormDialog('edit')">Edit</button> -->
+    </div>
+</div>
+<div class="container">
+    <section class="contact-home" style="margin-bottom: 5%;" *ngFor="let c of contacts" style="width: 100% !important;
+    height: 50vh !important;
+    background: url({{c.image}}) no-repeat center center !important;
+    background-size: cover !important;">
+        <button (click)="delete('delete', c._id)" color="accent" class="delete-btn btn btn-danger mx-1">
+            <i aria-hidden="true" class="fa fa-trash"></i>
+        </button>
+        <button (click)="openFormDialog('edit', c._id)" color="accent" class="edit-btn btn btn-danger mx-1">
+            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+        </button>
+        <div class="text-center" style="position: relative; top: 50%; left: 50%; transform: translate(-50%,-50%);">
+            <h3 class="text-center">{{ c.description }}</h3>
+            <button class="btn btn-danger btn-lg mt-4" routerLink="/contact">{{ c.heading }}</button>
+        </div>
+    
+    </section>
+</div>

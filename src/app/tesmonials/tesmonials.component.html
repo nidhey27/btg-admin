@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="col-12 col-sm-12 col-md-12 p-4">
+        <button class="btn btn-danger" (click)="openFormDialog('add')">Add</button>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 position-relative" *ngFor="let t of testimonials">
+            <button (click)="delete('delete', t._id)" color="accent" class="delete-btn btn btn-danger mx-1">
+                <i aria-hidden="true" class="fa fa-trash"></i>
+            </button>
+            <button (click)="openFormDialog('edit', t._id)" color="accent" class="edit-btn btn btn-danger mx-1">
+                <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+            </button>
+            <div class="card testimonials border-0 rounded-0 shadow mx-4 my-4">
+                <div class="card-body">
+                    <img src="../../../../assets/hero/quotes.png">
+                    <p class="ml-4 description">{{ t.description }}</p>
+                    <div class="row mt-4">
+                        <div class="col-4">
+                            <div class="img" style="background-image: url({{t.image}}); width: 64px; height: 64px; border-radius: 50%;background-size: cover !important;"></div>
+                        </div>
+                        <div class="col-8">
+                            <p class="mb-0">{{ t.name }}</p>
+                            <small>{{ t.designation }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

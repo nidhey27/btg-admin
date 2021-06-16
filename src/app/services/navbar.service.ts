@@ -63,7 +63,7 @@ export class NavbarService {
   }
 
   async addproductMainCategory(body:any , id) {
-    return await this._http.post(`http://192.168.29.121:3000/api/navbar/add/product-main-category/${id}` , body , {
+    return await this._http.post(`${environment.apiUrl}api/navbar/add/product-main-category/${id}` , body , {
       headers:{
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
@@ -141,6 +141,19 @@ export class NavbarService {
 
   async deleteproductMainCategory(id) {
     return await this._http.delete(`${environment.apiUrl}api/navbar/product-main-category/${id}` , {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
+  async updateOrder(body:any,category:string) {
+    let data = {
+      data: body,
+      category
+    };
+    return await this._http.put(`${environment.apiUrl}api/navbar/update-order`, data , {
       headers:{
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')

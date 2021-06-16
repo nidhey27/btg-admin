@@ -63,3 +63,16 @@ body {
     z-index: 9999;
     background: url("./assets/btg-loader.gif") 50% 50% no-repeat rgb(255, 255, 255);
 }
+.description {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.contact-home {
+    width: 100% !important;
+    height: 50vh !important;
+    background: url('./assets/hero/conatct.png') no-repeat center center !important;
+    background-size: cover !important;
+}

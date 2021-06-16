@@ -19,7 +19,6 @@
         </li>
     </ul> -->
 
-
     <div *ngIf="isLoading" class="text-center">
         <div class="spinner-border text-danger" role="status">
             <span class="visually-hidden">Loading...</span>
@@ -31,9 +30,9 @@
                 aria-hidden="true"></i> Add Industry Solution</button>
     </div>
     <!-- First -->
-    <mat-accordion>
-        <mat-expansion-panel *ngFor="let nav of industrySolutionData" (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false">
+    <mat-accordion cdkDropList (cdkDropListDropped)="drag($event, 'industry')">
+        <mat-expansion-panel class="grabbing" *ngFor="let nav of industrySolutionData" (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false" cdkDrag>
             <mat-expansion-panel-header (click)="getData('solutionMainCategory', nav._id)" class="disable_ripple">
                 <mat-panel-title class="my-2">
                     {{ nav.name}}
@@ -59,10 +58,13 @@
                    <h6>No Data Found</h6>
                 </div>
             </div>
+            
+            
+
             <!-- Second -->
-            <mat-accordion>
-                <mat-expansion-panel *ngFor="let sub of solutionMainCategoryData" (opened)="panelOpenState1 = true"
-                    (closed)="panelOpenState1 = false">
+            <mat-accordion cdkDropList (cdkDropListDropped)="drag($event, 'solutionMainCategory')">
+                <mat-expansion-panel class="grabbing" *ngFor="let sub of solutionMainCategoryData" (opened)="panelOpenState1 = true"
+                    (closed)="panelOpenState1 = false" cdkDrag>
                     <mat-expansion-panel-header (click)="getData('solutionSubCategory', sub._id)">
                         <mat-panel-title class="my-2">
                             {{ sub.name }}
@@ -91,9 +93,9 @@
                         </div>
                     </div>
                     <!-- Third -->
-                    <mat-accordion>
-                        <mat-expansion-panel *ngFor="let subCat of solutionSubCategoryData"
-                            (opened)="panelOpenState1 = true" (closed)="panelOpenState1 = false">
+                    <mat-accordion cdkDropList (cdkDropListDropped)="drag($event, 'solutionSubCategory')">
+                        <mat-expansion-panel class="grabbing" *ngFor="let subCat of solutionSubCategoryData"
+                            (opened)="panelOpenState1 = true" (closed)="panelOpenState1 = false" cdkDrag>
                             <mat-expansion-panel-header (click)="getData('productMainCategory', subCat._id)">
                                 <mat-panel-title class="my-2">
                                     {{ subCat.name }}
@@ -120,14 +122,16 @@
                                    <h6>No Data Found</h6>
                                 </div>
                             </div>
-                            <p class="m-0" *ngFor="let prod of productMainCategoryData"> {{ prod.name }}
-                                <button *ngIf="gVar.role == 0 || gVar.role == 1" class="btn  mx-1" color="accent"
-                                    (click)="openFormDialog('edit',prod._id,prod.parentId, 'product_main_category')"><i
-                                        class="fa fa-pencil-square-o " aria-hidden="true"></i></button>
-                                <button *ngIf="gVar.role == 0 || gVar.role == 1" class="btn  mx-1" color="accent"
-                                    (click)="deleteNav(prod._id,'product_main_category')"><i class="fa fa-trash "
-                                        aria-hidden="true"></i></button>
-                            </p>
+                            <div cdkDropList (cdkDropListDropped)="drag($event, 'product')">
+                                <p class="grabbing m-0" *ngFor="let prod of productMainCategoryData" cdkDrag> {{ prod.name }}
+                                    <button *ngIf="gVar.role == 0 || gVar.role == 1" class="btn  mx-1" color="accent"
+                                        (click)="openFormDialog('edit',prod._id,prod.parentId, 'product_main_category')"><i
+                                            class="fa fa-pencil-square-o " aria-hidden="true"></i></button>
+                                    <button *ngIf="gVar.role == 0 || gVar.role == 1" class="btn  mx-1" color="accent"
+                                        (click)="deleteNav(prod._id,'product_main_category')"><i class="fa fa-trash "
+                                            aria-hidden="true"></i></button>
+                                </p>
+                            </div>
                             <!-- Fourth -->
                             <!-- <mat-accordion>
                                 <mat-expansion-panel *ngFor="let prod of productMainCategoryData"

@@ -36,8 +36,25 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { PreviewComponent } from './preview/preview.component';
 import { PreviewNavbarComponent } from './preview-navbar/preview-navbar.component';
 import { NavbarTrimPipe } from './navbar-trim.pipe'; // Editor
-
-
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { EditSubcategoryComponent } from './edit-subcategory/edit-subcategory.component';
+import { EditMaincategoryComponent } from './edit-maincategory/edit-maincategory.component';
+import { NewAndPressComponent } from './new-and-press/new-and-press.component';
+import { AddNewsComponent } from './new-and-press/add-news/add-news.component';
+import { TesmonialsComponent } from './tesmonials/tesmonials.component';
+import { AddEditTestimonialsComponent } from './tesmonials/add-edit-testimonials/add-edit-testimonials.component';
+import { HomeComponent } from './home/home.component';
+import { EventsComponent } from './events/events.component';
+import { AddEditEventsComponent } from './events/add-edit-events/add-edit-events.component'; // Drag and Drop
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { SeeWhatWeDoComponent } from './see-what-we-do/see-what-we-do.component';
+import { AddEditSeeWhatWeDoComponent } from './see-what-we-do/add-edit-see-what-we-do/add-edit-see-what-we-do.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { UrlSanitizePipe } from './pipes/url-sanitize.pipe';
+import { ContactusComponent } from './contactus/contactus.component';
+import { EditComponent } from './contactus/edit/edit.component';
+import { EditContactusComponent } from './contactus/edit-contactus/edit-contactus.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +76,22 @@ import { NavbarTrimPipe } from './navbar-trim.pipe'; // Editor
     PreviewComponent,
     PreviewNavbarComponent,
     NavbarTrimPipe,
-
+    EditSubcategoryComponent,
+    EditMaincategoryComponent,
+    NewAndPressComponent,
+    AddNewsComponent,
+    TesmonialsComponent,
+    AddEditTestimonialsComponent,
+    HomeComponent,
+    EventsComponent,
+    AddEditEventsComponent,
+    SeeWhatWeDoComponent,
+    AddEditSeeWhatWeDoComponent,
+    UrlSanitizePipe,
+    ContactusComponent,
+    EditComponent,
+    EditContactusComponent,
+    
   ],
   imports: [
 
@@ -80,8 +112,14 @@ import { NavbarTrimPipe } from './navbar-trim.pipe'; // Editor
     MatExpansionModule,
     MatSelectModule,
     AngularEditorModule,
-    ModalModule.forRoot()
-
+    ModalModule.forRoot(),
+    DragDropModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule
+  ],
+  exports: [
+    MatDatepickerModule
   ],
   providers: [BsModalRef, GlobalConstants],
   bootstrap: [AppComponent]

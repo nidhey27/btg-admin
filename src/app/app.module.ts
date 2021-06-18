@@ -56,6 +56,7 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { EditComponent } from './contactus/edit/edit.component';
 import { EditContactusComponent } from './contactus/edit-contactus/edit-contactus.component';
 import { AddComponent } from './home/add/add.component';
+import { CarasoulEditComponent } from './carasoul-edit/carasoul-edit.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { AddComponent } from './home/add/add.component';
     EditComponent,
     EditContactusComponent,
     AddComponent,
+    CarasoulEditComponent,
     
   ],
   imports: [

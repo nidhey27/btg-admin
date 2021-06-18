@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { element } from 'protractor';
 import { HomeService } from '../services/home.service';
 import { AddComponent } from './add/add.component';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { CarasoulEditComponent } from '../carasoul-edit/carasoul-edit.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,13 +13,16 @@ import { AddComponent } from './add/add.component';
 export class HomeComponent implements OnInit {
 
   homeCarasoul: any = [];
+  formData = new FormData();
 
+  isLoading:boolean=true;
+  carData:any = {}
   @ViewChild('countries') countries;
   // @ViewChild('hoverCountry') hoverCountry;
   hoverCountry = "Yoo";
   constructor(
     private _home: HomeService,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) { }
 
   selectedCountries: any = [];
@@ -40,6 +44,7 @@ export class HomeComponent implements OnInit {
 
     (await this._home.getCarousal()).subscribe((res: any) => {
       // console.log(res)
+      this.isLoading = false;
       this.homeCarasoul = res.data
     })
 
@@ -52,6 +57,54 @@ export class HomeComponent implements OnInit {
 
   }
 
+  onKey(data) {
+    let val = data.target.innerHTML
+    let key = data.target.getAttribute('data-fieldName')
+    this.carData[key] = val;
+
+    
+
+   
+  }
+
+  update(type:any , id:any){
+    
+ 
+    this.carData.type = type;
+    console.log(this.carData);
+ 
+  
+    if(type == 1 || type==2 || type==3){
+  
+    
+      this._home.editBanner(id , this.carData).then((res) => {
+        res.subscribe((resp:any) => {
+          console.log(resp);
+          
+          if (resp?.status) {
+            Swal.fire('Hurray', resp.message, 'success').then(() => {
+              window.location.reload()
+            })
+          }
+        })
+      })
+    }
+    
+  
+  }
+
+  openUpdate(type:number , id:string){
+    const dialogRef = this.dialog.open(CarasoulEditComponent, {
+      width: '50%',
+
+      data: { type, id }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+  }
 
   async ngAfterViewInit() {
     await this.initMap(this._home);
@@ -81,6 +134,7 @@ export class HomeComponent implements OnInit {
 
     (await map.getMap()).subscribe((res: any) => {
       console.log(res);
+      // this.isLoading = false;
       this.selectedCountries = res.data;
 
       this.selectedCountries.forEach(element => {

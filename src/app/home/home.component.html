@@ -1,3 +1,9 @@
+<div *ngIf="isLoading" class="text-center mt-5">
+    <div class="spinner-border text-danger" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div><br>
+    <span>Loading Home Section...</span>
+</div>
 <div style="padding: 50px 0;">
 
     <div>
@@ -6,49 +12,47 @@
 
         <div *ngFor="let h of homeCarasoul; let i = index" [ngSwitch]="h.type">
 
-            <div class="my-4" *ngSwitchCase="1"
-                style="height: 100vh; background-image: url('../../../../assets/hero/hero1.png');background-size: cover ; background-repeat: no-repeat;  ">
+            <div class="my-4" *ngSwitchCase="1" style="height: 100vh; background-image: url('../../../../assets/hero/hero1.png');background-size: cover ; background-repeat: no-repeat;  ">
                 <button color="accent" class="delete-btn btn btn-danger mx-1"><i aria-hidden="true"
                         class="fa fa-trash"></i></button>
 
-                <button color="accent" class="edit-btn btn btn-danger mx-1">Update</button>
+                <button color="accent" class="edit-btn btn btn-danger mx-1" (click)="update(1 , h._id)">Update</button>
                 <div class="container text-center slide1" style="position: relative; top: 15%;">
 
 
 
-                    <button contenteditable="" class="btn btn-outline-danger btn-lg">{{ h?.heading }}</button>
+                    <button contenteditable="" data-fieldName="heading" class="btn btn-outline-danger btn-lg" (blur)="onKey($event)">{{ h?.heading }}</button>
 
                     <div class="row my-4">
                         <div class="col-6">
-                            <p contenteditable class="mb-0 mx-auto" style="width: 40%;">{{ h?.subHeading1 }}</p>
+                            <p contenteditable data-fieldName="subHeading1" class="mb-0 mx-auto" style="width: 40%;" (blur)="onKey($event)">{{ h?.subHeading1 }}</p>
                             <!-- <p class="mb-0">9AM(Paris) / 4PM(Sinapore)</p> -->
                             <hr class="my-2 border-dark">
-                            <p contenteditable class="mb-0 mx-auto" style="width: 40%;">{{ h?.subHeading2 }}</p>
+                            <p contenteditable data-fieldName="subHeading2" class="mb-0 mx-auto" style="width: 40%;" (blur)="onKey($event)">{{ h?.subHeading2 }}</p>
                             <!-- <p class="mb-0">Tero Kasala</p> -->
                         </div>
                         <div class="col-6">
-                            <p contenteditable class="mb-0 mx-auto" style="width: 40%;">{{ h?.subHeading3 }}</p>
+                            <p contenteditable data-fieldName="subHeading3" class="mb-0 mx-auto" style="width: 40%;" (blur)="onKey($event)">{{ h?.subHeading3 }}</p>
                             <!-- <p class="mb-0">9AM(Paris) / 4PM(Sinapore)</p> -->
                             <hr class="my-2 border-dark">
-                            <p contenteditable class="mb-0 mx-auto" style="width: 40%;">{{ h?.subHeading4 }}</p>
+                            <p contenteditable data-fieldName="subHeading4" class="mb-0 mx-auto" style="width: 40%;" (blur)="onKey($event)">{{ h?.subHeading4 }}</p>
                             <!-- <p class="mb-0">Tero Kasala</p> -->
                         </div>
 
                     </div>
-                    <p contenteditable class="font-weight-bold">{{ h?.subHeading5 }}</p>
-                    <p contenteditable>{{ h?.subHeading6 }}</p>
+                    <p contenteditable data-fieldName="subHeading5" class="font-weight-bold" (blur)="onKey($event)">{{ h?.subHeading5 }}</p>
+                    <p contenteditable data-fieldName="subHeading6" (blur)="onKey($event)">{{ h?.subHeading6 }}</p>
 
-                    <button contenteditable class="btn btn-danger my-4">{{ h?.subHeading7 }}</button>
+                    <button contenteditable data-fieldName="subHeading7" class="btn btn-danger my-4" (blur)="onKey($event)">{{ h?.subHeading7 }}</button>
                 </div>
 
             </div>
 
-            <div class="my-4" *ngSwitchCase="2"
-                style="height: 100vh; background-image: url('../../../../assets/hero/hero1.png');background-size: cover ; background-repeat: no-repeat;  ">
+            <div class="my-4" *ngSwitchCase="2" style="height: 100vh; background-image: url('../../../../assets/hero/hero1.png');background-size: cover ; background-repeat: no-repeat;  ">
                 <button color="accent" class="delete-btn btn btn-danger mx-1"><i aria-hidden="true"
                         class="fa fa-trash"></i></button>
 
-                <button color="accent" class="edit-btn btn btn-danger mx-1">Update</button>
+                <button color="accent" class="edit-btn btn btn-danger mx-1" (click)="update(2 , h._id)">Update</button>
 
                 <div class="container slide2" style="position: relative; top: 15%">
                     <h1 contenteditable class="text-center heading-mobile font-weight-bold">{{ h?.heading }}</h1>
@@ -90,12 +94,11 @@
 
             </div>
 
-            <div class="my-4" *ngSwitchCase="3"
-                style="height: 100vh; background-image: url('../../../../assets/hero/hero1.png');background-size: cover ; background-repeat: no-repeat;  ">
+            <div class="my-4" *ngSwitchCase="3" style="height: 100vh; background-image: url('../../../../assets/hero/hero1.png');background-size: cover ; background-repeat: no-repeat;  ">
                 <button color="accent" class="delete-btn btn btn-danger mx-1"><i aria-hidden="true"
                         class="fa fa-trash"></i></button>
 
-                <button color="accent" class="edit-btn btn btn-danger mx-1">Update</button>
+                <button color="accent" class="edit-btn btn btn-danger mx-1" (click)="update(3 , h._id)">Update</button>
 
                 <div class="container slide3" style="position: relative; top: 15%">
                     <h1 class="heading-mobile" contenteditable>{{ h?.heading }}</h1>
@@ -137,21 +140,20 @@
 
             </div>
 
-            <div class="my-4" *ngSwitchCase="4"
-                style="height: 100vh; background-image: url('{{h.banner}}');background-size: cover ; background-repeat: no-repeat;  ">
+            <div class="my-4" *ngSwitchCase="4" style="height: 100vh; background-image: url('{{h.banner}}');background-size: cover ; background-repeat: no-repeat;  ">
 
                 <button color="accent" class="delete-btn btn btn-danger mx-1"><i aria-hidden="true"
                         class="fa fa-trash"></i></button>
 
-                <button color="accent" class="edit-btn btn btn-danger mx-1"><i aria-hidden="true"
-                        class="fa fa-pencil-square-o"></i></button>
+                <button color="accent" class="edit-btn btn btn-danger mx-1" (click)="openUpdate(4 , h._id)"><i aria-hidden="true"
+                        class="fa fa-pencil-square-o" ></i></button>
 
             </div>
             <div class="my-4" *ngSwitchCase="5" style="height: 100vh;">
                 <button color="accent" class="delete-btn btn btn-danger mx-1"><i aria-hidden="true"
                         class="fa fa-trash"></i></button>
 
-                <button color="accent" class="edit-btn btn btn-danger mx-1"><i aria-hidden="true"
+                <button color="accent" class="edit-btn btn btn-danger mx-1" (click)="openUpdate(5 , h._id)"><i aria-hidden="true"
                         class="fa fa-pencil-square-o"></i></button>
                 <video autoplay muted loop id="myVideo" style="height: 100vh; width: 100%">
                     <source [src]="h?.banner">
@@ -171,9 +173,7 @@
 
     <div class="container mt-4" style="width: 100%">
         <h1 class="text-center">Supporting tissue manufacturers around the world</h1>
-        <svg enable_background="new 0 0 1000 647" height="647px" pretty_print="False"
-            style="stroke-linejoin: round; stroke:#000; fill: none;" version="1.1" viewBox="0 0 1000 647" width="1000px"
-            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg enable_background="new 0 0 1000 647" height="647px" pretty_print="False" style="stroke-linejoin: round; stroke:#000; fill: none;" version="1.1" viewBox="0 0 1000 647" width="1000px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <defs>
                 <style type="text/css">
 

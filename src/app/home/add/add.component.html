@@ -1,0 +1,55 @@
+<div class="d-flex">
+    <div class="form-check mx-2 justify-content-around">
+        <input (change)="handleChange($event, 1)"  class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+            Type 1
+        </label>
+    </div>
+    <div class="form-check mx-2 justify-content-around">
+        <input (change)="handleChange($event, 2)" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+        <label  class="form-check-label" for="flexRadioDefault2">
+            Type 2
+        </label>
+    </div>
+    <div class="form-check mx-2 justify-content-around">
+        <input (change)="handleChange($event, 3)" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+        <label class="form-check-label" for="flexRadioDefault3">
+            Type 3
+        </label>
+    </div>
+    <div class="form-check mx-2 justify-content-around">
+        <input (change)="handleChange($event, 4)" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+        <label class="form-check-label" for="flexRadioDefault4">
+            Image / Gif
+        </label>
+    </div>
+    <div class="form-check mx-2 justify-content-around">
+        <input (change)="handleChange($event, 5)" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
+        <label class="form-check-label" for="flexRadioDefault5">
+            Video
+        </label>
+    </div>
+
+
+    
+
+</div>
+
+<button *ngIf="carsouleType == 1 || carsouleType == 2 || carsouleType == 3 " class="btn btn-danger mt-4">Add</button>
+
+<br>
+
+<form *ngIf="carsouleType == 4"  action="">
+    <label for="">Upload Banner Image / Gif</label>
+    <br>
+    <input type="file" name="" id="">
+    <button class="btn btn-danger">Add</button>
+
+</form>
+
+<form *ngIf="carsouleType == 5"  action="">
+    <label for="">Upload Banner Video</label>
+    <br>
+    <input type="file" name="" id="">
+    <button class="btn btn-danger">Add</button>
+</form>

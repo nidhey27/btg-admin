@@ -55,6 +55,8 @@ import { UrlSanitizePipe } from './pipes/url-sanitize.pipe';
 import { ContactusComponent } from './contactus/contactus.component';
 import { EditComponent } from './contactus/edit/edit.component';
 import { EditContactusComponent } from './contactus/edit-contactus/edit-contactus.component';
+import { AddComponent } from './home/add/add.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,6 +93,7 @@ import { EditContactusComponent } from './contactus/edit-contactus/edit-contactu
     ContactusComponent,
     EditComponent,
     EditContactusComponent,
+    AddComponent,
     
   ],
   imports: [

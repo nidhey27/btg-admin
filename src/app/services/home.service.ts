@@ -13,7 +13,16 @@ export class HomeService {
 
   async getCarousal() {
     return this._http.get(`${environment.apiUrl}api/home/all`, {
-      headers:{
+      headers: {
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
+  async addCarsoule(type) {
+    return this._http.post(`${environment.apiUrl}api/home/add`, { type }, {
+      headers: {
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
       }
@@ -22,7 +31,7 @@ export class HomeService {
 
   async getMap() {
     return this._http.get(`${environment.apiUrl}api/map/all`, {
-      headers:{
+      headers: {
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
       }
@@ -31,18 +40,18 @@ export class HomeService {
 
   async addMap(name) {
     console.log(name);
-    
+
     return this._http.post(`${environment.apiUrl}api/map/add`, { name: name }, {
-      headers:{
+      headers: {
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
       }
     })
   }
-  
+
   async deleteMap(name) {
     return this._http.delete(`${environment.apiUrl}api/map/delete/${name}`, {
-      headers:{
+      headers: {
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
       }
@@ -53,7 +62,7 @@ export class HomeService {
 
   async getSeeWhatWeDo() {
     return this._http.get(`${environment.apiUrl}api/seewhatwedo/all`, {
-      headers:{
+      headers: {
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
       }
@@ -62,7 +71,7 @@ export class HomeService {
 
   async getSingleSeeWhatWeDo(id) {
     return this._http.get(`${environment.apiUrl}api/seewhatwedo/all/${id}`, {
-      headers:{
+      headers: {
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
       }
@@ -71,7 +80,7 @@ export class HomeService {
 
   async addSeeWhatWeDo(body) {
     return this._http.post(`${environment.apiUrl}api/seewhatwedo/add`, body, {
-      headers:{
+      headers: {
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
       }
@@ -79,8 +88,8 @@ export class HomeService {
   }
 
   async editSeeWhatWeDo(id, body) {
-  return this._http.put(`${environment.apiUrl}api/seewhatwedo/edit/${id}`, body, {
-      headers:{
+    return this._http.put(`${environment.apiUrl}api/seewhatwedo/edit/${id}`, body, {
+      headers: {
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
       }
@@ -89,7 +98,7 @@ export class HomeService {
 
   async deleteSeeWhatWeDo(id) {
     return this._http.delete(`${environment.apiUrl}api/seewhatwedo/delete/${id}`, {
-      headers:{
+      headers: {
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
       }
@@ -99,7 +108,7 @@ export class HomeService {
   // Contact Us
   async getContactUs() {
     return this._http.get(`${environment.apiUrl}api/ContactSection/all`, {
-      headers:{
+      headers: {
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
       }
@@ -107,7 +116,7 @@ export class HomeService {
   }
   async getSingleContactUs(id) {
     return this._http.get(`${environment.apiUrl}api/ContactSection/all/${id}`, {
-      headers:{
+      headers: {
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
       }
@@ -116,27 +125,27 @@ export class HomeService {
 
   async editContactUs(id, body) {
     return this._http.put(`${environment.apiUrl}api/ContactSection/edit/${id}`, body, {
-        headers:{
-          "auth-token": localStorage.getItem('auth-token'),
-          "role": localStorage.getItem('role')
-        }
-      })
-    }
+      headers: {
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
 
   async addContactUs(body) {
     return this._http.post(`${environment.apiUrl}api/ContactSection/add`, body, {
-        headers:{
-          "auth-token": localStorage.getItem('auth-token'),
-          "role": localStorage.getItem('role')
-        }
-      })
-    }
+      headers: {
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
   async deleteContactUs(id) {
     return this._http.delete(`${environment.apiUrl}api/ContactSection/delete/${id}`, {
-        headers:{
-          "auth-token": localStorage.getItem('auth-token'),
-          "role": localStorage.getItem('role')
-        }
-      })
-    }
+      headers: {
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
 }

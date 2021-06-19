@@ -161,6 +161,15 @@ async editBanner(id, body) {
     }
   })
 }
+
+async deleteCarsolue(id) {
+  return this._http.delete(`${environment.apiUrl}api/home/delete/${id}`, {
+    headers: {
+      "auth-token": localStorage.getItem('auth-token'),
+      "role": localStorage.getItem('role')
+    }
+  })
+}
 }
 
 

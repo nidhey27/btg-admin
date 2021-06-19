@@ -63,8 +63,6 @@ export class HomeComponent implements OnInit {
     this.carData[key] = val;
 
     
-
-   
   }
 
   update(type:any , id:any){
@@ -104,6 +102,41 @@ export class HomeComponent implements OnInit {
       console.log('The dialog was closed');
 
     });
+  }
+
+
+  async delete(id) {
+    // alert(id)
+    Swal.fire({
+      title: 'Are you sure want to remove?',
+      text: 'You will not be able to recover this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then(async (result) => {
+      if (result.value) {
+
+        (await this._home.deleteCarsolue(id)).subscribe((res: any) => {
+          console.log(res)
+
+          Swal.fire(
+            'Deleted!',
+            'Deleted Successfully',
+            'success'
+          ).then(() => {
+            setTimeout(() => { window.location.reload() }, 500);
+          })
+        })
+
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe :)',
+          'error'
+        )
+      }
+    })
   }
 
   async ngAfterViewInit() {

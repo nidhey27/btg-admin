@@ -13,7 +13,7 @@
         <div *ngFor="let h of homeCarasoul; let i = index" [ngSwitch]="h.type">
 
             <div class="my-4" *ngSwitchCase="1" style="height: 100vh; background-image: url('../../../../assets/hero/hero1.png');background-size: cover ; background-repeat: no-repeat;  ">
-                <button color="accent" class="delete-btn btn btn-danger mx-1"><i aria-hidden="true"
+                <button color="accent" class="delete-btn btn btn-danger mx-1" (click)="delete(h?._id)"><i aria-hidden="true"
                         class="fa fa-trash"></i></button>
 
                 <button color="accent" class="edit-btn btn btn-danger mx-1" (click)="update(1 , h._id)">Update</button>
@@ -49,7 +49,7 @@
             </div>
 
             <div class="my-4" *ngSwitchCase="2" style="height: 100vh; background-image: url('../../../../assets/hero/hero1.png');background-size: cover ; background-repeat: no-repeat;  ">
-                <button color="accent" class="delete-btn btn btn-danger mx-1"><i aria-hidden="true"
+                <button color="accent" class="delete-btn btn btn-danger mx-1" (click)="delete(h?._id)"><i aria-hidden="true"
                         class="fa fa-trash"></i></button>
 
                 <button color="accent" class="edit-btn btn btn-danger mx-1" (click)="update(2 , h._id)">Update</button>
@@ -95,7 +95,7 @@
             </div>
 
             <div class="my-4" *ngSwitchCase="3" style="height: 100vh; background-image: url('../../../../assets/hero/hero1.png');background-size: cover ; background-repeat: no-repeat;  ">
-                <button color="accent" class="delete-btn btn btn-danger mx-1"><i aria-hidden="true"
+                <button color="accent" class="delete-btn btn btn-danger mx-1" (click)="delete(h?._id)"><i aria-hidden="true"
                         class="fa fa-trash"></i></button>
 
                 <button color="accent" class="edit-btn btn btn-danger mx-1" (click)="update(3 , h._id)">Update</button>
@@ -143,7 +143,7 @@
             <div class="my-4" *ngSwitchCase="4" style="height: 100vh; background-image: url('{{h.banner}}');background-size: cover ; background-repeat: no-repeat;  ">
 
                 <button color="accent" class="delete-btn btn btn-danger mx-1"><i aria-hidden="true"
-                        class="fa fa-trash"></i></button>
+                        class="fa fa-trash" (click)="delete(h?._id)"></i></button>
 
                 <button color="accent" class="edit-btn btn btn-danger mx-1" (click)="openUpdate(4 , h._id)"><i aria-hidden="true"
                         class="fa fa-pencil-square-o" ></i></button>
@@ -151,7 +151,7 @@
             </div>
             <div class="my-4" *ngSwitchCase="5" style="height: 100vh;">
                 <button color="accent" class="delete-btn btn btn-danger mx-1"><i aria-hidden="true"
-                        class="fa fa-trash"></i></button>
+                        class="fa fa-trash" (click)="delete(h?._id)"></i></button>
 
                 <button color="accent" class="edit-btn btn btn-danger mx-1" (click)="openUpdate(5 , h._id)"><i aria-hidden="true"
                         class="fa fa-pencil-square-o"></i></button>

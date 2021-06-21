@@ -10,6 +10,8 @@ export class ProductService {
 
 
   async addProduct(body, pid) {
+    console.log(body);
+    
     return this._http.put(`${environment.apiUrl}api/product/${pid}`, body, {
       headers:{
         "auth-token": localStorage.getItem('auth-token'),

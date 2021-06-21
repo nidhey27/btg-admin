@@ -179,4 +179,29 @@ export class HomeService {
       }
     })
   }
+
+  // banner service
+async editBanner(id, body) {
+
+  
+  
+  return this._http.put(`${environment.apiUrl}api/home/edit/${id}`, body, {
+    headers: {
+      "auth-token": localStorage.getItem('auth-token'),
+      "role": localStorage.getItem('role'),
+    }
+  })
 }
+
+async deleteCarsolue(id) {
+  return this._http.delete(`${environment.apiUrl}api/home/delete/${id}`, {
+    headers: {
+      "auth-token": localStorage.getItem('auth-token'),
+      "role": localStorage.getItem('role')
+    }
+  })
+}
+}
+
+
+

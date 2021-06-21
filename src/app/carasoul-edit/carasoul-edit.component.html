@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>{{title}}</h1>
+    <form [formGroup]="chooseimg" (ngSubmit)="updateImg()">
+
+
+        <div class="form-group">
+
+            <!-- <label for="">Upload Image</label> <br> -->
+            <input type="file" (change)="setImage($event)" accept="image/*">
+
+        </div>
+
+
+        <div class="form-group">
+            <button class="btn btn-danger mt-2" [disabled]="submit">Update</button>
+        </div>
+
+        <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+            {{ successMsg }}
+        </div>
+
+        <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+            {{ errorMsg }}
+        </div>
+    </form>
+</div>

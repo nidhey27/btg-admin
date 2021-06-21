@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { element } from 'protractor';
+// import { element } from 'protractor';
 import { HomeService } from '../services/home.service';
 import { AddComponent } from './add/add.component';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   homeCarasoul: any = [];
 
+  formData = new FormData();
   @ViewChild('countries') countries;
   // @ViewChild('hoverCountry') hoverCountry;
   hoverCountry = "Yoo";
@@ -36,10 +37,44 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  async delete(id) {
+    // alert(id)
+    Swal.fire({
+      title: 'Are you sure want to remove?',
+      text: 'You will not be able to recover this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then(async (result) => {
+      if (result.value) {
+
+        (await this._home.deleteCarsolue(id)).subscribe((res: any) => {
+          console.log(res)
+
+          Swal.fire(
+            'Deleted!',
+            'Deleted Successfully',
+            'success'
+          ).then(() => {
+            setTimeout(() => { window.location.reload() }, 500);
+          })
+        })
+
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe :)',
+          'error'
+        )
+      }
+    })
+  }
+
   async ngOnInit() {
 
     (await this._home.getCarousal()).subscribe((res: any) => {
-      // console.log(res)
+      console.log(res)
       this.homeCarasoul = res.data
     })
 
@@ -128,6 +163,32 @@ export class HomeComponent implements OnInit {
     }
 
     console.log(this.countries.nativeElement);
+  }
+
+  onKey(data) {
+    let val = data.target.innerHTML
+    let key = data.target.getAttribute('data-fieldName')
+    // console.log(key)
+    // this.dataForm[key] = val;
+    this.formData.set(key, val)
+
+  }
+
+  async update(type: any, id: string) {
+    console.log(type, id);
+    if (type == 1 || type == 2 || type == 3) {
+      this.formData.set('type', type)
+      this.formData.forEach((el, key) => {
+        console.error(el, key);
+
+      })
+
+        ; (await this._home.editBanner(id, this.formData)).subscribe((res) => {
+          console.log(res)
+        })
+    }
+
+
   }
 
 }

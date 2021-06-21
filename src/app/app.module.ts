@@ -56,7 +56,10 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { EditComponent } from './contactus/edit/edit.component';
 import { EditContactusComponent } from './contactus/edit-contactus/edit-contactus.component';
 import { AddComponent } from './home/add/add.component';
-
+import { ManageDataSheetsComponent } from './manage-data-sheets/manage-data-sheets.component';
+import { RemovewhitespacesPipe } from './removewhitespaces.pipe';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { FormComponent } from './manage-data-sheets/form/form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,6 +97,9 @@ import { AddComponent } from './home/add/add.component';
     EditComponent,
     EditContactusComponent,
     AddComponent,
+    ManageDataSheetsComponent,
+    RemovewhitespacesPipe,
+    FormComponent,
     
   ],
   imports: [
@@ -119,7 +125,8 @@ import { AddComponent } from './home/add/add.component';
     DragDropModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    PdfViewerModule
   ],
   exports: [
     MatDatepickerModule

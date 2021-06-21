@@ -1,8 +1,10 @@
 <div class="my-2">
-  <button class="btn btn-danger btn-danger mr-4" (click)="goBack()">Back</button>
-  <button class="btn btn-danger mx-5" (click)="update()">Update</button>
+  <button class="btn btn-danger btn-danger mx-2" (click)="goBack()">Back</button>
+  <button class="btn btn-danger mx-2" (click)="update()">Update</button>
 
-  <button (click)="preview()" class="btn btn-danger">Preview</button>
+  <button (click)="preview()" class="btn btn-danger mx-2">Preview</button>
+
+  <a [routerLink]="['/manage-data-sheet', id, heading]" ><button class="btn btn-danger mx-2">Manage Data Sheets</button></a>
 </div>
 
 <div class="red-title-banner">
@@ -161,6 +163,8 @@
 
     </div>
   </div>
+
+  
 </section>
 
 <!-- 

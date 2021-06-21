@@ -13,6 +13,7 @@ import { GetSubSubCategoryComponent } from './get-sub-sub-category/get-sub-sub-c
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
+import { ManageDataSheetsComponent } from './manage-data-sheets/manage-data-sheets.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NewAndPressComponent } from './new-and-press/new-and-press.component';
 import { PreviewComponent } from './preview/preview.component';
@@ -41,7 +42,8 @@ const routes: Routes = [
   {path:'Home' , component:HomeComponent , canActivate:[AuthGuard]},
   {path:'Events' , component:EventsComponent , canActivate:[AuthGuard]},
   {path:'see-what-we-do' , component:SeeWhatWeDoComponent , canActivate:[AuthGuard]},
-  {path:'contactus' , component:ContactusComponent , canActivate:[AuthGuard]}
+  {path:'contactus' , component:ContactusComponent , canActivate:[AuthGuard]},
+  {path:'manage-data-sheet/:id/:name' , component:ManageDataSheetsComponent , canActivate:[AuthGuard]},
 ];
 
 @NgModule({

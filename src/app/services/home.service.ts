@@ -20,8 +20,39 @@ export class HomeService {
     })
   }
 
-  async addCarsoule(type) {
-    return this._http.post(`${environment.apiUrl}api/home/add`, { type }, {
+  async addCarsoule(type, banner = " ") {
+
+    let body = {
+      type,
+      banner
+    }
+
+    return this._http.post(`${environment.apiUrl}api/home/add`, body, {
+      headers: {
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
+  async editBanner(id, body) {
+    // console.log(id , body);
+  
+    // body.forEach((el , key) => {
+    //   console.warn(el , key);
+      
+    // })
+    
+    return this._http.put(`${environment.apiUrl}api/home/edit/${id}`, body, {
+      headers: {
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role'),
+      }
+    })
+  }
+
+  async deleteCarsolue(id) {
+    return this._http.delete(`${environment.apiUrl}api/home/delete/${id}`, {
       headers: {
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')

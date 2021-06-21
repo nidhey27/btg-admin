@@ -35,7 +35,7 @@
 
 </div>
 
-<button *ngIf="carsouleType == 1 || carsouleType == 2 || carsouleType == 3 " class="btn btn-danger mt-4">Add</button>
+<button (click)="addCarsoule()" *ngIf="carsouleType == 1 || carsouleType == 2 || carsouleType == 3 " class="btn btn-danger mt-4">Add</button>
 
 <br>
 

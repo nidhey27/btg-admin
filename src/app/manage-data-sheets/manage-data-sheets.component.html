@@ -1,0 +1,94 @@
+<div style="padding: 50px 0;" class="container">
+
+    <h6>Data Sheet Management:</h6>
+    <h4 [innerHTML]="pName"></h4>
+
+    <button (click)="openFormDialog('add', 'category', id)" mat-flat-button class="btn-danger my-2">Add Data Sheet Category</button>
+    <div *ngIf="categories.length == 0">No Data Sheets Found</div>
+
+    <div *ngIf="categories.length != 0">
+        <!-- <ul class="nav nav-tabs" role="tablist">
+            <li *ngFor="let c of categories; let i = index" class="nav-item" role="presentation">
+                <button class="nav-link " [ngClass]="{'active': i == 0 }" id="{{c.name | removewhitespaces}}-tab"
+                    data-bs-toggle="tab" data-bs-target="#{{c.name  | removewhitespaces}}" type="button" role="tab"
+                    aria-controls="{{c.name  | removewhitespaces}}" aria-selected="true">{{ c.name }}</button>
+            </li>
+        </ul>
+
+        <div class="tab-content p-3 border-top-0 border">
+            <div *ngFor="let c of categories; let i = index" class="tab-pane fade " [ngClass]="{'show active': i == 0 }"
+                id="{{c.name  | removewhitespaces}}" role="tabpanel"
+                aria-labelledby="{{c.name  | removewhitespaces}}-tab">
+                {{c.name}}
+            </div>
+        </div> -->
+        <!-- <div *ngFor="let c of categories">{{ c.name }}</div> -->
+
+
+    </div>
+
+
+    <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+        <mat-tab *ngFor="let tabtitle of categories; let index = index" class="tab-title">
+            <ng-template mat-tab-label>
+                {{tabtitle.name}}
+                <button (click)="deleteCat()"  mat-flat-button color="warn" class=" mx-1"><i aria-hidden="true"
+                        class="fa fa-trash"></i></button>
+                <button (click)="openFormDialog('edit', 'category', id)"  mat-flat-button color="accent" class=" mx-1"><i aria-hidden="true"
+                        class="fa fa-pencil"></i></button>
+
+                        <!-- (click)="openFormDialog('add', 'category', id)"                         -->
+            </ng-template>
+            <mat-selection-list>
+
+                <div *ngIf="dataSheets?.length == 0">No Data Found</div>
+                <div class="my-4" *ngFor="let d of dataSheets">
+                    {{ d.name }} | {{ d.language }}
+
+                    <!-- <button (click)="showPDF(d.url)" class="btn btn-success mx-4">View PDF</button> -->
+                    <!-- <button (click)="showPDF(d.url)" class="btn btn-info mx-4">Edit</button> -->
+                    <button style="float: right !important" (click)="showPDF(d.url)" class="mx-2" mat-flat-button
+                        color="basic">View PDF</button>
+                    <button style="float: right !important" class="mx-2" mat-flat-button color="primary">Edit</button>
+                    <button style="float: right !important" class="mx-2" mat-flat-button color="warn">Delete</button>
+                </div>
+
+                <button (click)="openFormDialog('add', 'datasheet', id, tabtitle._id)" mat-flat-button color="accent" class=" my-3">Add Data Sheet for {{ tabtitle.name }}</button>
+            </mat-selection-list>
+        </mat-tab>
+    </mat-tab-group>
+
+    <div class="mt-4" *ngIf="pdfURL">
+        <pdf-viewer src="{{pdfURL}}" [render-text]="true" [fit-to-page]="true" [autoresize]="true"
+            [original-size]="true" [zoom-scale]="'page-fit'" style="width: 50% !important;"></pdf-viewer>
+    </div>
+
+</div>
+
+<!-- <div  style="padding: 50px 0;" class="container">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="query-params-tab" data-bs-toggle="tab" data-bs-target="#query-params" type="button" role="tab" aria-controls="query-params" aria-selected="true">Query Params</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="request-headers-tab" data-bs-toggle="tab" data-bs-target="#request-headers" type="button" role="tab" aria-controls="request-headers" aria-selected="false">Headers</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="json-tab" data-bs-toggle="tab" data-bs-target="#json" type="button" role="tab" aria-controls="json" aria-selected="false">JSON</button>
+        </li>
+      </ul>
+    
+      <div class="tab-content p-3 border-top-0 border">
+        <div class="tab-pane fade show active" id="query-params" role="tabpanel" aria-labelledby="query-params-tab">
+          <div data-query-params></div>
+          <button data-add-query-param-btn class="mt-2 btn btn-outline-success" type="button">Add</button>
+        </div>
+        <div class="tab-pane fade" id="request-headers" role="tabpanel" aria-labelledby="request-headers-tab">
+          <div data-request-headers></div>
+          <button data-add-request-header-btn class="mt-2 btn btn-outline-success" type="button">Add</button>
+        </div>
+        <div class="tab-pane fade" id="json" role="tabpanel" aria-labelledby="json-tab">
+          <div data-json-request-body class="overflow-auto" style="max-height: 200px;"></div>
+        </div>
+      </div>
+</div> -->

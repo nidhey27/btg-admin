@@ -35,30 +35,30 @@ export class HomeService {
     })
   }
 
-  async editBanner(id, body) {
-    // console.log(id , body);
+  // async editBanner(id, body) {
+  //   // console.log(id , body);
   
-    // body.forEach((el , key) => {
-    //   console.warn(el , key);
+  //   // body.forEach((el , key) => {
+  //   //   console.warn(el , key);
       
-    // })
+  //   // })
     
-    return this._http.put(`${environment.apiUrl}api/home/edit/${id}`, body, {
-      headers: {
-        "auth-token": localStorage.getItem('auth-token'),
-        "role": localStorage.getItem('role'),
-      }
-    })
-  }
+  //   return this._http.put(`${environment.apiUrl}api/home/edit/${id}`, body, {
+  //     headers: {
+  //       "auth-token": localStorage.getItem('auth-token'),
+  //       "role": localStorage.getItem('role'),
+  //     }
+  //   })
+  // }
 
-  async deleteCarsolue(id) {
-    return this._http.delete(`${environment.apiUrl}api/home/delete/${id}`, {
-      headers: {
-        "auth-token": localStorage.getItem('auth-token'),
-        "role": localStorage.getItem('role')
-      }
-    })
-  }
+  // async deleteCarsolue(id) {
+  //   return this._http.delete(`${environment.apiUrl}api/home/delete/${id}`, {
+  //     headers: {
+  //       "auth-token": localStorage.getItem('auth-token'),
+  //       "role": localStorage.getItem('role')
+  //     }
+  //   })
+  // }
 
   async getMap() {
     return this._http.get(`${environment.apiUrl}api/map/all`, {

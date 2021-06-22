@@ -60,6 +60,7 @@ import { ManageDataSheetsComponent } from './manage-data-sheets/manage-data-shee
 import { RemovewhitespacesPipe } from './removewhitespaces.pipe';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { FormComponent } from './manage-data-sheets/form/form.component';
+import { CarasoulEditComponent } from './carasoul-edit/carasoul-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,7 +101,7 @@ import { FormComponent } from './manage-data-sheets/form/form.component';
     ManageDataSheetsComponent,
     RemovewhitespacesPipe,
     FormComponent,
-    
+    CarasoulEditComponent
   ],
   imports: [
 

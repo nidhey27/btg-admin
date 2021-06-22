@@ -14,11 +14,12 @@ export class HomeComponent implements OnInit {
 
   homeCarasoul: any = [];
   formData = new FormData();
-
+  
   // formData = new FormData();
   @ViewChild('countries') countries;
   // @ViewChild('hoverCountry') hoverCountry;
   hoverCountry = "Yoo";
+  isLoading: boolean;
   constructor(
     private _home: HomeService,
     public dialog: MatDialog
@@ -199,7 +200,7 @@ export class HomeComponent implements OnInit {
 
     (await map.getMap()).subscribe((res: any) => {
       console.log(res);
-      // this.isLoading = false;
+      this.isLoading = false;
       this.selectedCountries = res.data;
 
       this.selectedCountries.forEach(element => {

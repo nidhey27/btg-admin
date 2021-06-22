@@ -1,11 +1,11 @@
 <div class="container">
     <h1>{{title}}</h1>
-    <form [formGroup]="chooseimg" (ngSubmit)="updateImg()">
+    <form [formGroup]="carousalEdit" (ngSubmit)="updateImg()">
 
 
         <div class="form-group">
 
-            <!-- <label for="">Upload Image</label> <br> -->
+            <label for="">Upload Image</label> <br>
             <input type="file" (change)="setImage($event)" accept="image/*">
 
         </div>

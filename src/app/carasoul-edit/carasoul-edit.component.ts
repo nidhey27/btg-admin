@@ -10,7 +10,7 @@ import { HomeService } from '../services/home.service';
 })
 export class CarasoulEditComponent implements OnInit {
 
-  chooseimg:FormGroup;
+  carousalEdit:FormGroup;
   id: any;
   type: any;
   submit: boolean;
@@ -19,7 +19,7 @@ export class CarasoulEditComponent implements OnInit {
   title:string;
   constructor(private formBuilder: FormBuilder,@Inject(MAT_DIALOG_DATA) public data: any, private _home: HomeService) {
 
-    this.chooseimg = this.formBuilder.group({
+    this.carousalEdit = this.formBuilder.group({
       banner: ['' , [Validators.required]],
       type:['' , [Validators.required]]
     });
@@ -39,7 +39,7 @@ export class CarasoulEditComponent implements OnInit {
     console.log(this.data);
     
     console.log(this.id , this.type);
-    this.chooseimg.patchValue({
+    this.carousalEdit.patchValue({
       type:this.type
     })
 
@@ -52,7 +52,7 @@ export class CarasoulEditComponent implements OnInit {
       await this.changeFile(file).then((base64: string): any => {
         // console.log(base64);
         
-          this.chooseimg.patchValue({
+          this.carousalEdit.patchValue({
             banner: base64
           })
       });
@@ -71,13 +71,13 @@ export class CarasoulEditComponent implements OnInit {
 
 
   updateImg() {
-    if (this.chooseimg.invalid) {
+    if (this.carousalEdit.invalid) {
       return;
     }
 
     this.submit = true;
        
-    this._home.editBanner(this.id , this.chooseimg.value).then(res => {
+    this._home.editBanner(this.id , this.carousalEdit.value).then(res => {
       res.subscribe((resp:any) => {
         if (resp?.status) {
           this.errorMsg = "";

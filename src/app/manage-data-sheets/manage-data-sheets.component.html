@@ -32,9 +32,9 @@
         <mat-tab *ngFor="let tabtitle of categories; let index = index" class="tab-title">
             <ng-template mat-tab-label>
                 {{tabtitle.name}}
-                <button (click)="deleteCat()"  mat-flat-button color="warn" class=" mx-1"><i aria-hidden="true"
+                <button (click)="deleteCat(tabtitle._id)"  mat-flat-button color="warn" class=" mx-1"><i aria-hidden="true"
                         class="fa fa-trash"></i></button>
-                <button (click)="openFormDialog('edit', 'category', id)"  mat-flat-button color="accent" class=" mx-1"><i aria-hidden="true"
+                <button (click)="openFormDialog('edit', 'category', tabtitle.parentId, tabtitle._id)"  mat-flat-button color="accent" class=" mx-1"><i aria-hidden="true"
                         class="fa fa-pencil"></i></button>
 
                         <!-- (click)="openFormDialog('add', 'category', id)"                         -->
@@ -49,8 +49,8 @@
                     <!-- <button (click)="showPDF(d.url)" class="btn btn-info mx-4">Edit</button> -->
                     <button style="float: right !important" (click)="showPDF(d.url)" class="mx-2" mat-flat-button
                         color="basic">View PDF</button>
-                    <button style="float: right !important" class="mx-2" mat-flat-button color="primary">Edit</button>
-                    <button style="float: right !important" class="mx-2" mat-flat-button color="warn">Delete</button>
+                    <button style="float: right !important" (click)="openFormDialog('edit', 'datasheet', id, d._id)" class="mx-2" mat-flat-button color="primary">Edit</button>
+                    <button style="float: right !important" (click)="deleteDataSheet(d._id)" class="mx-2" mat-flat-button color="warn">Delete</button>
                 </div>
 
                 <button (click)="openFormDialog('add', 'datasheet', id, tabtitle._id)" mat-flat-button color="accent" class=" my-3">Add Data Sheet for {{ tabtitle.name }}</button>

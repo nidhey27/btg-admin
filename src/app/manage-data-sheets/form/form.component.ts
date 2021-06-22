@@ -35,6 +35,14 @@ export class FormComponent implements OnInit {
     this.parentId = this.data.pid
     this.categoryId = this.data.cid
 
+    if(this.categoryId){
+      this.getSingleCatergory();
+    }
+
+    if(this.cat == 'datasheet'){
+      this.getSingleDataSheet();
+    }
+
     this.dataSheetCategoryForm = this.formBuilder.group({
       name: ['', [Validators.required]],
 
@@ -77,6 +85,42 @@ export class FormComponent implements OnInit {
     })
   }
 
+  async updateDataSheet(){
+    console.log(this.dataSheeForm.value);
+
+    // let file = new FileReader()
+    // File file = new File("this.dataSheeForm.value.file");
+    
+    this.formData.append('name', this.dataSheeForm.value.name)
+    this.formData.append('language', this.dataSheeForm.value.language)
+    
+    this.formData.forEach((elem, key) => {
+      
+      if(key == 'file' && elem == ''){
+        this.formData.delete('file');
+      }
+      // console.log(elem, key)
+    })
+
+    // this.formData.forEach((elem, key) => {
+    //   console.log(elem, key)
+    // })
+    
+    // return 0
+    ;(await this._dataSheet.editDataSheet(this.categoryId, this.formData)).subscribe((res: any) => {
+      // console.log(res);
+
+      if (res?.status) {
+        this.errorMsg = '';
+        this.successMsg = res?.message
+        setTimeout(() => { window.location.reload() }, 2000)
+      }else{
+        this.errorMsg = res.message
+      }
+      
+    })
+  }
+
 
   onFileChange(event) {
   
@@ -106,5 +150,45 @@ export class FormComponent implements OnInit {
         }
       })
 
+  }
+
+  async updateCategory(id) {
+    if (this.dataSheetCategoryForm.invalid) {
+      return;
+    }
+
+    this.submit = true;
+    let name = this.dataSheetCategoryForm.value.name
+      // console.log(name, this.parentId)
+
+      ; (await this._dataSheet.editCategorie(this.categoryId, this.dataSheetCategoryForm.value)).subscribe((res: any) => {
+        // console.log(res)
+
+        if (res?.status) {
+          this.errorMsg = '';
+          this.successMsg = res?.message
+          setTimeout(() => { window.location.reload() }, 2000)
+        }else{
+          this.errorMsg = res.message
+        }
+      })
+
+  }
+
+  async getSingleCatergory(){
+    (await this._dataSheet.getSingleCategory(this.categoryId)).subscribe( (res:any) => {
+      this.dataSheetCategoryForm.patchValue({
+        name: res?.data.name
+      });
+    })
+  }
+
+  async getSingleDataSheet(){
+    (await this._dataSheet.getSingleDataSheets(this.categoryId)).subscribe( (res:any) => {
+      this.dataSheeForm.patchValue({
+        name: res?.data.name,
+        language: res?.data.language
+      });
+    })
   }
 }

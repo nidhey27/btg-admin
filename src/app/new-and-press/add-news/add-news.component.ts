@@ -31,7 +31,7 @@ export class AddNewsComponent implements OnInit {
 
     this.newsForm = this.formBuilder.group({
       heading: ['', [Validators.required]],
-      image: ['', [Validators.required]],
+      // image: ['', [Validators.required]],
       description: ['', [Validators.required]]
     });
 
@@ -64,6 +64,8 @@ export class AddNewsComponent implements OnInit {
   }
 
   async editForm() {
+    console.log(this.newsForm.value);
+    // return 0;
     if (this.newsForm.invalid) {
       return;
     }
@@ -117,7 +119,7 @@ export class AddNewsComponent implements OnInit {
       this.newsForm.setValue({
         heading: res.data.heading,
         description: res.data.description,
-        image: res.data.image
+        // image: res.data.image
       })
     })
   }

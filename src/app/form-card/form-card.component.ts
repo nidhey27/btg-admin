@@ -45,8 +45,8 @@ export class FormCardComponent implements OnInit {
           console.log(this.getData)
           if (this.type == 'edit') {
             this.navBarForm = await this.formBuilder.group({
-              name: [this.getData?.name, [Validators.required]]
-
+              name: [this.getData?.name, [Validators.required]],
+              level: [this.getData?.level, [Validators.required]]
             });
           }
 
@@ -65,12 +65,14 @@ export class FormCardComponent implements OnInit {
           this.isLoading = false;
 
           this.getData = this.extractData(this.getData, this.navId);
+          console.log(this.getData);
+          
           console.log(`%c${this.getData}`, "font-size: 3rem");
           if (this.type == 'edit') {
             
             this.navBarForm = await this.formBuilder.group({
-              name: [this.getData?.name, [Validators.required]]
-
+              name: [this.getData?.name, [Validators.required]],
+              level: [this.getData?.level, [Validators.required]]
             });
           }
 
@@ -92,8 +94,8 @@ export class FormCardComponent implements OnInit {
           console.log(response);
           if (this.type == 'edit') {
             this.navBarForm = await this.formBuilder.group({
-              name: [this.getData?.name, [Validators.required]]
-
+              name: [this.getData?.name, [Validators.required]],
+              level: [this.getData?.level, [Validators.required]]
             });
           }
 
@@ -116,10 +118,10 @@ export class FormCardComponent implements OnInit {
           console.log(this.getData);
           
           
-            this.navBarForm = await this.formBuilder.group({
-              name: [this.getData?.name, [Validators.required]]
-
-            });
+          this.navBarForm = await this.formBuilder.group({
+            name: [this.getData?.name, [Validators.required]],
+            level: [this.getData?.level, [Validators.required]]
+          });
           
 
         })
@@ -136,8 +138,8 @@ export class FormCardComponent implements OnInit {
 
 
     this.navBarForm = this.formBuilder.group({
-      name: ['', [Validators.required]]
-
+      name: ['', [Validators.required]],
+      level: [this.getData?.level, [Validators.required]]
     });
 
 
@@ -159,9 +161,9 @@ export class FormCardComponent implements OnInit {
 
     this.submit = true;
     let name: string = this.navBarForm.value.name;
-
+    let level: number = this.navBarForm.value.level;
     if (this.category == 'solution_main_category') {
-      this._nav.addsolutionMainCategoryFor({ name }, this.navId).then(res => {
+      this._nav.addsolutionMainCategoryFor(this.navBarForm.value, this.navId).then(res => {
         res.subscribe(async (response: any) => {
           if (response?.status) {
             this.errorMsg = "";
@@ -182,7 +184,7 @@ export class FormCardComponent implements OnInit {
         console.error(error)
       })
     } else if (this.category == 'solution_sub_category') {
-      this._nav.addsolutionSubCategoryFor({ name }, this.navId).then(res => {
+      this._nav.addsolutionSubCategoryFor(this.navBarForm.value, this.navId).then(res => {
         res.subscribe(async (response: any) => {
           if (response?.status) {
             this.errorMsg = "";
@@ -203,7 +205,7 @@ export class FormCardComponent implements OnInit {
         console.error(error)
       })
     } else if (this.category == 'product_main_category') {
-      this._nav.addproductMainCategory({ name }, this.navId).then(res => {
+      this._nav.addproductMainCategory(this.navBarForm.value, this.navId).then(res => {
         res.subscribe(async (response: any) => {
           if (response?.status) {
             this.errorMsg = "";
@@ -224,7 +226,7 @@ export class FormCardComponent implements OnInit {
         console.error(error)
       })
     }else if (this.type == 'industry_solution') {
-      this._nav.addIndustrySolutionFor({ name }).then(res => {
+      this._nav.addIndustrySolutionFor(this.navBarForm.value).then(res => {
         res.subscribe(async (response: any) => {
           if (response?.status) {
             this.errorMsg = "";
@@ -257,7 +259,7 @@ export class FormCardComponent implements OnInit {
     let name: string = this.navBarForm.value.name;
 
     if(this.category == 'industry_solutions_for'){
-      this._nav.updateIndustrySolutionFor({ name }, this.navId).then(res => {
+      this._nav.updateIndustrySolutionFor(this.navBarForm.value, this.navId).then(res => {
         res.subscribe(async (response: any) => {
           if (response?.status) {
             this.errorMsg = "";
@@ -278,7 +280,7 @@ export class FormCardComponent implements OnInit {
         console.error(error)
       })
     }else if(this.category == 'solution_main_category'){
-      this._nav.updatesolutionMainCategoryFor({ name }, this.navId).then(res => {
+      this._nav.updatesolutionMainCategoryFor(this.navBarForm.value, this.navId).then(res => {
         res.subscribe(async (response: any) => {
           if (response?.status) {
             this.errorMsg = "";
@@ -299,7 +301,7 @@ export class FormCardComponent implements OnInit {
         console.error(error)
       })
     }else if(this.category == 'solution_sub_category'){
-      this._nav.updatesolutionSubCategoryFor({ name }, this.navId).then(res => {
+      this._nav.updatesolutionSubCategoryFor(this.navBarForm.value, this.navId).then(res => {
         res.subscribe(async (response: any) => {
           if (response?.status) {
             this.errorMsg = "";
@@ -320,7 +322,7 @@ export class FormCardComponent implements OnInit {
         console.error(error)
       })
     }else if(this.category == 'product_main_category'){
-      this._nav.updateproductMainCategory({ name }, this.navId).then(res => {
+      this._nav.updateproductMainCategory(this.navBarForm.value, this.navId).then(res => {
         res.subscribe(async (response: any) => {
           if (response?.status) {
             this.errorMsg = "";

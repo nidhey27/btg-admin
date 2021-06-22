@@ -18,7 +18,19 @@
             <mat-error
                 *ngIf="(!navBarForm.controls['name'].valid) && (navBarForm.controls['name'].touched) || (navBarForm.hasError('name') && !navBarForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
-
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="level">
+                    <mat-option [value]="1">Industry Solution For</mat-option>
+                    <mat-option [value]="2">Solution Main Category</mat-option>
+                    <mat-option [value]="3">Solution Sub Category</mat-option>
+                    <mat-option [value]="4">Product Main Category</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!navBarForm.controls['level'].valid) && (navBarForm.controls['level'].touched) || (navBarForm.hasError('level') && !navBarForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
         </div>
 
         <button [disabled]="submit" class="btn btn-danger w-100 my-2">Add</button>
@@ -45,7 +57,19 @@
             <mat-error
                 *ngIf="(!navBarForm.controls['name'].valid) && (navBarForm.controls['name'].touched) || (navBarForm.hasError('name') && !navBarForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
-
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="level">
+                    <mat-option [value]="1">Industry Solution For</mat-option>
+                    <mat-option [value]="2">Solution Main Category</mat-option>
+                    <mat-option [value]="3">Solution Sub Category</mat-option>
+                    <mat-option [value]="4">Product Main Category</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!navBarForm.controls['level'].valid) && (navBarForm.controls['level'].touched) || (navBarForm.hasError('level') && !navBarForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
         </div>
 
         <button [disabled]="submit" class="btn btn-danger w-100 my-2">Update</button>
@@ -72,7 +96,19 @@
             <mat-error
                 *ngIf="(!navBarForm.controls['name'].valid) && (navBarForm.controls['name'].touched) || (navBarForm.hasError('name') && !navBarForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
-
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="level">
+                    <mat-option [value]="1">Industry Solution For</mat-option>
+                    <mat-option [value]="2">Solution Main Category</mat-option>
+                    <mat-option [value]="3">Solution Sub Category</mat-option>
+                    <mat-option [value]="4">Product Main Category</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!navBarForm.controls['level'].valid) && (navBarForm.controls['level'].touched) || (navBarForm.hasError('level') && !navBarForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
         </div>
 
         <button [disabled]="submit" class="btn btn-danger w-100 my-2">Add</button>

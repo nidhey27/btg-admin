@@ -61,6 +61,9 @@ import { RemovewhitespacesPipe } from './removewhitespaces.pipe';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { FormComponent } from './manage-data-sheets/form/form.component';
 import { CarasoulEditComponent } from './carasoul-edit/carasoul-edit.component';
+import { CareerComponent } from './career/career.component';
+import { AddEditCareerComponent } from './career/add-edit-career/add-edit-career.component';
+import { ApplicationComponent } from './application/application.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,7 +104,10 @@ import { CarasoulEditComponent } from './carasoul-edit/carasoul-edit.component';
     ManageDataSheetsComponent,
     RemovewhitespacesPipe,
     FormComponent,
-    CarasoulEditComponent
+    CarasoulEditComponent,
+    CareerComponent,
+    AddEditCareerComponent,
+    ApplicationComponent
   ],
   imports: [
 

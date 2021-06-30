@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ApplicationComponent } from './application/application.component';
 import { AuthGuard } from './auth.guard';
+import { CareerComponent } from './career/career.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditMaincategoryComponent } from './edit-maincategory/edit-maincategory.component';
@@ -43,6 +45,8 @@ const routes: Routes = [
   {path:'Events' , component:EventsComponent , canActivate:[AuthGuard]},
   {path:'see-what-we-do' , component:SeeWhatWeDoComponent , canActivate:[AuthGuard]},
   {path:'contactus' , component:ContactusComponent , canActivate:[AuthGuard]},
+  {path:'Careers' , component:CareerComponent , canActivate:[AuthGuard]},
+  {path:'applications' , component:ApplicationComponent , canActivate:[AuthGuard]},
   {path:'manage-data-sheet/:id/:name' , component:ManageDataSheetsComponent , canActivate:[AuthGuard]},
 ];
 

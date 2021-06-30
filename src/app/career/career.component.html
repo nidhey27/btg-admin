@@ -1,0 +1,62 @@
+<!-- <div class="d-flex flex-column justify-content-center align-content-center" style="align-items: center;text-align: center;position: fixed;width: 100%;height: 100%;z-index: 9999;
+" *ngIf="loader">
+    <img src="../../assets/svg-btg.svg" alt="" class="img-fluid" style="width: 10%;height: auto;">
+    <img src="../../assets/loaderred.gif" alt="" style="width: 7%;height: auto;">
+</div> -->
+<div class="container">
+    <div class="col-12 col-sm-12 col-md-12 p-4">
+        <button class="btn btn-danger" (click)="openFormDialog('add')">Add</button>
+    </div>
+</div>
+<div>
+    <div class="red-title-banner">
+        <h2 class="text-white"> Careers </h2>
+    </div>
+
+        <div class="container">
+
+            <div class="row mx-auto mt-5">
+                <div class="col-sm-12">
+
+                    <div class="row">
+                        <div *ngFor="let c of careers" class="col-sm-4 position-relative" style="margin-bottom: 5rem;">
+                            <button (click)="delete(c._id)" color="accent" class="delete-btn btn btn-danger mx-1">
+                                <i aria-hidden="true" class="fa fa-trash"></i>
+                            </button>
+                            <button (click)="openFormDialog('edit', c._id)" color="accent" class="edit-btn btn btn-danger mx-1">
+                                <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+                            </button>
+                            <div class="card" id="card" style="border: none !important;">
+                                <div class="card-body">
+                                    <h3 class="card-title">{{c.name}}</h3>
+                                    <h6 class="my-3">{{c.location}}</h6>
+                                    <div class="d-flex mb-4">
+                                        <h6 style="font-size: 14px;background-color: lightgray;padding:2%;border-radius: 5px;" *ngIf="c.type == 0"><i class="fa fa-calendar-o" aria-hidden="true"></i> Full Time</h6>
+                                        <h6 style="font-size: 14px;background-color: lightgray;padding:2%;border-radius: 5px;" *ngIf="c.type == 1"><i class="fa fa-calendar-o" aria-hidden="true"></i> Part Time</h6>
+                                        <h6 style="font-size: 14px;background-color: lightgray;padding:2%;border-radius: 5px;" *ngIf="c.type == 2"><i class="fa fa-calendar-o" aria-hidden="true"></i> Remote</h6>
+                                        <h6 style="font-size: 14px;font-weight: 700;" class="ml-auto text-danger"> {{c.created_at | date}}</h6>
+                                    </div>
+
+                                    <p style="word-spacing: 0px;" class="text-justify description">{{c.description}}</p>
+
+
+                                    <a class="card-link float-right visit-site">Apply</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+
+
+    <!-- <app-footer></app-footer> -->
+</div>

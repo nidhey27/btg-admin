@@ -1,0 +1,146 @@
+<div class="container">
+
+    <div *ngIf="isLoading" class="text-center">
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <!-- {{type}} {{navId}} {{category}} -->
+
+    <form *ngIf="!isLoading && type=='add'" [formGroup]="careerForm" (ngSubmit)="addForm()">
+        <div class="form-group">
+            <b>Add Career</b>
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Name</mat-label>
+                <input matInput placeholder="Enter Name" formControlName="name" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!careerForm.controls['name'].valid) && (careerForm.controls['name'].touched) || (careerForm.hasError('name') && !careerForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Location</mat-label>
+                <input matInput placeholder="Enter Location" formControlName="location" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!careerForm.controls['location'].valid) && (careerForm.controls['location'].touched) || (careerForm.hasError('location') && !careerForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Description</mat-label>
+                <textarea matInput placeholder="Enter Description" formControlName="description" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!careerForm.controls['description'].valid) && (careerForm.controls['description'].touched) || (careerForm.hasError('description') && !careerForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Responsibilities</mat-label>
+                <textarea matInput placeholder="Enter Responsibilities" formControlName="responsibilities" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!careerForm.controls['responsibilities'].valid) && (careerForm.controls['responsibilities'].touched) || (careerForm.hasError('responsibilities') && !careerForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="type">
+                    <mat-option [value]="0">Full Time</mat-option>
+                    <mat-option [value]="1">Part Time</mat-option>
+                    <mat-option [value]="2">Remote</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!careerForm.controls['type'].valid) && (careerForm.controls['type'].touched) || (careerForm.hasError('type') && !careerForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+            
+            
+        </div>
+
+        <button [disabled]="submit" class="btn btn-danger w-100 my-2">Add</button>
+
+        <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+            {{ successMsg }}
+        </div>
+
+        <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+            {{ errorMsg }}
+        </div>
+    </form>
+
+    <!-- edit -->
+
+    <form *ngIf="!isLoading && type=='edit'" [formGroup]="careerForm" (ngSubmit)="editForm()">
+        <div class="form-group">
+            <b>Edit Career</b>
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Name</mat-label>
+                <input matInput placeholder="Enter Name" formControlName="name" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!careerForm.controls['name'].valid) && (careerForm.controls['name'].touched) || (careerForm.hasError('name') && !careerForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Location</mat-label>
+                <input matInput placeholder="Enter Location" formControlName="location" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!careerForm.controls['location'].valid) && (careerForm.controls['location'].touched) || (careerForm.hasError('location') && !careerForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Description</mat-label>
+                <textarea matInput placeholder="Enter Description" formControlName="description" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!careerForm.controls['description'].valid) && (careerForm.controls['description'].touched) || (careerForm.hasError('description') && !careerForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Responsibilities</mat-label>
+                <textarea matInput placeholder="Enter Responsibilities" formControlName="responsibilities" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!careerForm.controls['responsibilities'].valid) && (careerForm.controls['responsibilities'].touched) || (careerForm.hasError('responsibilities') && !careerForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="type">
+                    <mat-option [value]="0">Full Time</mat-option>
+                    <mat-option [value]="1">Part Time</mat-option>
+                    <mat-option [value]="2">Remote</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!careerForm.controls['type'].valid) && (careerForm.controls['type'].touched) || (careerForm.hasError('type') && !careerForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+            
+            
+        </div>
+
+        <button [disabled]="submit" class="btn btn-danger w-100 my-2">Update</button>
+
+        <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+            {{ successMsg }}
+        </div>
+
+        <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+            {{ errorMsg }}
+        </div>
+    </form>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+
+    </mat-dialog-actions>
+</div>

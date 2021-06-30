@@ -87,6 +87,11 @@
       <a mat-list-item routerLink="/{{m.name}}" *ngFor="let m of mainNavData" routerLinkActive="activeTest"  [routerLinkActiveOptions]="{ exact: true }">
         <p class="mb-0 p-0">{{ m.name }}</p>
       </a>
+
+      <a mat-list-item routerLink="/applications" routerLinkActive="activeTest"  [routerLinkActiveOptions]="{ exact: true }">
+        <p class="mb-0 p-0">Applications</p>
+      </a>
+
       <a mat-list-item routerLink="/get-sub-cat/{{m._id}}?type=solutionMainCategory" *ngFor="let m of subNavData" routerLinkActive="activeTest" [routerLinkActiveOptions]="{ exact: true }">
         <p class="mb-0 p-0">{{ m.name }}</p>
       </a>

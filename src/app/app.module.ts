@@ -64,6 +64,7 @@ import { CarasoulEditComponent } from './carasoul-edit/carasoul-edit.component';
 import { CareerComponent } from './career/career.component';
 import { AddEditCareerComponent } from './career/add-edit-career/add-edit-career.component';
 import { ApplicationComponent } from './application/application.component';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -133,7 +134,8 @@ import { ApplicationComponent } from './application/application.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MatTableModule
   ],
   exports: [
     MatDatepickerModule

@@ -69,7 +69,7 @@ export class HistoryComponent implements OnInit {
 
     let body = {
       heading: this.heading,
-      parentId: this.data 
+      content: this.data 
     };
 
     console.log(body);

@@ -1,0 +1,54 @@
+<div class="d-flex flex-column justify-content-center align-content-center" style="align-items: center;text-align: center;position: fixed;width: 100%;height: 100%;z-index: 9999;
+" *ngIf="loader">
+    <img src="../../assets/svg-btg.svg" alt="" class="img-fluid" style="width: 10%;height: auto;">
+    <img src="../../assets/loaderred.gif" alt="" style="width: 7%;height: auto;">
+</div>
+<div class="container">
+    <div class="col-12 col-sm-12 col-md-12 p-4">
+        <button class="btn btn-danger" (click)="openFormDialog('add')">Add</button>
+    </div>
+</div>
+<div>
+    <div class="red-title-banner">
+        <h2 class="text-white"> Careers </h2>
+    </div>
+
+    <div class="container">
+
+
+            <div class="red-title-banner">
+                <h2 class="text-white">Team</h2>
+
+            </div>
+
+            <section style="padding: 50px 0;">
+                <div class="container">
+
+
+                    <div class="row mx-auto my-4">
+
+                        <div class="col-sm-4 text-center position-relative" *ngFor="let t of teams">
+                            <button (click)="delete(t._id)" color="accent" class="delete-btn btn btn-danger mx-1">
+                                <i aria-hidden="true" class="fa fa-trash"></i>
+                            </button>
+                            <button (click)="openFormDialog('edit', t._id)" color="accent" class="edit-btn btn btn-danger mx-1">
+                                <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+                            </button>
+                            <figure>
+                                <img src="{{t.image}}" class="img-fluid">
+                                <figcaption class="bold">{{t.name}}</figcaption>
+                                <figcaption>{{t.designation}}</figcaption>
+                            </figure>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+
+    </div>
+
+
+    <!-- <app-footer></app-footer> -->
+</div>

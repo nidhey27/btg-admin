@@ -65,6 +65,10 @@ import { CareerComponent } from './career/career.component';
 import { AddEditCareerComponent } from './career/add-edit-career/add-edit-career.component';
 import { ApplicationComponent } from './application/application.component';
 import {MatTableModule} from '@angular/material/table';
+import { AboutComponent } from './about/about.component';
+import { TeamsComponent } from './about/teams/teams.component';
+import { AddEditTeamsComponent } from './about/teams/add-edit-teams/add-edit-teams.component';
+import { HistoryComponent } from './about/history/history.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,7 +112,11 @@ import {MatTableModule} from '@angular/material/table';
     CarasoulEditComponent,
     CareerComponent,
     AddEditCareerComponent,
-    ApplicationComponent
+    ApplicationComponent,
+    AboutComponent,
+    TeamsComponent,
+    AddEditTeamsComponent,
+    HistoryComponent
   ],
   imports: [
 

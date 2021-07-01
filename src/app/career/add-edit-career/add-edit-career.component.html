@@ -46,6 +46,15 @@
                 *ngIf="(!careerForm.controls['responsibilities'].valid) && (careerForm.controls['responsibilities'].touched) || (careerForm.hasError('responsibilities') && !careerForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
 
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">LinkedIn Link</mat-label>
+                <textarea matInput placeholder="Enter LinkedIn Link" formControlName="linkedInLink" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!careerForm.controls['linkedInLink'].valid) && (careerForm.controls['linkedInLink'].touched) || (careerForm.hasError('linkedInLink') && !careerForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
             <mat-form-field appearance="fill">
                 <mat-label>Type</mat-label>
                 <mat-select formControlName="type">
@@ -111,6 +120,15 @@
             </mat-form-field>
             <mat-error
                 *ngIf="(!careerForm.controls['responsibilities'].valid) && (careerForm.controls['responsibilities'].touched) || (careerForm.hasError('responsibilities') && !careerForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+            
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">LinkedIn Link</mat-label>
+                <textarea matInput placeholder="Enter LinkedIn Link" formControlName="linkedInLink" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!careerForm.controls['linkedInLink'].valid) && (careerForm.controls['linkedInLink'].touched) || (careerForm.hasError('linkedInLink') && !careerForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
 
             <mat-form-field appearance="fill">

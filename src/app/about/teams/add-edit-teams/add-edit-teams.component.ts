@@ -1,29 +1,28 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CareerService } from 'src/app/services/career.service';
-import { CareerComponent } from '../career.component';
+import { AboutService } from 'src/app/services/about.service';
+import { TeamsComponent } from '../teams.component';
 
 @Component({
-  selector: 'app-add-edit-career',
-  templateUrl: './add-edit-career.component.html',
-  styleUrls: ['./add-edit-career.component.scss']
+  selector: 'app-add-edit-teams',
+  templateUrl: './add-edit-teams.component.html',
+  styleUrls: ['./add-edit-teams.component.scss']
 })
-export class AddEditCareerComponent implements OnInit {
-
+export class AddEditTeamsComponent implements OnInit {
   type: string;
   id: string;
   getData: any = [];
   isLoading: boolean = true;
-  careerForm: any;
+  teamsForm: any;
   submit: boolean = false;
   errorMsg: string = "";
   successMsg: string = "";
   constructor(
-    public dialogRef: MatDialogRef<CareerComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<TeamsComponent>,
     private formBuilder: FormBuilder,
-    private _career: CareerService
+    private _about: AboutService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
   ngOnInit(): void {
@@ -31,13 +30,11 @@ export class AddEditCareerComponent implements OnInit {
     this.id = this.data?.id;
     this.isLoading = false;
 
-    this.careerForm = this.formBuilder.group({
+    this.teamsForm = this.formBuilder.group({
       name: ['', [Validators.required]],
-      location: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-      responsibilities: ['', [Validators.required]],
-      linkedInLink: ['', [Validators.required]],
-      type: ['', [Validators.required]]
+      designation: ['', [Validators.required]],
+      image: ['', [Validators.required]],
+      order: [0, [Validators.required]]
     });
 
     if(this.id){
@@ -46,12 +43,16 @@ export class AddEditCareerComponent implements OnInit {
   }
 
   async addForm() {
-    if (this.careerForm.invalid) {
+    console.log(this.teamsForm.value);
+    
+    if (this.teamsForm.invalid) {
       return;
     }
-
+    
+    console.log(this.teamsForm.value);
     this.submit = true;
-      await (await (this._career.addCareer(this.careerForm.value))).subscribe((response: any) => {
+    
+      await (await (this._about.addTeam(this.teamsForm.value))).subscribe((response: any) => {
         if (response?.status) {
           this.errorMsg = "";
 
@@ -71,14 +72,14 @@ export class AddEditCareerComponent implements OnInit {
   }
 
   async editForm() {
-    console.log(this.careerForm.value);
-    // return 0;
-    if (this.careerForm.invalid) {
+    if (this.teamsForm.invalid) {
       return;
     }
 
     this.submit = true;
-      await (await (this._career.editCareer(this.careerForm.value, this.id))).subscribe((response: any) => {
+      console.log(this.teamsForm.value);
+      
+      await (await (this._about.editTeam(this.teamsForm.value, this.id))).subscribe((response: any) => {
         if (response?.status) {
           this.errorMsg = "";
 
@@ -91,7 +92,7 @@ export class AddEditCareerComponent implements OnInit {
           this.submit = false;
           this.successMsg = "";
           this.errorMsg = response.message;
-        }
+        }this.id
       },(error: any) => {
 
       })
@@ -104,7 +105,7 @@ export class AddEditCareerComponent implements OnInit {
       await this.changeFile(file).then((base64: string): any => {
         console.log(base64);
         
-          this.careerForm.patchValue({
+          this.teamsForm.patchValue({
             image: base64
           })
       });
@@ -119,18 +120,19 @@ export class AddEditCareerComponent implements OnInit {
         reader.onerror = error => reject(error);
     });
   }
-
+  
   async getSingleNews(){
-    (await (this._career.getSingleCareer(this.id))).subscribe( (res:any) => {
+    this.isLoading = true;
+    (await (this._about.getSingleTeam(this.id))).subscribe( (res:any) => {
+      this.isLoading = false;
       console.log(res);
-      this.careerForm.setValue({
-        name: res?.data.name,
-        location: res?.data.location,
-        description: res?.data.description,
-        responsibilities: res?.data.responsibilities,
-        linkedInLink: res?.data.linkedInLink,
-        type: res?.data.type
+      this.teamsForm.setValue({
+        name: res.data.name,
+        designation: res.data.designation,
+        image: res.data.image,
+        order: res.data.order
       })
+      console.log(this.teamsForm.value)
     })
   }
 

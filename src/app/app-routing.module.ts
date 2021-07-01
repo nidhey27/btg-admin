@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AboutComponent } from './about/about.component';
+import { HistoryComponent } from './about/history/history.component';
+import { TeamsComponent } from './about/teams/teams.component';
 import { ApplicationComponent } from './application/application.component';
 import { AuthGuard } from './auth.guard';
 import { CareerComponent } from './career/career.component';
@@ -46,6 +49,9 @@ const routes: Routes = [
   {path:'see-what-we-do' , component:SeeWhatWeDoComponent , canActivate:[AuthGuard]},
   {path:'contactus' , component:ContactusComponent , canActivate:[AuthGuard]},
   {path:'Careers' , component:CareerComponent , canActivate:[AuthGuard]},
+  {path:'About' , component:AboutComponent, canActivate:[AuthGuard]},
+  {path: 'About/teams', component: TeamsComponent, canActivate:[AuthGuard]},
+  {path: 'About/history', component: HistoryComponent, canActivate:[AuthGuard]},
   {path:'applications' , component:ApplicationComponent , canActivate:[AuthGuard]},
   {path:'manage-data-sheet/:id/:name' , component:ManageDataSheetsComponent , canActivate:[AuthGuard]},
 ];

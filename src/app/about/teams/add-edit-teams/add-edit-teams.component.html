@@ -1,0 +1,92 @@
+<div class="container">
+
+    <div *ngIf="isLoading" class="text-center">
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <!-- {{type}} {{navId}} {{category}} -->
+
+    <form *ngIf="!isLoading && type=='add'" [formGroup]="teamsForm" (ngSubmit)="addForm()">
+        <div class="form-group">
+            <b>Add Team</b>
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Name</mat-label>
+                <input matInput placeholder="Enter Name" formControlName="name" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!teamsForm.controls['name'].valid) && (teamsForm.controls['name'].touched) || (teamsForm.hasError('name') && !teamsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+            
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Designation</mat-label>
+                <input matInput placeholder="Enter Designation" formControlName="designation" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!teamsForm.controls['designation'].valid) && (teamsForm.controls['designation'].touched) || (teamsForm.hasError('designation') && !teamsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+
+            <input type="file" accept="image/*" (change)="setImage($event)">
+            
+            
+        </div>
+
+        <button [disabled]="submit" class="btn btn-danger w-100 my-2">Add</button>
+
+        <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+            {{ successMsg }}
+        </div>
+
+        <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+            {{ errorMsg }}
+        </div>
+    </form>
+
+    <!-- edit -->
+
+    <form *ngIf="!isLoading && type=='edit'" [formGroup]="teamsForm" (ngSubmit)="editForm()">
+        <div class="form-group">
+            <b>Edit Team</b>
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Name</mat-label>
+                <input matInput placeholder="Enter Name" formControlName="name" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!teamsForm.controls['name'].valid) && (teamsForm.controls['name'].touched) || (teamsForm.hasError('name') && !teamsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+            
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Designation</mat-label>
+                <input matInput placeholder="Enter Designation" formControlName="designation" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!teamsForm.controls['designation'].valid) && (teamsForm.controls['designation'].touched) || (teamsForm.hasError('designation') && !teamsForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+
+            <input type="file" accept="image/*" (change)="setImage($event)">
+            
+            
+        </div>
+
+        <button [disabled]="submit" class="btn btn-danger w-100 my-2">Update</button>
+
+        <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+            {{ successMsg }}
+        </div>
+
+        <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+            {{ errorMsg }}
+        </div>
+    </form>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+
+    </mat-dialog-actions>
+</div>

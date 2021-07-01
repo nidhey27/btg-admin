@@ -92,7 +92,8 @@ export class HistoryComponent implements OnInit {
     (await this._about.getHistory()).subscribe( (res:any) => {
       console.log(res);
       this.data = res.data[0].content
-      this.heading = res.data[0].heading
+      this.heading = res.data[0].heading,
+      this.id = res.data[0]._id
     })
   }
 }

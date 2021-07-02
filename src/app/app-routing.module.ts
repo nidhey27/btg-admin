@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AboutDefaultComponent } from './about/about-default/about-default.component';
 import { AboutComponent } from './about/about.component';
+import { ExportComplianceComponent } from './about/export-compliance/export-compliance.component';
 import { HistoryComponent } from './about/history/history.component';
 import { TeamsComponent } from './about/teams/teams.component';
 import { ApplicationComponent } from './application/application.component';
@@ -50,8 +52,10 @@ const routes: Routes = [
   {path:'contactus' , component:ContactusComponent , canActivate:[AuthGuard]},
   {path:'Careers' , component:CareerComponent , canActivate:[AuthGuard]},
   {path:'About' , component:AboutComponent, canActivate:[AuthGuard]},
-  {path: 'About/teams', component: TeamsComponent, canActivate:[AuthGuard]},
-  {path: 'About/history', component: HistoryComponent, canActivate:[AuthGuard]},
+  {path:'About/about' , component:AboutDefaultComponent, canActivate:[AuthGuard]},
+  {path:'About/teams', component: TeamsComponent, canActivate:[AuthGuard]},
+  {path:'About/history', component: HistoryComponent, canActivate:[AuthGuard]},
+  {path:'About/export-complaince', component: ExportComplianceComponent, canActivate:[AuthGuard]},
   {path:'applications' , component:ApplicationComponent , canActivate:[AuthGuard]},
   {path:'manage-data-sheet/:id/:name' , component:ManageDataSheetsComponent , canActivate:[AuthGuard]},
 ];

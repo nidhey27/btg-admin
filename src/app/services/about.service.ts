@@ -75,4 +75,44 @@ export class AboutService {
       }
     })
   }
+
+  // Export Compliance
+
+  async getCompliance() {
+    return this._http.get(`${environment.apiUrl}api/export-control/all`, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+  
+  async editCompliance(data, id) {
+    return this._http.put(`${environment.apiUrl}api/export-control/edit/${id}`, data,{
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
+  // About
+
+  async getAbout() {
+    return this._http.get(`${environment.apiUrl}api/about/all`, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+  
+  async editAbout(data, id) {
+    return this._http.put(`${environment.apiUrl}api/about/edit/${id}`, data,{
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
 }

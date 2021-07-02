@@ -69,6 +69,8 @@ import { AboutComponent } from './about/about.component';
 import { TeamsComponent } from './about/teams/teams.component';
 import { AddEditTeamsComponent } from './about/teams/add-edit-teams/add-edit-teams.component';
 import { HistoryComponent } from './about/history/history.component';
+import { ExportComplianceComponent } from './about/export-compliance/export-compliance.component';
+import { AboutDefaultComponent } from './about/about-default/about-default.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,7 +118,9 @@ import { HistoryComponent } from './about/history/history.component';
     AboutComponent,
     TeamsComponent,
     AddEditTeamsComponent,
-    HistoryComponent
+    HistoryComponent,
+    ExportComplianceComponent,
+    AboutDefaultComponent
   ],
   imports: [
 

@@ -37,7 +37,7 @@ export class AddEditEventsComponent implements OnInit {
       type: ['', [Validators.required]],
       venue: ['', [Validators.required]],
       url: ['', [Validators.required]],
-      description: ['', [Validators.required]]
+      description: ['']
     });
 
     if(this.id){

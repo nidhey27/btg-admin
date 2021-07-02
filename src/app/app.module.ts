@@ -36,7 +36,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { PreviewComponent } from './preview/preview.component';
 import { PreviewNavbarComponent } from './preview-navbar/preview-navbar.component';
 import { NavbarTrimPipe } from './navbar-trim.pipe'; // Editor
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { EditSubcategoryComponent } from './edit-subcategory/edit-subcategory.component';
 import { EditMaincategoryComponent } from './edit-maincategory/edit-maincategory.component';
 import { NewAndPressComponent } from './new-and-press/new-and-press.component';
@@ -46,11 +46,11 @@ import { AddEditTestimonialsComponent } from './tesmonials/add-edit-testimonials
 import { HomeComponent } from './home/home.component';
 import { EventsComponent } from './events/events.component';
 import { AddEditEventsComponent } from './events/add-edit-events/add-edit-events.component'; // Drag and Drop
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SeeWhatWeDoComponent } from './see-what-we-do/see-what-we-do.component';
 import { AddEditSeeWhatWeDoComponent } from './see-what-we-do/add-edit-see-what-we-do/add-edit-see-what-we-do.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UrlSanitizePipe } from './pipes/url-sanitize.pipe';
 import { ContactusComponent } from './contactus/contactus.component';
 import { EditComponent } from './contactus/edit/edit.component';
@@ -64,13 +64,16 @@ import { CarasoulEditComponent } from './carasoul-edit/carasoul-edit.component';
 import { CareerComponent } from './career/career.component';
 import { AddEditCareerComponent } from './career/add-edit-career/add-edit-career.component';
 import { ApplicationComponent } from './application/application.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { AboutComponent } from './about/about.component';
 import { TeamsComponent } from './about/teams/teams.component';
 import { AddEditTeamsComponent } from './about/teams/add-edit-teams/add-edit-teams.component';
 import { HistoryComponent } from './about/history/history.component';
 import { ExportComplianceComponent } from './about/export-compliance/export-compliance.component';
 import { AboutDefaultComponent } from './about/about-default/about-default.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { MatPaginatorModule } from '@angular//material/paginator';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -120,7 +123,8 @@ import { AboutDefaultComponent } from './about/about-default/about-default.compo
     AddEditTeamsComponent,
     HistoryComponent,
     ExportComplianceComponent,
-    AboutDefaultComponent
+    AboutDefaultComponent,
+    ManageUsersComponent
   ],
   imports: [
 
@@ -147,7 +151,8 @@ import { AboutDefaultComponent } from './about/about-default/about-default.compo
     MatNativeDateModule,
     MatCheckboxModule,
     PdfViewerModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   exports: [
     MatDatepickerModule

@@ -21,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
 import { ManageDataSheetsComponent } from './manage-data-sheets/manage-data-sheets.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NewAndPressComponent } from './new-and-press/new-and-press.component';
 import { PreviewComponent } from './preview/preview.component';
@@ -58,6 +59,7 @@ const routes: Routes = [
   {path:'About/export-complaince', component: ExportComplianceComponent, canActivate:[AuthGuard]},
   {path:'applications' , component:ApplicationComponent , canActivate:[AuthGuard]},
   {path:'manage-data-sheet/:id/:name' , component:ManageDataSheetsComponent , canActivate:[AuthGuard]},
+  {path:'manage-users' , component:ManageUsersComponent , canActivate:[AuthGuard]},
 ];
 
 @NgModule({

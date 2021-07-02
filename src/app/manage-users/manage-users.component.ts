@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { MatDialog } from '@angular/material/dialog';
-import { HistoryComponent } from './history/history.component';
+import { UserHistoryComponent } from './user-history/user-history.component';
 
 
 export interface UserData {
@@ -80,7 +80,7 @@ export class ManageUsersComponent implements OnInit {
   }
 
   openFormDialog(id, name): void {
-    const dialogRef = this.dialog.open(HistoryComponent, {
+    const dialogRef = this.dialog.open(UserHistoryComponent, {
       width: '100%',
       data: { id, name }
     });

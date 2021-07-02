@@ -27,6 +27,7 @@ import { NewAndPressComponent } from './new-and-press/new-and-press.component';
 import { PreviewComponent } from './preview/preview.component';
 import { ProMainCatEditComponent } from './pro-main-cat-edit/pro-main-cat-edit.component';
 import { SeeWhatWeDoComponent } from './see-what-we-do/see-what-we-do.component';
+import { SocialLinkComponent } from './social-link/social-link.component';
 import { SubCatagoryComponent } from './sub-catagory/sub-catagory.component';
 import { TesmonialsComponent } from './tesmonials/tesmonials.component';
 
@@ -58,6 +59,7 @@ const routes: Routes = [
   {path:'About/history', component: HistoryComponent, canActivate:[AuthGuard]},
   {path:'About/export-complaince', component: ExportComplianceComponent, canActivate:[AuthGuard]},
   {path:'applications' , component:ApplicationComponent , canActivate:[AuthGuard]},
+  {path:'social-links' , component:SocialLinkComponent , canActivate:[AuthGuard]},
   {path:'manage-data-sheet/:id/:name' , component:ManageDataSheetsComponent , canActivate:[AuthGuard]},
   {path:'manage-users' , component:ManageUsersComponent , canActivate:[AuthGuard]},
 ];

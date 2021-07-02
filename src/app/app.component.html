@@ -99,6 +99,10 @@
         <p class="mb-0 p-0">Applications</p>
       </a>
 
+      <a mat-list-item routerLink="/social-links" routerLinkActive="activeTest"  [routerLinkActiveOptions]="{ exact: true }">
+        <p class="mb-0 p-0">Social Links</p>
+      </a>
+
       <a mat-list-item routerLink="/get-sub-cat/{{m._id}}?type=solutionMainCategory" *ngFor="let m of subNavData" routerLinkActive="activeTest" [routerLinkActiveOptions]="{ exact: true }">
         <p class="mb-0 p-0">{{ m.name }}</p>
       </a>

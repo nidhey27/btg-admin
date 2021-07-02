@@ -15,16 +15,16 @@ export interface UserData {
 }
 
 @Component({
-  selector: 'app-history',
-  templateUrl: './history.component.html',
-  styleUrls: ['./history.component.scss']
+  selector: 'app-user-history',
+  templateUrl: './user-history.component.html',
+  styleUrls: ['./user-history.component.scss']
 })
-export class HistoryComponent implements OnInit {
+export class UserHistoryComponent implements OnInit {
 
   id: String = "";
   name: String = "";
 
-  displayedColumns: string[] = ['id', 'name','email', 'Registration Date', 'Action'];
+  displayedColumns: string[] = ['category', 'sheetName','sheetLang', 'downloadDate'];
   dataSource: MatTableDataSource<UserData>;
 
   isLoading = true;
@@ -38,14 +38,19 @@ export class HistoryComponent implements OnInit {
   ) {
      // let users = Array.from({ length: 100 }, (_, k) => this.createNewUser(k + 1));
      let users = [];
-
+    // this.data.id = '60d1a48a8d99f74084adf3d8';
      this._http.get(`${environment.apiUrl}api/download-history/${this.data?.id}`).subscribe((res: any) => {
        console.log(res)
        // users.push(res.data.name)
        
  
        res.data.forEach(element => {
-         users.push({ id: element._id, name: element.name, reg_date: element.create_date, email: element.email })
+         users.push({ 
+           category: element.categoryData.name, 
+           sheetName: element.sheetData.name, 
+           sheetLang: element.sheetData.language, 
+           downloadDate: element.udata.downloadDate
+          })
        });
        console.log(users)
        // Assign the data to the data source for the table to render
@@ -75,6 +80,4 @@ export class HistoryComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
-  
 }

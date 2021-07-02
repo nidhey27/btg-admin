@@ -73,6 +73,9 @@ import { ExportComplianceComponent } from './about/export-compliance/export-comp
 import { AboutDefaultComponent } from './about/about-default/about-default.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { MatPaginatorModule } from '@angular//material/paginator';
+import { SocialLinkComponent } from './social-link/social-link.component';
+import { AddEditSocialLinkComponent } from './social-link/add-edit-social-link/add-edit-social-link.component';
+import { UserHistoryComponent } from './manage-users/user-history/user-history.component';
 
 @NgModule({
   declarations: [
@@ -124,7 +127,10 @@ import { MatPaginatorModule } from '@angular//material/paginator';
     HistoryComponent,
     ExportComplianceComponent,
     AboutDefaultComponent,
-    ManageUsersComponent
+    ManageUsersComponent,
+    SocialLinkComponent,
+    AddEditSocialLinkComponent,
+    UserHistoryComponent
   ],
   imports: [
 

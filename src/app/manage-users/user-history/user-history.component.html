@@ -24,30 +24,30 @@
 
             <!-- <ng-container> Heck</ng-container> -->
             <!-- ID Column -->
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> User ID </th>
-                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            <ng-container matColumnDef="category">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Category Name </th>
+                <td mat-cell *matCellDef="let row"> {{row.category}} </td>
             </ng-container>
-            <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-                <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+            <ng-container matColumnDef="sheetName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Sheet Name </th>
+                <td mat-cell *matCellDef="let row"> {{row.sheetName}} </td>
             </ng-container>
 
             <!-- Progress Column -->
-            <ng-container matColumnDef="Registration Date">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Registration Date </th>
-                <td mat-cell *matCellDef="let row"> {{row.reg_date | date}}</td>
+            <ng-container matColumnDef="sheetLang">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Sheet Language </th>
+                <td mat-cell *matCellDef="let row"> {{row.sheetLang}}</td>
             </ng-container>
 
             <!-- Name Column -->
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            <ng-container matColumnDef="downloadDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Download Date </th>
+                <td mat-cell *matCellDef="let row"> {{row.downloadDate | date}} </td>
             </ng-container>
-            <ng-container matColumnDef="Action">
+            <!-- <ng-container matColumnDef="Action">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                 <td mat-cell *matCellDef="let row"><button (click)="openFormDialog(row.id, row.name)" mat-button color="warning">View History</button></td>
-            </ng-container>
+            </ng-container> -->
 
             <!-- Color Column -->
             <!-- <ng-container matColumnDef="color">

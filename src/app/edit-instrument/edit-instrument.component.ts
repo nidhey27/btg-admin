@@ -42,7 +42,7 @@ export class EditInstrumentComponent implements OnInit {
 
   async getInstrument() {
     // Get Instrument Data
-    (await this._instru.getInstrument()).subscribe( (res:any) => {
+    (await this._instru.getInstrument(this.id)).subscribe( (res:any) => {
       console.log(res.data);
       console.log(this.row1.length);
       

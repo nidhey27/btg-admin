@@ -30,7 +30,7 @@
                             <h6>{{ subNav.name }}</h6>
                         </div>
                         <div class="col-4"><a *ngIf="subNav.level == 5" class="text-danger" routerLink="/edit-instrument/{{subNav._id}}">Edit</a>
-                            <a *ngIf="subNav.level != 5" class="text-danger" routerLink="/edit-maincategory/{{subNav._id}}">Edit</a></div>
+                            <a *ngIf="subNav.level != 5" class="text-danger" routerLink="/edit-subcategory/{{subNav._id}}">Edit</a></div>
                     </div>
                 </div>
             </mat-card>

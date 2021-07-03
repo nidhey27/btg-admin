@@ -36,10 +36,11 @@ export class AddInstrumentModalComponent implements OnInit {
     console.log(this.row, this.id);
     
     this.instrumentForm = this.formBuilder.group({
-      parentId: ['', [Validators.required]],
+      parentId: [this.id, [Validators.required]],
       name: ['', [Validators.required]],
       icon: ['', [Validators.required]],
-      row: [this.row, [Validators.required]]
+      row: [this.row, [Validators.required]],
+      childId: ['', [Validators.required]]
     });
     this.getInstruments();
   }

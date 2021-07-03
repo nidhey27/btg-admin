@@ -21,12 +21,12 @@
             
             <mat-form-field appearance="fill">
                 <mat-label>Instrument</mat-label>
-                <mat-select formControlName="parentId">
+                <mat-select formControlName="childId">
                     <mat-option *ngFor="let i of instruments" value="{{i._id}}">{{i.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-error
-                *ngIf="(!instrumentForm.controls['parentId'].valid) && (instrumentForm.controls['parentId'].touched) || (instrumentForm.hasError('parentId') && !instrumentForm.hasError('required'))"
+                *ngIf="(!instrumentForm.controls['childId'].valid) && (instrumentForm.controls['childId'].touched) || (instrumentForm.hasError('childId') && !instrumentForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
                 <br>
             <input type="file" accept="image/*" (change)="setImage($event)">

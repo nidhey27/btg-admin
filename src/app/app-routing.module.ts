@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutDefaultComponent } from './about/about-default/about-default.component';
 import { AboutComponent } from './about/about.component';
+import { ComplianceWhistleblowingComponent } from './about/compliance-whistleblowing/compliance-whistleblowing.component';
 import { ExportComplianceComponent } from './about/export-compliance/export-compliance.component';
 import { HistoryComponent } from './about/history/history.component';
 import { TeamsComponent } from './about/teams/teams.component';
@@ -61,6 +62,7 @@ const routes: Routes = [
   {path:'About/teams', component: TeamsComponent, canActivate:[AuthGuard]},
   {path:'About/history', component: HistoryComponent, canActivate:[AuthGuard]},
   {path:'About/export-complaince', component: ExportComplianceComponent, canActivate:[AuthGuard]},
+  {path:'About/complaince-whistleblowing', component: ComplianceWhistleblowingComponent, canActivate:[AuthGuard]},
   {path:'applications' , component:ApplicationComponent , canActivate:[AuthGuard]},
   {path:'social-links' , component:SocialLinkComponent , canActivate:[AuthGuard]},
   {path:'manage-data-sheet/:id/:name' , component:ManageDataSheetsComponent , canActivate:[AuthGuard]},

@@ -79,6 +79,8 @@ import { UserHistoryComponent } from './manage-users/user-history/user-history.c
 import { AddEditAboutDefaultComponent } from './about/about-default/add-edit-about-default/add-edit-about-default.component';
 import { EditInstrumentComponent } from './edit-instrument/edit-instrument.component';
 import { AddInstrumentModalComponent } from './edit-instrument/add-instrument-modal/add-instrument-modal.component';
+import { ComplianceWhistleblowingComponent } from './about/compliance-whistleblowing/compliance-whistleblowing.component';
+import { HelpdeskFormComponent } from './about/compliance-whistleblowing/helpdesk-form/helpdesk-form.component';
 
 @NgModule({
   declarations: [
@@ -136,7 +138,9 @@ import { AddInstrumentModalComponent } from './edit-instrument/add-instrument-mo
     UserHistoryComponent,
     AddEditAboutDefaultComponent,
     EditInstrumentComponent,
-    AddInstrumentModalComponent
+    AddInstrumentModalComponent,
+    ComplianceWhistleblowingComponent,
+    HelpdeskFormComponent
   ],
   imports: [
 

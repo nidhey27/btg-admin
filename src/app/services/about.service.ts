@@ -159,4 +159,125 @@ export class AboutService {
     })
   }
 
+  // Compliance Whistleblowing
+  async getComWhistle() {
+    return this._http.get(`${environment.apiUrl}api/complianceWhistleblowing/all-complicane`, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
+  async addComWhistle() {
+    return this._http.post(`${environment.apiUrl}api/complianceWhistleblowing/all-complicane-add`, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+  
+  async editComWhistle(data, id) {
+    return this._http.put(`${environment.apiUrl}api/complianceWhistleblowing/edit-complicane-category/${id}`, data,{
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
+  // Compliance Whistleblowing Category
+  async getComWhistleCategory() {
+    return this._http.get(`${environment.apiUrl}api/complianceWhistleblowing/all-complicane-category`, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
+  async getSingleComWhistleCategory(id) {
+    return this._http.get(`${environment.apiUrl}api/complianceWhistleblowing/all-complicane-category/${id}`, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
+  async addComWhistleCategory(body) {
+    return this._http.post(`${environment.apiUrl}api/complianceWhistleblowing/add-complicane-category`, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+  
+  async editComWhistleCategory(data, id) {
+    return this._http.put(`${environment.apiUrl}api/complianceWhistleblowing/edit-complicane-category/${id}`, data,{
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
+  async deleteComWhistleCategory(id) {
+    return this._http.delete(`${environment.apiUrl}api/complianceWhistleblowing/delete-complicane-category/${id}`,{
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
+  // Compliance Whistleblowing Category
+  async getComWhistleCategoryHelpdesk(id) {
+    return this._http.get(`${environment.apiUrl}api/complianceWhistleblowing/helpdesk-contact-data/${id}`, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
+  async getSingleComWhistleCategoryHelpdesk(id) {
+    return this._http.get(`${environment.apiUrl}api/complianceWhistleblowing/helpdesk-contact-data/${id}`, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
+  async addComWhistleCategoryHelpdesk(body, id) {
+    return this._http.post(`${environment.apiUrl}api/complianceWhistleblowing/add-helpdesk-contact/${id}`, body, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+  
+  async editComWhistleCategoryHelpdesk(data, id) {
+    return this._http.put(`${environment.apiUrl}api/complianceWhistleblowing/edit-helpdesk-contact/${id}`, data,{
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
+  async deleteComWhistleCategoryHelpdesk(id) {
+    return this._http.delete(`${environment.apiUrl}api/complianceWhistleblowing/delete-helpdesk-contact/${id}`,{
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
+
 }

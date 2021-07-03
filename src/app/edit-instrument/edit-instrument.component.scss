@@ -1,0 +1,31 @@
+.plus-box{
+    width: fit-content;
+    
+}
+.plus-box .fa-plus{
+    border: 1px solid black;
+    margin: 34px;
+    cursor: pointer;
+}
+.plus-box .instrument-img{
+    width: 80px;
+    height: 60px;
+}
+.delete-btn{
+    position: absolute;
+    right: 0rem;
+    z-index: 10;
+}
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+a.anchor{
+    color: black;
+}
+a.anchor:hover {
+    color: #EA2F29 !important;
+    font-weight: 600;
+    text-decoration: none;
+}

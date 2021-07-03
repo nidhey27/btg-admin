@@ -10,6 +10,7 @@ import { AuthGuard } from './auth.guard';
 import { CareerComponent } from './career/career.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditInstrumentComponent } from './edit-instrument/edit-instrument.component';
 import { EditMaincategoryComponent } from './edit-maincategory/edit-maincategory.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { EditSubcategoryComponent } from './edit-subcategory/edit-subcategory.component';
@@ -45,6 +46,8 @@ const routes: Routes = [
   {path:'edit-product/:id' , component:EditProductComponent , canActivate:[AuthGuard]},
   {path:'edit-subcategory/:id' , component:EditSubcategoryComponent , canActivate:[AuthGuard]},
   {path:'edit-maincategory/:id' , component:EditMaincategoryComponent , canActivate:[AuthGuard]},
+
+  {path:'edit-instrument/:id' , component:EditInstrumentComponent , canActivate:[AuthGuard]},
   {path:'preview' , component:PreviewComponent , canActivate:[AuthGuard]},
   {path:'News & Press Release' , component:NewAndPressComponent , canActivate:[AuthGuard]},
   {path:'testimonials' , component:TesmonialsComponent , canActivate:[AuthGuard]},

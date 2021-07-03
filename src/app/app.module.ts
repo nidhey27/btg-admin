@@ -77,6 +77,8 @@ import { SocialLinkComponent } from './social-link/social-link.component';
 import { AddEditSocialLinkComponent } from './social-link/add-edit-social-link/add-edit-social-link.component';
 import { UserHistoryComponent } from './manage-users/user-history/user-history.component';
 import { AddEditAboutDefaultComponent } from './about/about-default/add-edit-about-default/add-edit-about-default.component';
+import { EditInstrumentComponent } from './edit-instrument/edit-instrument.component';
+import { AddInstrumentModalComponent } from './edit-instrument/add-instrument-modal/add-instrument-modal.component';
 
 @NgModule({
   declarations: [
@@ -132,7 +134,9 @@ import { AddEditAboutDefaultComponent } from './about/about-default/add-edit-abo
     SocialLinkComponent,
     AddEditSocialLinkComponent,
     UserHistoryComponent,
-    AddEditAboutDefaultComponent
+    AddEditAboutDefaultComponent,
+    EditInstrumentComponent,
+    AddInstrumentModalComponent
   ],
   imports: [
 

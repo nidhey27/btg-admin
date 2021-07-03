@@ -1,0 +1,102 @@
+<div class="my-2">
+    <button class="btn btn-danger btn-danger mx-2" (click)="goBack()">Back</button>
+</div>
+
+<div class="red-title-banner">
+    <h2 class="text-white"> Instrument</h2>
+</div>
+
+
+<section style="padding: 50px 0;">
+    <div class="container">
+        <div class="row mx-auto">
+
+            <div class="col-6 col-sm-6 col-md-6">
+                <img src="../../assets/instrument.png" class="img-fluid" />
+            </div>
+            <div class="col-6 col-sm-6 col-md-6">
+                <div class="row mb-1">
+
+                    <div *ngFor="let r1 of row1" class="plus-box position-relative">
+                        <button (click)="delete(r1._id)" color="accent" class="delete-btn btn btn-danger mx-1">
+                            <i aria-hidden="true" class="fa fa-trash"></i>
+                        </button>
+                        <figure>
+                            <a class="anchor">
+                                <img src="{{r1.icon}}" style="width: 80px; height: 60px;">
+                                <br>
+                                {{r1.name}}
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="plus-box position-relative">
+                        <i *ngIf="row1.length<4 || row1.length == 0" class="fa fa-plus" aria-hidden="true" (click)="openFormDialog(1)"></i>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div *ngFor="let r2 of row2" class="plus-box position-relative">
+                        <button (click)="delete(r1._id)" color="accent" class="delete-btn btn btn-danger mx-1">
+                            <i aria-hidden="true" class="fa fa-trash"></i>
+                        </button>
+                        <figure>
+                            <a class="anchor">
+                                <img src="{{r2.icon}}" style="width: 80px; height: 60px;">
+                                <br>
+                                {{r2.name}}
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="plus-box position-relative">
+                        <i *ngIf="row2.length<4 || row2.length == 0" class="fa fa-plus" aria-hidden="true" (click)="openFormDialog(2)"></i>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div *ngFor="let r3 of row3" class="plus-box position-relative">
+                        <button (click)="delete(r1._id)" color="accent" class="delete-btn btn btn-danger mx-1">
+                            <i aria-hidden="true" class="fa fa-trash"></i>
+                        </button>
+                        <figure>
+                            <a class="anchor">
+                                <img src="{{r3.icon}}" style="width: 80px; height: 60px;">
+                                <br>
+                                {{r3.name}}
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="plus-box position-relative">
+                        <i *ngIf="row3.length<4 || row3.length == 0" class="fa fa-plus" aria-hidden="true" (click)="openFormDialog(3)"></i>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div *ngFor="let r4 of row4" class="plus-box position-relative">
+                        <button (click)="delete(r1._id)" color="accent" class="delete-btn btn btn-danger mx-1">
+                            <i aria-hidden="true" class="fa fa-trash"></i>
+                        </button>
+                        <figure>
+                            <a class="anchor">
+                                <img src="{{r4.icon}}" style="width: 80px; height: 60px;">
+                                <br>
+                                {{r4.name}}
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="plus-box position-relative">
+                        <i *ngIf="row4.length<4 || row4.length == 0" class="fa fa-plus" aria-hidden="true" (click)="openFormDialog(4)"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- <div *ngFor="let s of editSection; let i = index"
+                class="position-relative col-12 col-sm-6 col-md-6 col-xl-6">
+                <button (click)="toggleEdit(i)" color="accent" class="btn btn-danger mx-1">
+                    <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+                </button>
+                <div [innerHTML]="s.data"></div>
+                <div *ngIf="s.toggle" class="">
+                    <angular-editor [(ngModel)]="s.data" [config]="config"></angular-editor>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+
+</section>

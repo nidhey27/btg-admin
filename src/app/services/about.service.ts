@@ -115,4 +115,30 @@ export class AboutService {
       }
     })
   }
+
+  async getLeadership() {
+    return this._http.get(`${environment.apiUrl}api/leadership/all`, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+  async editLeadership(data, id) {
+    return this._http.put(`${environment.apiUrl}api/leadership/edit/${id}`, data,{
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+  async deleteLeadership(data, id) {
+    return this._http.put(`${environment.apiUrl}api/leadership/delete/${id}`, data,{
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
 }

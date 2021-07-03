@@ -114,20 +114,14 @@
         <div class="container">
             <h3 class="font-weight-bold">Leadership</h3>
 
-            <div class="row mx-auto mt-4">
-                <div class="col-sm-4 p-0">
-                    <h6 class="font-weight-bold">Rob Crossman</h6>
-                    <p>President BTG Group</p>
-                </div>
-                <div class="col-sm-4 p-0">
-                    <h6 class="font-weight-bold">Laurent Chavaillaz</h6>
-                    <p>CFO BTG Group</p>
-                </div>
-                <div class="col-sm-4 p-0">
-                    <h6 class="font-weight-bold">Salma Cassam Chenaï</h6>
-                    <p>General Counsel & Ethics Officer BTG Group
 
-                    </p>
+            <button  (click)="openFormDialog('add')"  mat-stroked-button color="accent">Add</button>
+
+
+            <div class="row mx-auto mt-4">
+                <div *ngFor="let l of leadershipData; let i = index" class="col-sm-4 p-0">
+                    <h6 class="font-weight-bold">{{ l.name }}</h6>
+                    <p>{{ l.designation }}</p>
                 </div>
 
                 <hr class="my-4 d-none d-sm-block">

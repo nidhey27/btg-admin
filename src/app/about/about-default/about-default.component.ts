@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AboutService } from 'src/app/services/about.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-
+import { MatDialog } from '@angular/material/dialog';
+import { AddEditAboutDefaultComponent } from './add-edit-about-default/add-edit-about-default.component';
 @Component({
   selector: 'app-about-default',
   templateUrl: './about-default.component.html',
@@ -18,6 +19,7 @@ export class AboutDefaultComponent implements OnInit {
   misson: any;
 
   data: any = [];
+  leadershipData: any = [];
 
   config: AngularEditorConfig = {
     editable: true,
@@ -53,7 +55,8 @@ export class AboutDefaultComponent implements OnInit {
   toggle4: boolean;
   toggle5: boolean;
   constructor(
-    private _about: AboutService
+    private _about: AboutService,
+    public dialog: MatDialog
   ) { }
 
 
@@ -125,8 +128,12 @@ export class AboutDefaultComponent implements OnInit {
     })
 
   }
-  ngOnInit(): void {
+  async ngOnInit() {
     this.getAbout();
+
+    (await this._about.getLeadership()).subscribe((res: any) => {
+      this.leadershipData = res.data
+    })
   }
   goBack() {
     window.history.back()
@@ -146,5 +153,17 @@ export class AboutDefaultComponent implements OnInit {
 
       this.id = this.data._id
     })
+  }
+
+  openFormDialog(type): void {
+    const dialogRef = this.dialog.open(AddEditAboutDefaultComponent, {
+      width: '100%',
+      data: {type}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
   }
 }

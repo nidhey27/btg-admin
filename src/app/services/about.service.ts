@@ -124,6 +124,15 @@ export class AboutService {
       }
     })
   }
+
+  async addLeadership(name, designation) {
+    return this._http.post(`${environment.apiUrl}api/leadership/add`,{name, designation}, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
   async editLeadership(data, id) {
     return this._http.put(`${environment.apiUrl}api/leadership/edit/${id}`, data,{
       headers:{

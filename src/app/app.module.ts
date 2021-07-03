@@ -76,6 +76,7 @@ import { MatPaginatorModule } from '@angular//material/paginator';
 import { SocialLinkComponent } from './social-link/social-link.component';
 import { AddEditSocialLinkComponent } from './social-link/add-edit-social-link/add-edit-social-link.component';
 import { UserHistoryComponent } from './manage-users/user-history/user-history.component';
+import { AddEditAboutDefaultComponent } from './about/about-default/add-edit-about-default/add-edit-about-default.component';
 
 @NgModule({
   declarations: [
@@ -130,7 +131,8 @@ import { UserHistoryComponent } from './manage-users/user-history/user-history.c
     ManageUsersComponent,
     SocialLinkComponent,
     AddEditSocialLinkComponent,
-    UserHistoryComponent
+    UserHistoryComponent,
+    AddEditAboutDefaultComponent
   ],
   imports: [
 

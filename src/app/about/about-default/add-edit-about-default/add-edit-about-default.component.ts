@@ -10,7 +10,7 @@ import { AboutDefaultComponent } from '../about-default.component';
   styleUrls: ['./add-edit-about-default.component.scss']
 })
 export class AddEditAboutDefaultComponent implements OnInit {
-  isLoading: boolean = false;
+  isLoading: boolean = true;
   type: string;
   id: string;
   submit: boolean = false;
@@ -24,7 +24,7 @@ export class AddEditAboutDefaultComponent implements OnInit {
     private _event: AboutService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.type = this.data?.type;
     this.id = this.data?.id;
 
@@ -32,6 +32,17 @@ export class AddEditAboutDefaultComponent implements OnInit {
       name: ['', [Validators.required]],
       designation: ['', [Validators.required]],
     });
+
+    if(this.type == 'add') this.isLoading = false
+    if(this.id != ''){
+      (await this._event.getAnLeadership(this.id)).subscribe((res: any) => {
+        this.isLoading = false
+        this.leaderShipForm.setValue({
+          name: res.data.name,
+          designation: res.data.designation
+        })
+      })
+    }
     
   }
 
@@ -43,6 +54,32 @@ export class AddEditAboutDefaultComponent implements OnInit {
     this.submit = true;
     
       await (await (this._event.addLeadership(this.leaderShipForm.value.name, this.leaderShipForm.value.designation))).subscribe((response: any) => {
+        if (response?.status) {
+          this.errorMsg = "";
+
+          this.successMsg = response?.message;
+          this.submit = false;
+          console.log(response)
+          setTimeout(() => { window.location.reload() }, 1000)
+
+        } else {
+          this.submit = false;
+          this.successMsg = "";
+          this.errorMsg = response.message;
+        }
+      },(error: any) => {
+
+      })
+  }
+
+  async updateForm() {
+    if (this.leaderShipForm.invalid) {
+      return;
+    }
+    
+    this.submit = true;
+    
+      await (await (this._event.editLeadership({name: this.leaderShipForm.value.name,designation: this.leaderShipForm.value.designation}, this.id))).subscribe((response: any) => {
         if (response?.status) {
           this.errorMsg = "";
 

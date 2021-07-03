@@ -125,6 +125,15 @@ export class AboutService {
     })
   }
 
+  async getAnLeadership(id) {
+    return this._http.get(`${environment.apiUrl}api/leadership/all/${id}`, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
   async addLeadership(name, designation) {
     return this._http.post(`${environment.apiUrl}api/leadership/add`,{name, designation}, {
       headers:{

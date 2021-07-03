@@ -155,10 +155,10 @@ export class AboutDefaultComponent implements OnInit {
     })
   }
 
-  openFormDialog(type): void {
+  openFormDialog(type, id = ""): void {
     const dialogRef = this.dialog.open(AddEditAboutDefaultComponent, {
       width: '100%',
-      data: {type}
+      data: {type, id}
     });
 
     dialogRef.afterClosed().subscribe(result => {

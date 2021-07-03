@@ -122,6 +122,9 @@
                 <div *ngFor="let l of leadershipData; let i = index" class="col-sm-4 p-0">
                     <h6 class="font-weight-bold">{{ l.name }}</h6>
                     <p>{{ l.designation }}</p>
+
+                    <button (click)="openFormDialog('edit', l._id)" color="accent" class="edit-btn btn btn-danger mx-1">
+                        <i aria-hidden="true" class="fa fa-pencil-square-o"></i></button>
                 </div>
 
                 <hr class="my-4 d-none d-sm-block">

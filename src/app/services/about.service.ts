@@ -161,12 +161,7 @@ export class AboutService {
 
   // Compliance Whistleblowing
   async getComWhistle() {
-    return this._http.get(`${environment.apiUrl}api/complianceWhistleblowing/all-complicane`, {
-      headers:{
-        "auth-token": localStorage.getItem('auth-token'),
-        "role": localStorage.getItem('role')
-      }
-    })
+    return this._http.get(`${environment.apiUrl}api/complianceWhistleblowing/all-complicane`)
   }
 
   async addComWhistle() {
@@ -179,7 +174,7 @@ export class AboutService {
   }
   
   async editComWhistle(data, id) {
-    return this._http.put(`${environment.apiUrl}api/complianceWhistleblowing/edit-complicane-category/${id}`, data,{
+    return this._http.put(`${environment.apiUrl}api/complianceWhistleblowing/edit-complicane/${id}`, data,{
       headers:{
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
@@ -198,16 +193,11 @@ export class AboutService {
   }
 
   async getSingleComWhistleCategory(id) {
-    return this._http.get(`${environment.apiUrl}api/complianceWhistleblowing/all-complicane-category/${id}`, {
-      headers:{
-        "auth-token": localStorage.getItem('auth-token'),
-        "role": localStorage.getItem('role')
-      }
-    })
+    return this._http.get(`${environment.apiUrl}api/complianceWhistleblowing/all-complicane-category/${id}`)
   }
 
   async addComWhistleCategory(body) {
-    return this._http.post(`${environment.apiUrl}api/complianceWhistleblowing/add-complicane-category`, {
+    return this._http.post(`${environment.apiUrl}api/complianceWhistleblowing/add-complicane-category`,body ,{
       headers:{
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')
@@ -244,16 +234,17 @@ export class AboutService {
   }
 
   async getSingleComWhistleCategoryHelpdesk(id) {
-    return this._http.get(`${environment.apiUrl}api/complianceWhistleblowing/helpdesk-contact-data/${id}`, {
-      headers:{
-        "auth-token": localStorage.getItem('auth-token'),
-        "role": localStorage.getItem('role')
-      }
-    })
+    return this._http.get(`${environment.apiUrl}api/complianceWhistleblowing/helpdesk-contact-data/${id}`)
   }
 
-  async addComWhistleCategoryHelpdesk(body, id) {
-    return this._http.post(`${environment.apiUrl}api/complianceWhistleblowing/add-helpdesk-contact/${id}`, body, {
+  async getSingleComWhistleCategoryHelpdeskOne(id) {
+
+    console.log('Fuck Service')
+    return this._http.get(`${environment.apiUrl}api/complianceWhistleblowing/helpdesk-contact-data-an/${id}`)
+  }
+
+  async addComWhistleCategoryHelpdesk(body) {
+    return this._http.post(`${environment.apiUrl}api/complianceWhistleblowing/add-helpdesk-contact/`, body, {
       headers:{
         "auth-token": localStorage.getItem('auth-token'),
         "role": localStorage.getItem('role')

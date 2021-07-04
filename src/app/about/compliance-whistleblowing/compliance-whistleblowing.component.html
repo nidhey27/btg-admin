@@ -1,25 +1,26 @@
 <div class="my-2">
-    <button class="btn btn-danger btn-danger mx-2" (click)="goBack()">Back</button>
-    <button class="btn btn-danger mx-2" (click)="update()">Update</button>
-  
-    <!-- <button (click)="preview()" class="btn btn-danger mx-2">Preview</button>
+  <button class="btn btn-danger btn-danger mx-2" (click)="goBack()">Back</button>
+  <button class="btn btn-danger mx-2" (click)="update()">Update</button>
+
+  <!-- <button (click)="preview()" class="btn btn-danger mx-2">Preview</button>
   
     <a [routerLink]="['/manage-data-sheet', id, heading]" ><button class="btn btn-danger mx-2">Manage Data Sheets</button></a> -->
-  </div>
-  
-  <div class="red-title-banner">
-    <h2 class="text-white" data-fieldName="heading" (blur)="onKey($event)" contenteditable
-      [innerHTML]="heading || 'Product Name'"> </h2>
-  </div>
-  
-  
-  <section style="padding: 50px 0;">
-    <div class="container">
+</div>
 
-      <h6>Helpdesk Management:</h6>
-    <h4 [innerHTML]="pName"></h4>
+<div class="red-title-banner">
+  <h2 class="text-white" data-fieldName="heading" (blur)="onKey($event)" contenteditable
+    [innerHTML]="heading || 'Product Name'"> </h2>
+</div>
 
-    <button (click)="openFormDialog('add', 'category', id)" mat-flat-button class="btn-danger my-2">Add Helpdesk</button>
+
+<section style="padding: 50px 0;">
+  <div class="container">
+
+    <h6>Helpdesk Management:</h6>
+
+
+    <button (click)="openFormDialog('add', 'category', id)" mat-flat-button class="btn-danger my-2">Add
+      Helpdesk</button>
     <div *ngIf="categories.length == 0">No Helpdesk Found</div>
 
     <div *ngIf="categories.length != 0">
@@ -28,52 +29,63 @@
 
 
     <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
-        <mat-tab *ngFor="let tabtitle of categories; let index = index" class="tab-title">
-            <ng-template mat-tab-label>
-                {{tabtitle.name}}
-                <button (click)="deleteCat(tabtitle._id)"  mat-flat-button color="warn" class=" mx-1"><i aria-hidden="true"
-                        class="fa fa-trash"></i></button>
-                <button (click)="openFormDialog('edit', 'category', tabtitle.parentId, tabtitle._id)"  mat-flat-button color="accent" class=" mx-1"><i aria-hidden="true"
-                        class="fa fa-pencil"></i></button>
+      <mat-tab *ngFor="let tabtitle of categories; let index = index" class="tab-title">
+        <ng-template mat-tab-label>
+          {{tabtitle.name}}
+          <button (click)="deleteCat(tabtitle._id)" mat-flat-button color="warn" class=" mx-1"><i aria-hidden="true"
+              class="fa fa-trash"></i></button>
+          <button (click)="openFormDialog('edit', 'category', tabtitle.parentId, tabtitle._id)" mat-flat-button
+            color="accent" class=" mx-1"><i aria-hidden="true" class="fa fa-pencil"></i></button>
 
-                        <!-- (click)="openFormDialog('add', 'category', id)"                         -->
-            </ng-template>
-            <mat-selection-list>
+          <!-- (click)="openFormDialog('add', 'category', id)"                         -->
+        </ng-template>
+        <mat-selection-list>
 
-                <div *ngIf="dataSheets?.length == 0">No Data Found</div>
-                <div class="my-4" *ngFor="let d of dataSheets">
-                    {{ d.name }} | {{ d.language }}
+          <div *ngIf="dataSheets?.length == 0">No Data Found</div>
+          <div class="row mx-auto my-4">
+            <div class="col-sm-4" *ngFor="let d of dataSheets">
 
-                    <!-- <button (click)="showPDF(d.url)" class="btn btn-success mx-4">View PDF</button> -->
-                    <!-- <button (click)="showPDF(d.url)" class="btn btn-info mx-4">Edit</button> -->
-                    <button style="float: right !important" (click)="showPDF(d.url)" class="mx-2" mat-flat-button
-                        color="basic">View PDF</button>
-                    <button style="float: right !important" (click)="openFormDialog('edit', 'datasheet', id, d._id)" class="mx-2" mat-flat-button color="primary">Edit</button>
-                    <button style="float: right !important" (click)="deleteDataSheet(d._id)" class="mx-2" mat-flat-button color="warn">Delete</button>
-                </div>
+              <button (click)="deleteHelpDesk(d._id)" color="accent" class="delete-btn btn btn-danger mx-1">
+                <i aria-hidden="true" class="fa fa-trash"></i>
+              </button>
+              <button (click)="openFormDialog('edit', 'datasheet',d._id, d.parentId)" color="accent" class="edit-btn btn btn-danger mx-1">
+                <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+              </button>
 
-                <button (click)="openFormDialog('add', 'datasheet', id, tabtitle._id)" mat-flat-button color="accent" class=" my-3">Add Data Sheet for {{ tabtitle.name }}</button>
-            </mat-selection-list>
-        </mat-tab>
+              <h5 _ngcontent-thj-c57="" class="text-danger  ng-star-inserted" style="font-weight: 700;">{{ d.name }}
+              </h5>
+              <h6 _ngcontent-thj-c57="" class="my-3 ng-star-inserted" style="">{{ d.subHeading }}</h6>
+              <h6 _ngcontent-thj-c57="" class="text-danger ng-star-inserted" style="" [innerHTML]="d.data"></h6>
+
+              <h6 _ngcontent-thj-c57="" class="text-danger my-3 ng-star-inserted" style="font-size: 12px;">
+                {{ d.email }} </h6>
+
+
+            </div>
+          </div>
+
+          <button (click)="openFormDialog('add', 'datasheet', id, tabtitle._id)" mat-flat-button color="accent"
+            class=" my-3">Add Helpdesk for {{ tabtitle.name }}</button>
+        </mat-selection-list>
+      </mat-tab>
     </mat-tab-group>
 
-      <div class="row mx-auto">
-  
-        <div class="w-100 position-relative col-12 col-sm-6 col-md-6 col-xl-6">
-          <button (click)="toggleEdit()" color="accent" class="btn btn-danger mx-1">
-            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-          </button>
-          <div [innerHTML]="body"></div>
-          <div *ngIf="toggle" class="">
-            <angular-editor [(ngModel)]="body" [config]="config"></angular-editor>
-          </div>
-        </div>
-  
+    <div class="row mx-auto">
 
-  
+      <div class="w-100 position-relative col-12 col-sm-6 col-md-6 col-xl-6">
+        <button (click)="toggleEdit()" color="accent" class="btn btn-danger mx-1">
+          <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+        </button>
+        <div [innerHTML]="body"></div>
+        <div *ngIf="toggle" class="">
+          <angular-editor [(ngModel)]="body" [config]="config"></angular-editor>
+        </div>
       </div>
+
+
+
     </div>
-  
-    
-  </section>
- 
+  </div>
+
+
+</section>

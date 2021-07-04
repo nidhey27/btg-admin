@@ -28,7 +28,7 @@ export class HelpdeskFormComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
     private _about: AboutService
-    ) { }
+  ) { }
 
 
   ngOnInit(): void {
@@ -37,12 +37,12 @@ export class HelpdeskFormComponent implements OnInit {
     this.parentId = this.data.pid
     this.categoryId = this.data.cid
 
-    if(this.categoryId){
+    if (this.categoryId) {
       this.getSingleCatergory();
     }
 
-    if(this.cat == 'datasheet'){
-      this.getSingleDataSheet();
+    if (this.parentId) {
+      this.getSingleHelpDeskOne();
     }
 
     this.dataSheetCategoryForm = this.formBuilder.group({
@@ -52,82 +52,112 @@ export class HelpdeskFormComponent implements OnInit {
 
     this.dataSheeForm = this.formBuilder.group({
       name: ['', [Validators.required]],
-      language: ['', [Validators.required]],
-      file: ['', [Validators.required]],
+      subheadingName: ['', [Validators.required]],
+      data: ['', [Validators.required]],
+      email: ['', [Validators.required]],
     });
 
     console.log(this.data)
   }
 
-   formData = new FormData()
-  async addDataSheet(){
+  async getSingleHelpDeskOne() {
+    console.log(this.parentId, "fuck");
+    (await this._about.getSingleComWhistleCategoryHelpdeskOne(this.parentId)).subscribe((res: any) => {
+      console.log(res);
+      
+      this.dataSheeForm.patchValue({
+        name: res.data[0].name,
+        subheadingName: res.data[0].subHeading,
+        data: res.data[0].data,
+        email: res.data[0].email,
+      });
+    })
+  }
+
+  formData = new FormData()
+  async addDataSheet() {
     console.log(this.dataSheeForm.value);
 
     // let file = new FileReader()
     // File file = new File("this.dataSheeForm.value.file");
-    
+
     this.formData.append('name', this.dataSheeForm.value.name)
     this.formData.append('language', this.dataSheeForm.value.language)
 
     this.formData.forEach((elem, key) => {
       console.log(elem, key)
     })
-    // return 0
-    ;(await this._about.addComWhistleCategoryHelpdesk(this.formData, this.categoryId)).subscribe((res: any) => {
-      // console.log(res);
+    let body = {
+      parentId: this.categoryId,
+      name: this.dataSheeForm.value.name,
+      subHeading: this.dataSheeForm.value.subheadingName,
+      data: this.dataSheeForm.value.data,
+      email: this.dataSheeForm.value.email,
+    }
+      // return 0
+      ; (await this._about.addComWhistleCategoryHelpdesk(body)).subscribe((res: any) => {
+        // console.log(res);
 
-      if (res?.status) {
-        this.errorMsg = '';
-        this.successMsg = res?.message
-        setTimeout(() => { window.location.reload() }, 2000)
-      }else{
-        this.errorMsg = res.message
-      }
-      
-    })
+        if (res?.status) {
+          this.errorMsg = '';
+          this.successMsg = res?.message
+          setTimeout(() => { window.location.reload() }, 2000)
+        } else {
+          this.errorMsg = res.message
+        }
+
+      })
   }
 
-  async updateDataSheet(){
+  async updateDataSheet() {
     console.log(this.dataSheeForm.value);
 
     // let file = new FileReader()
     // File file = new File("this.dataSheeForm.value.file");
-    
+
     this.formData.append('name', this.dataSheeForm.value.name)
     this.formData.append('language', this.dataSheeForm.value.language)
-    
+
     this.formData.forEach((elem, key) => {
-      
-      if(key == 'file' && elem == ''){
+
+      if (key == 'file' && elem == '') {
         this.formData.delete('file');
       }
       // console.log(elem, key)
     })
 
-    // this.formData.forEach((elem, key) => {
-    //   console.log(elem, key)
-    // })
-    
-    // return 0
-    ;(await this._about.editComWhistleCategoryHelpdesk(this.formData, this.categoryId)).subscribe((res: any) => {
-      // console.log(res);
+      // this.formData.forEach((elem, key) => {
+      //   console.log(elem, key)
+      // })
 
-      if (res?.status) {
-        this.errorMsg = '';
-        this.successMsg = res?.message
-        setTimeout(() => { window.location.reload() }, 2000)
-      }else{
-        this.errorMsg = res.message
+      // return 0
+
+      let body = {
+        parentId: this.categoryId,
+        name: this.dataSheeForm.value.name,
+        subHeading: this.dataSheeForm.value.subheadingName,
+        data: this.dataSheeForm.value.data,
+        email: this.dataSheeForm.value.email,
       }
-      
-    })
+      ; (await this._about.editComWhistleCategoryHelpdesk(body, this.parentId)).subscribe((res: any) => {
+        // console.log(res);
+
+        if (res?.status) {
+          this.errorMsg = '';
+          this.successMsg = res?.message
+          setTimeout(() => { window.location.reload() }, 2000)
+        } else {
+          this.errorMsg = res.message
+        }
+
+      })
   }
 
 
   onFileChange(event) {
-  
+
     if (event.target.files.length > 0) {
-      this.formData.append('file', event.target.files[0] )
+      this.formData.append('file', event.target.files[0])
     }
   }
 
@@ -147,7 +177,9 @@ export class HelpdeskFormComponent implements OnInit {
           this.errorMsg = '';
           this.successMsg = res?.message
           setTimeout(() => { window.location.reload() }, 2000)
-        }else{
+        } else {
+          console.log(res);
+
           this.errorMsg = res.message
         }
       })
@@ -164,32 +196,25 @@ export class HelpdeskFormComponent implements OnInit {
       // console.log(name, this.parentId)
 
       ; (await this._about.editComWhistleCategory(this.dataSheetCategoryForm.value, this.categoryId,)).subscribe((res: any) => {
-        // console.log(res)
+        console.log(res)
 
         if (res?.status) {
+
           this.errorMsg = '';
           this.successMsg = res?.message
           setTimeout(() => { window.location.reload() }, 2000)
-        }else{
+        } else {
           this.errorMsg = res.message
         }
       })
 
   }
 
-  async getSingleCatergory(){
-    (await this._about.getSingleComWhistleCategory(this.categoryId)).subscribe( (res:any) => {
+  async getSingleCatergory() {
+    (await this._about.getSingleComWhistleCategory(this.categoryId)).subscribe((res: any) => {
+      console.log(res.data.name)
       this.dataSheetCategoryForm.patchValue({
-        name: res?.data.name
-      });
-    })
-  }
-
-  async getSingleDataSheet(){
-    (await this._about.getSingleComWhistleCategoryHelpdesk(this.categoryId)).subscribe( (res:any) => {
-      this.dataSheeForm.patchValue({
-        name: res?.data.name,
-        language: res?.data.language
+        name: res.data[0].name
       });
     })
   }

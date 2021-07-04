@@ -1,11 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { AboutService } from 'src/app/services/about.service';
-
+import { environment } from '../../../environments/environment';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { HelpdeskFormComponent } from './helpdesk-form/helpdesk-form.component';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 @Component({
   selector: 'app-compliance-whistleblowing',
   templateUrl: './compliance-whistleblowing.component.html',
@@ -51,20 +53,116 @@ export class ComplianceWhistleblowingComponent implements OnInit {
   constructor(
     private _about: AboutService,
     private _activatedRoute: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _http: HttpClient
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.getComplaince();
+
+    this._http.get(`${environment.apiUrl}api/complianceWhistleblowing/get-helpdesk-cat`).subscribe((res: any) =>{
+      this.categories = res.data
+    })
   }
 
   goBack() {
     window.history.back()
   }
 
+  async tabChanged(tabChangeEvent: MatTabChangeEvent) {
+    console.log('tabChangeEvent => ', tabChangeEvent);
+    console.log('index => ', tabChangeEvent.index);
+
+    // console.log(this.categories[tabChangeEvent.index])
+    let parentId = this.categories[tabChangeEvent.index].parentId
+    let categoryId = this.categories[tabChangeEvent.index]._id
+
+      ; (await this._about.getSingleComWhistleCategoryHelpdesk(categoryId)).subscribe((res: any) => {
+        console.log(res)
+        this.dataSheets = res.data
+      })
+  }
+
   toggleEdit(){
       this.toggle = !this.toggle;
     
+  }
+
+  async deleteHelpDesk(id){
+   
+    Swal.fire({
+      title: 'Are you sure want to remove?',
+      text: 'Event will be deleted!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then(async (result) => {
+      if (result.value) {
+        (await this._about.deleteComWhistleCategoryHelpdesk(id)).subscribe((res: any) => {
+          if(res.status){
+            Swal.fire(
+              'Deleted!',
+              'Deleted Successfully',
+              'success'
+            ).then(() => {
+              setTimeout(() => { window.location.reload() }, 500);
+            })
+          }else{
+            Swal.fire(
+              'Failed to delete!',
+              'Unable to delete.',
+              'error'
+            )
+          }
+        })
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe :)',
+          'error'
+        )
+      }
+    })
+
+  }
+  async deleteCat(id){
+   
+    Swal.fire({
+      title: 'Are you sure want to remove?',
+      text: 'Event will be deleted!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then(async (result) => {
+      if (result.value) {
+        (await this._about.deleteComWhistleCategory(id)).subscribe((res: any) => {
+          if(res.status){
+            Swal.fire(
+              'Deleted!',
+              'Deleted Successfully',
+              'success'
+            ).then(() => {
+              setTimeout(() => { window.location.reload() }, 500);
+            })
+          }else{
+            Swal.fire(
+              'Failed to delete!',
+              'Unable to delete.',
+              'error'
+            )
+          }
+        })
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe :)',
+          'error'
+        )
+      }
+    })
+
   }
 
   onKey(data) {
@@ -84,7 +182,7 @@ export class ComplianceWhistleblowingComponent implements OnInit {
     
 
     // return 0;
-    (await this._about.editComWhistleCategory(body, this.id)).subscribe((resp: any) => {
+    (await this._about.editComWhistle(body, this.id)).subscribe((resp: any) => {
       console.log(resp)
 
       if (resp?.status) {

@@ -47,25 +47,42 @@
     <div *ngIf="type == 'add' && cat == 'datasheet'">
         <!-- <p>Parent ID : {{ parentId }}</p>
         <p>Category ID : {{ categoryId }}</p> -->
-        <h6>Add Data Sheet</h6>
+        <h6>Add </h6>
         <form [formGroup]="dataSheeForm" (ngSubmit)="addDataSheet()">
         <mat-form-field class="example-full-width w-100">
             <mat-label>Name</mat-label>
-            <input  formControlName="name" data-fieldName="name"  required matInput type="password" placeholder="Ex: MEK-2500" autocomplete type="text">
+            <input  formControlName="name"  required matInput placeholder="Ex: MEK-2500" autocomplete type="text">
         </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Language</mat-label>
-            <mat-select required formControlName="language" data-fieldName="language">
-                <mat-option value="English">English</mat-option>
-                <mat-option value="French">French</mat-option>
-                <mat-option value="Spanish">Spanish</mat-option>
-                <mat-option value="Korean">Korean</mat-option>
-            </mat-select>
+        <mat-form-field class="example-full-width w-100">
+            <mat-label>Sub Heading</mat-label>
+            <input  formControlName="subheadingName"  required matInput placeholder="Ex: MEK-2500" autocomplete type="text">
         </mat-form-field>
 
+        <!-- <mat-form-field class="example-full-width w-100">
+            <mat-label>Data</mat-label>
+            <mat-textarea  formControlName="data"  required matInput placeholder="Ex: MEK-2500" autocomplete type="text">
+                </mat-textarea>
+        </mat-form-field> -->
 
-        <input [writeFile]="true" (change)="onFileChange($event)" type="file" formControlName="file" name="file" id="file" class="form-control">
+        <label class="text-danger">*Note: Add &lt;br> tag at end of each line to start next sentence from new line </label>
+        <label class="text-danger">Ex: +91 xxxxxxxxx &lt;br> +1 xxxxxxxxxx</label>
+        <!-- <label  class="text-danger">Result: +91 xxxxxxxxx <br> +1 xxxxxxxxxx</label> -->
+        <mat-form-field [style.fontSize]="16" class="example-full-width w-100">
+            <mat-label>Data</mat-label>
+            <textarea formControlName="data" matInput
+                      cdkTextareaAutosize
+                      required
+                      #autosize="cdkTextareaAutosize"
+                      cdkAutosizeMinRows="1"
+                      cdkAutosizeMaxRows="5"></textarea>
+          </mat-form-field>
+        <mat-form-field class="example-full-width w-100">
+            <mat-label>Email</mat-label>
+            <input  formControlName="email"  required matInput placeholder="Ex: MEK-2500" autocomplete type="text">
+        </mat-form-field>
+
+        
 
         <button mat-flat-button color="warn" class="my-3">Add</button>
 
@@ -84,36 +101,54 @@
     <div *ngIf="type == 'edit' && cat == 'datasheet'">
         <!-- <p>Parent ID : {{ parentId }}</p>
         <p>Category ID : {{ categoryId }}</p> -->
-        <h6>Add Data Sheet</h6>
+        <h6>Edit</h6>
         <form [formGroup]="dataSheeForm" (ngSubmit)="updateDataSheet()">
-        <mat-form-field class="example-full-width w-100">
-            <mat-label>Name</mat-label>
-            <input  formControlName="name" data-fieldName="name"  required matInput type="password" placeholder="Ex: MEK-2500" autocomplete type="text">
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>Language</mat-label>
-            <mat-select required formControlName="language" data-fieldName="language">
-                <mat-option value="English">English</mat-option>
-                <mat-option value="French">French</mat-option>
-                <mat-option value="Spanish">Spanish</mat-option>
-                <mat-option value="Korean">Korean</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-
-        <input [writeFile]="true" (change)="onFileChange($event)" type="file" formControlName="file" name="file" id="file" class="form-control">
-
-        <button mat-flat-button color="warn" class="my-3">Update</button>
-
-        <div class="alert mt-2 alert-success" *ngIf="successMsg.length > 0">
-            {{ successMsg }}
-        </div>
-
-        <div class="alert mt-2 alert-danger" *ngIf="errorMsg.length > 0">
-            {{ errorMsg }}
-        </div>
-    </form>
+            <mat-form-field class="example-full-width w-100">
+                <mat-label>Name</mat-label>
+                <input  formControlName="name"  required matInput placeholder="Ex: MEK-2500" autocomplete type="text">
+            </mat-form-field>
+    
+            <mat-form-field class="example-full-width w-100">
+                <mat-label>Sub Heading</mat-label>
+                <input  formControlName="subheadingName"  required matInput placeholder="Ex: MEK-2500" autocomplete type="text">
+            </mat-form-field>
+    
+            <!-- <mat-form-field class="example-full-width w-100">
+                <mat-label>Data</mat-label>
+                <mat-textarea  formControlName="data"  required matInput placeholder="Ex: MEK-2500" autocomplete type="text">
+                    </mat-textarea>
+            </mat-form-field> -->
+    
+            <label class="text-danger">*Note: Add &lt;br> tag at end of each line to start next sentence from new line </label>
+            <label class="text-danger">Ex: +91 xxxxxxxxx &lt;br> +1 xxxxxxxxxx</label>
+            <!-- <label  class="text-danger">Result: +91 xxxxxxxxx <br> +1 xxxxxxxxxx</label> -->
+            <mat-form-field [style.fontSize]="16" class="example-full-width w-100">
+                <mat-label>Data</mat-label>
+                <textarea formControlName="data" matInput
+                          cdkTextareaAutosize
+                          required
+                          #autosize="cdkTextareaAutosize"
+                          cdkAutosizeMinRows="1"
+                          cdkAutosizeMaxRows="5"></textarea>
+              </mat-form-field>
+            <mat-form-field class="example-full-width w-100">
+                <mat-label>Email</mat-label>
+                <input  formControlName="email"  required matInput placeholder="Ex: MEK-2500" autocomplete type="text">
+            </mat-form-field>
+    
+            
+    
+            <button mat-flat-button color="warn" class="my-3">Update</button>
+    
+            <div class="alert mt-2 alert-success" *ngIf="successMsg.length > 0">
+                {{ successMsg }}
+            </div>
+    
+            <div class="alert mt-2 alert-danger" *ngIf="errorMsg.length > 0">
+                {{ errorMsg }}
+            </div>
+        </form>
+    
 
 
     </div>

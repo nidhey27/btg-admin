@@ -9,6 +9,7 @@ import { TeamsComponent } from './about/teams/teams.component';
 import { ApplicationComponent } from './application/application.component';
 import { AuthGuard } from './auth.guard';
 import { CareerComponent } from './career/career.component';
+import { CommingSoonComponent } from './comming-soon/comming-soon.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditInstrumentComponent } from './edit-instrument/edit-instrument.component';
@@ -64,6 +65,7 @@ const routes: Routes = [
   {path:'About/export-complaince', component: ExportComplianceComponent, canActivate:[AuthGuard]},
   {path:'About/complaince-whistleblowing', component: ComplianceWhistleblowingComponent, canActivate:[AuthGuard]},
   {path:'applications' , component:ApplicationComponent , canActivate:[AuthGuard]},
+  {path:'coming-soon' , component:CommingSoonComponent , canActivate:[AuthGuard]},
   {path:'social-links' , component:SocialLinkComponent , canActivate:[AuthGuard]},
   {path:'manage-data-sheet/:id/:name' , component:ManageDataSheetsComponent , canActivate:[AuthGuard]},
   {path:'manage-users' , component:ManageUsersComponent , canActivate:[AuthGuard]},

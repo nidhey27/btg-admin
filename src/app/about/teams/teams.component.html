@@ -16,31 +16,53 @@
     <div class="container">
 
 
-            
-
-            <section style="padding: 50px 0;">
-                <div class="container">
 
 
-                    <div class="row mx-auto my-4">
+        <section style="padding: 50px 0;">
+            <div class="container">
 
-                        <div class="col-sm-4 text-center position-relative" *ngFor="let t of teams">
-                            <button (click)="delete(t._id)" color="accent" class="delete-btn btn btn-danger mx-1">
+
+                <div class="row mx-auto my-4">
+
+                    <div class="col-sm-4 text-center position-relative" *ngFor="let t of teams">
+                        <button (click)="delete(t._id)" color="accent" class="delete-btn btn btn-danger mx-1">
                                 <i aria-hidden="true" class="fa fa-trash"></i>
                             </button>
-                            <button (click)="openFormDialog('edit', t._id)" color="accent" class="edit-btn btn btn-danger mx-1">
+                        <button (click)="openFormDialog('edit', t._id)" color="accent" class="edit-btn btn btn-danger mx-1">
                                 <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
                             </button>
-                            <figure>
-                                <img src="{{t.image}}" class="img-fluid">
-                                <figcaption class="bold">{{t.name}}</figcaption>
-                                <figcaption>{{t.designation}}</figcaption>
-                            </figure>
-                        </div>
-
+                        <figure>
+                            <img src="{{t.image}}" class="img-fluid">
+                            <figcaption class="bold">{{t.name}}</figcaption>
+                            <figcaption>{{t.designation}}</figcaption>
+                        </figure>
                     </div>
+
                 </div>
-            </section>
+            </div>
+        </section>
+
+        <section style="padding: 50px 0;" class="bg-light">
+            <div class="container">
+                <h3 class="font-weight-bold">Leadership</h3>
+
+
+                <button (click)="openFormDialog1('add')" mat-stroked-button color="accent">Add</button>
+
+
+                <div class="row mx-auto mt-4">
+                    <div *ngFor="let l of leadershipData; let i = index" class="col-sm-4 p-0">
+                        <h6 class="font-weight-bold">{{ l.name }}</h6>
+                        <p>{{ l.designation }}</p>
+
+                        <button (click)="openFormDialog1('edit', l._id)" color="accent" class="btn btn-danger mx-1">
+                            <i aria-hidden="true" class="fa fa-pencil-square-o"></i></button>
+                    </div>
+
+                    <hr class="my-4 d-none d-sm-block">
+                </div>
+            </div>
+        </section>
 
 
 

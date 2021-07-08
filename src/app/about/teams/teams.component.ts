@@ -3,6 +3,7 @@ import { AboutService } from 'src/app/services/about.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { AddEditTeamsComponent } from './add-edit-teams/add-edit-teams.component';
+import { AddEditAboutDefaultComponent } from '../about-default/add-edit-about-default/add-edit-about-default.component';
 
 @Component({
   selector: 'app-teams',
@@ -12,13 +13,17 @@ import { AddEditTeamsComponent } from './add-edit-teams/add-edit-teams.component
 export class TeamsComponent implements OnInit {
   teams:any;
   loader:boolean = false;
+  leadershipData: any = [];
   constructor(
     private _about: AboutService,
     public dialog: MatDialog
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.getAllTeam();
+    (await this._about.getLeadership()).subscribe((res: any) => {
+      this.leadershipData = res.data
+    })
   }
 
   openFormDialog(type = '', id = ''): void {
@@ -26,6 +31,18 @@ export class TeamsComponent implements OnInit {
       width: '50%',
 
       data: { type, id }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+  }
+
+  openFormDialog1(type, id = ""): void {
+    const dialogRef = this.dialog.open(AddEditAboutDefaultComponent, {
+      width: '100%',
+      data: {type, id}
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -6,19 +6,28 @@ img {
     width: 70%;
 }
 
-.edit-btn{
+.edit-btn {
     position: absolute;
     right: 10px;
     z-index: 10;
 }
-.delete-btn{
+
+.delete-btn {
     position: absolute;
     right: 3.5rem;
     z-index: 10;
 }
-.red-title-banner{
+
+.red-title-banner {
     background-color: var(--danger);
     // margin-top: 10rem;
     padding: 10px 0;
     text-align: center;
+}
+
+hr {
+    border-top: 0;
+    width: 100%;
+    height: 1px;
+    background-image: linear-gradient( -90deg, rgba(208, 2, 27, 0) 0%, #d0021b 50%, rgba(208, 2, 27, 0) 100%) !important;
 }

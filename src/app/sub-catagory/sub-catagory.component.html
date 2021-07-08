@@ -1,1 +1,62 @@
-<p>sub-catagory works!</p>
+<div class="red-title-banner mt-5">
+    <h2 class="text-white" data-fieldName="heading" (blur)="onKey($event)" contenteditable [innerHTML]="indusSolFor?.heading || 'Industry Solution for Name'"> </h2>
+</div>
+
+<!-- style="width: 100%; height: 100%;position: absolute;left: -20%;top: 2.5%" -->
+
+<section style="padding: 100px 0;">
+    <div class="container">
+        <button color="accent" class="btn btn-danger mx-1">
+            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+        </button>
+        <div class="row  mx-auto">
+            <div class="col-sm-5 justify-content-center" style="position: relative;">
+                <img [src]="indusSolFor?.gifURL" style="position: absolute;left: -20%;top: -2%" alt="" class="img-fluid">
+            </div>
+
+            <div class="col-sm-7 ">
+
+                <div class="strip level1 text-dark">
+                    <span data-fieldName="heading1" (blur)="onKey($event)" contenteditable [innerHTML]="indusSolFor?.heading1 || 'Add Here'"></span>
+                </div>
+
+
+                <div class="strip level2 text-dark">
+                    <span data-fieldName="heading2" (blur)="onKey($event)" contenteditable [innerHTML]="indusSolFor?.heading2 || 'Add Here'"> </span>
+                </div>
+
+
+                <div class="strip level3 text-dark">
+                    <span data-fieldName="heading3" (blur)="onKey($event)" contenteditable [innerHTML]="indusSolFor?.heading3 || 'Add Here'"></span>
+                </div>
+
+                <div class="strip level4 text-dark">
+                    <span data-fieldName="heading4" (blur)="onKey($event)" contenteditable [innerHTML]="indusSolFor?.heading4 || 'Add Here'"></span>
+                </div>
+
+            </div>
+        </div>
+
+        <section style="padding: 50px 0;">
+            <div class="container">
+                <div class="row mx-auto">
+
+                    <div class="position-relative col-12 col-sm-12 col-md-12 col-xl-12">
+                        <button (click)="toggleEdit()" color="accent" class="btn btn-danger mx-1">
+                            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+                        </button>
+                        <div *ngIf="toggleBody" class="">
+                            <angular-editor [(ngModel)]="indusSolFor.body" [config]="config"></angular-editor>
+                        </div>
+                        <div [innerHTML]="indusSolFor?.body"></div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+</section>

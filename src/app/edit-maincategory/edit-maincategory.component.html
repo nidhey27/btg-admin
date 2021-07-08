@@ -1,169 +1,35 @@
 <div class="my-2">
     <button class="btn btn-danger btn-danger mr-4" (click)="goBack()">Back</button>
     <button class="btn btn-danger mx-5" (click)="update()">Update</button>
-  
+
     <button (click)="preview()" class="btn btn-danger">Preview</button>
-  </div>
-  
-  <div class="red-title-banner">
-    <h2 class="text-white" data-fieldName="heading" (blur)="onKey($event)" contenteditable
-      [innerHTML]="heading || 'Product Name'"> </h2>
-  </div>
-  
-  
-  <section style="padding: 50px 0;">
+</div>
+
+<div class="red-title-banner">
+    <h2 class="text-white" data-fieldName="heading" (blur)="onKey($event)" contenteditable [innerHTML]="heading || 'Product Name'"> </h2>
+</div>
+
+
+<section style="padding: 50px 0;">
     <div class="container">
-      <div class="row mx-auto">
-  
-        <div *ngFor="let s of editSection; let i = index" class="position-relative col-12 col-sm-6 col-md-6 col-xl-6">
-          <button (click)="toggleEdit(i)" color="accent" class="btn btn-danger mx-1">
-            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-          </button>
-          <div [innerHTML]="s.data"></div>
-          <div *ngIf="s.toggle" class="">
-            <angular-editor [(ngModel)]="s.data" [config]="config"></angular-editor>
-          </div>
+        <div class="row mx-auto">
+
+            <div *ngFor="let s of editSection; let i = index" class="position-relative col-12 col-sm-6 col-md-6 col-xl-6">
+                <button (click)="toggleEdit(i)" color="accent" class="btn btn-danger mx-1">
+          <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+        </button>
+                <div [innerHTML]="s.data"></div>
+                <div *ngIf="s.toggle" class="">
+                    <angular-editor [(ngModel)]="s.data" [config]="config"></angular-editor>
+                </div>
+            </div>
+
+
         </div>
-  
-        <!-- First Section -->
-        <!-- <div class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <button (click)="toggleEdit(editSectionOne, 1)" color="accent" class="btn btn-danger mx-1">
-            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-          </button>
-          <div [innerHTML]="sectionOne"></div>
-        </div>
-        <div *ngIf="editSectionOne" class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <angular-editor [(ngModel)]="sectionOne" [config]="config"></angular-editor>
-        </div> -->
-        <!-- First Section END -->
-  
-        <!-- Second Section -->
-        <!-- <div class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <button (click)="toggleEdit(editSectionTwo, 2)" color="accent" class="btn btn-danger mx-1">
-            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-          </button>
-          <div [innerHTML]="sectionTwo"></div>
-        </div>
-        <div *ngIf="editSectionTwo" class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <angular-editor [(ngModel)]="sectionTwo" [config]="config"></angular-editor>
-        </div> -->
-        <!-- Second Section END -->
-  <!-- 
-        <div class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <button (click)="editSectionThree = !editSectionThree;" color="accent" class="btn btn-danger mx-1">
-            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-          </button>
-          <div [innerHTML]="sectionThree"></div>
-        </div>
-        <div *ngIf="editSectionThree" class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <angular-editor [(ngModel)]="sectionThree" [config]="config"></angular-editor>
-        </div>
-        <div class="position-relative col-12 col-sm-6 col-md-6 col xl-6 foursection">
-          <button (click)="editSectionFour = !editSectionFour;" color="accent" class="btn btn-danger mx-1 foursection">
-            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-          </button>
-          <div [innerHTML]="sectionFour"></div>
-        </div>
-        <div *ngIf="editSectionFour" class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <angular-editor [(ngModel)]="sectionFour" [config]="config"></angular-editor>
-        </div> -->
-        <!-- Second Section END -->
-  
-        <!-- <div class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <button (click)="editSectionFive = !editSectionFive;" color="accent" class="btn btn-danger mx-1">
-            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-          </button>
-          <div [innerHTML]="sectionFive"></div>
-          
-        </div>
-        <div *ngIf="editSectionFive" class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <angular-editor [(ngModel)]="sectionFive" [config]="config"></angular-editor>
-        </div>
-        <div class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <button (click)="editSectionSix = !editSectionSix;" color="accent" class="btn btn-danger mx-1">
-            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-          </button>
-          <div [innerHTML]="sectionSix"></div>
-          
-        </div>
-        <div *ngIf="editSectionSix" class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <angular-editor [(ngModel)]="sectionSix" [config]="config"></angular-editor>
-        </div> -->
-        <!-- Third Section END -->
-  
-        <!-- <div class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <button (click)="editSectionSeven = !editSectionSeven;" color="accent" class="btn btn-danger mx-1">
-            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-          </button>
-          <div [innerHTML]="sectionSeven"></div>
-          
-        </div>
-        <div *ngIf="editSectionSeven" class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <angular-editor [(ngModel)]="sectionSeven" [config]="config"></angular-editor>
-        </div>
-  
-        <div class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <button (click)="editSectionEight = !editSectionEight;" color="accent" class="btn btn-danger mx-1">
-            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-          </button>
-          <div [innerHTML]="sectionEight"></div>
-          
-        </div>
-        <div *ngIf="editSectionEight" class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <angular-editor [(ngModel)]="sectionEight" [config]="config"></angular-editor>
-        </div> -->
-        <!-- Fourth Section END -->
-  
-        <!-- <div class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <button (click)="editSectionNine = !editSectionNine;" color="accent" class="btn btn-danger mx-1">
-            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-          </button>
-          <div [innerHTML]="sectionNine"></div>
-          
-        </div>
-        <div *ngIf="editSectionNine" class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <angular-editor [(ngModel)]="sectionNine" [config]="config"></angular-editor>
-        </div>
-        <div class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <button (click)="editSectionTen = !editSectionTen;" color="accent" class="btn btn-danger mx-1">
-            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-          </button>
-          <div [innerHTML]="sectionTen"></div>
-          
-        </div>
-        <div *ngIf="editSectionTen" class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <angular-editor [(ngModel)]="sectionTen" [config]="config"></angular-editor>
-        </div> -->
-        <!-- Fift Section END -->
-  
-        <!-- <div class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <button (click)="editSectionEleven = !editSectionEleven;" color="accent" class="btn btn-danger mx-1">
-            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-          </button>
-          <div [innerHTML]="sectionEleven"></div>
-          
-        </div>
-  
-        <div *ngIf="editSectionEleven" class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <angular-editor [(ngModel)]="sectionEleven" [config]="config"></angular-editor>
-        </div>
-        <div class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <button (click)="editSectionTwelve = !editSectionTwelve;" color="accent" class="btn btn-danger mx-1">
-            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-          </button>
-          <div [innerHTML]="sectionTwelve"></div>
-          
-        </div>
-        <div *ngIf="editSectionTwelve" class="position-relative col-12 col-sm-6 col-md-6 col xl-6">
-          <angular-editor [(ngModel)]="sectionTwelve" [config]="config"></angular-editor>
-        </div> -->
-        <!-- Sixth Section END -->
-  
-      </div>
     </div>
-  </section>
-  
-  <!-- 
+</section>
+
+<!-- 
     brouncher: [
       { "language": "English", "link": "............" },
       { "language": "Spanish", "link": "............" },

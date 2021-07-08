@@ -35,21 +35,29 @@
 
 </div>
 
-<button (click)="addCarsoule()" *ngIf="carsouleType == 1 || carsouleType == 2 || carsouleType == 3 " class="btn btn-danger mt-4">Add</button>
+<button (click)="addCarsoule()" *ngIf="carsouleType == 1 || carsouleType == 2 || carsouleType == 3 " class="btn btn-danger mt-4" [disabled]="submit">Add</button>
 
 <br>
 
 <form *ngIf="carsouleType == 4"  action="">
     <label for="">Upload Banner Image / Gif</label>
     <br>
-    <input type="file" name="" id="">
-    <button class="btn btn-danger">Add</button>
+    <input type="file" name="" id="" (change)="setImage($event)">
+    <button (click)="addCarsoule()" class="btn btn-danger" [disabled]="submit">Add</button>
 
 </form>
 
 <form *ngIf="carsouleType == 5"  action="">
     <label for="">Upload Banner Video</label>
     <br>
-    <input type="file" name="" id="">
-    <button class="btn btn-danger">Add</button>
+    <input type="file" name="" id="" (change)="setImage($event)">
+    <button (click)="addCarsoule()" class="btn btn-danger" [disabled]="submit">Add</button>
 </form>
+
+<div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+    {{ successMsg }}
+</div>
+
+<div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+    {{ errorMsg }}
+</div>

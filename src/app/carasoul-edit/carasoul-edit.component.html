@@ -6,7 +6,8 @@
         <div class="form-group">
 
             <label for="">Upload Image</label> <br>
-            <input type="file" (change)="setImage($event)" accept="image/*">
+            <input *ngIf="type == 4" type="file" (change)="setImage($event)" accept="image/*">
+            <input *ngIf="type == 5" type="file" (change)="setImage($event)" accept="video/*">
 
         </div>
 

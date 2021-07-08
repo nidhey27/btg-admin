@@ -5,6 +5,7 @@ import { HomeService } from '../services/home.service';
 import { AddComponent } from './add/add.component';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { CarasoulEditComponent } from '../carasoul-edit/carasoul-edit.component';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,6 +21,41 @@ export class HomeComponent implements OnInit {
   // @ViewChild('hoverCountry') hoverCountry;
   hoverCountry = "Yoo";
   isLoading: boolean;
+
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Arial',
+    toolbarHiddenButtons: [
+      ['bold']
+    ],
+    customClasses: [
+      {
+        name: "quote",
+        class: "quote",
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: "titleText",
+        class: "titleText",
+        tag: "h1",
+      },
+      {
+        name: "red-button",
+        class: "btn btn-danger",
+        tag: "button",
+      },
+    ]
+  };
+  
   constructor(
     private _home: HomeService,
     public dialog: MatDialog
@@ -254,6 +290,8 @@ export class HomeComponent implements OnInit {
     let val = data.target.innerHTML
     let key = data.target.getAttribute('data-fieldName')
     // console.log(key)
+    console.log(val);
+    
     // this.dataForm[key] = val;
     this.formData.set(key, val)
 

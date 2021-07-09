@@ -2,16 +2,25 @@
     <h2 class="text-white" data-fieldName="heading" (blur)="onKey($event)" contenteditable [innerHTML]="indusSolFor?.heading || 'Industry Solution for Name'"> </h2>
 </div>
 
+<div class="my-2">
+    <button class="btn btn-danger btn-danger mx-2" (click)="goBack()">Back</button>
+    <button class="btn btn-danger mx-2" (click)="update()">Update</button>
+</div>
 <!-- style="width: 100%; height: 100%;position: absolute;left: -20%;top: 2.5%" -->
 
 <section style="padding: 100px 0;">
     <div class="container">
-        <button color="accent" class="btn btn-danger mx-1">
+        <label for="gifURL" class="btn btn-danger mx-1">
+            <i aria-hidden="true" class="fa fa-pencil-square-o"></i> GIF
+        </label>
+        <!-- <button  color="accent" class="btn btn-danger mx-1">
             <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
-        </button>
+        </button> -->
+        <input id="gifURL" data-fieldName="gifURL" (change)="setImage($event)" type="file" style="display: none;" accept="image/*" />
         <div class="row  mx-auto">
             <div class="col-sm-5 justify-content-center" style="position: relative;">
                 <img [src]="indusSolFor?.gifURL" style="position: absolute;left: -20%;top: -2%" alt="" class="img-fluid">
+
             </div>
 
             <div class="col-sm-7 ">
@@ -52,7 +61,78 @@
 
                     </div>
 
+                </div>
+            </div>
+        </section>
 
+        <section class="bg-light" style="padding: 100px 0;">
+            <div class="container">
+                <h3 class="text-center">Our featured solutions</h3>
+
+                <div id="lev4" class="row my-4 mx-auto text-center justify-content-center" style="padding: 60px 0;">
+                    <div class="col-sm-4 position-relative">
+                        <!-- <button (click)="toggleEdit()" color="accent" class="btn btn-danger mx-1">
+                            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+                        </button> -->
+                        <div [innerHTML]="section1"></div>
+                        <angular-editor [(ngModel)]="section1" [config]="config"></angular-editor>
+                    </div>
+                    <div class="col-sm-4">
+                        <div [innerHTML]="section2"></div>
+                        <angular-editor [(ngModel)]="section2" [config]="config"></angular-editor>
+                    </div>
+                    <div class="col-sm-4">
+                        <div [innerHTML]="section3"></div>
+                        <angular-editor [(ngModel)]="section3" [config]="config"></angular-editor>
+                    </div>
+                </div>
+
+                <div id="lev3" class="row my-4 mx-auto justify-content-center" style="padding: 60px 0;">
+                    <div class="col-sm-4 position-relative">
+                        <!-- <button (click)="toggleEdit()" color="accent" class="btn btn-danger mx-1">
+                            <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
+                        </button> -->
+                        <div [innerHTML]="section4"></div>
+                        <angular-editor [(ngModel)]="section4" [config]="config"></angular-editor>
+                    </div>
+                    <div class="col-sm-4">
+                        <div [innerHTML]="section5"></div>
+                        <angular-editor [(ngModel)]="section5" [config]="config"></angular-editor>
+                    </div>
+                    <div class="col-sm-4">
+                        <div [innerHTML]="section6"></div>
+                        <angular-editor [(ngModel)]="section6" [config]="config"></angular-editor>
+                    </div>
+                </div>
+
+                <div id="lev2" class="row my-4 mx-auto justify-content-center" style="padding: 60px 0;">
+                    <div class="col-sm-4">
+                        <div [innerHTML]="section7"></div>
+                        <angular-editor [(ngModel)]="section7" [config]="config"></angular-editor>
+                    </div>
+                    <div class="col-sm-4">
+                        <div [innerHTML]="section8"></div>
+                        <angular-editor [(ngModel)]="section8" [config]="config"></angular-editor>
+                    </div>
+                    <div class="col-sm-4">
+                        <div [innerHTML]="section9"></div>
+                        <angular-editor [(ngModel)]="section9" [config]="config"></angular-editor>
+                    </div>
+                </div>
+
+                <div id="lev1" class="row my-4 mx-auto justify-content-center" style="padding: 60px 0;">
+                    <div class="col-sm-4">
+                        <div [innerHTML]="section10"></div>
+                        <angular-editor [(ngModel)]="section10" [config]="config"></angular-editor>
+                    </div>
+                    <div class="col-sm-4">
+                        <div [innerHTML]="section11"></div>
+                        <angular-editor [(ngModel)]="section11" [config]="config"></angular-editor>
+                    </div>
+                    <div class="col-sm-4">
+                        <div [innerHTML]="section12"></div>
+                        <angular-editor [(ngModel)]="section12" [config]="config"></angular-editor>
+                    </div>
                 </div>
             </div>
         </section>

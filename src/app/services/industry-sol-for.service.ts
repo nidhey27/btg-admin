@@ -17,4 +17,13 @@ export class IndustrySolForService {
       }
     })
   }
+  
+  async editIndSolFor(parentId, childId, body) {
+    return this._http.put(`${environment.apiUrl}api/industry-sol-for/edit/${parentId}/${childId}`, body, {
+      headers: {
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
 }

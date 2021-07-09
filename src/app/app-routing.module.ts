@@ -10,6 +10,7 @@ import { ApplicationComponent } from './application/application.component';
 import { AuthGuard } from './auth.guard';
 import { CareerComponent } from './career/career.component';
 import { CommingSoonComponent } from './comming-soon/comming-soon.component';
+import { ContactBtgComponent } from './contact-btg/contact-btg.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditInstrumentComponent } from './edit-instrument/edit-instrument.component';
@@ -69,6 +70,7 @@ const routes: Routes = [
   {path:'social-links' , component:SocialLinkComponent , canActivate:[AuthGuard]},
   {path:'manage-data-sheet/:id/:name' , component:ManageDataSheetsComponent , canActivate:[AuthGuard]},
   {path:'manage-users' , component:ManageUsersComponent , canActivate:[AuthGuard]},
+  {path:'contact-btg' , component:ContactBtgComponent , canActivate:[AuthGuard]},
 ];
 
 @NgModule({

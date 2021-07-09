@@ -82,6 +82,8 @@ import { AddInstrumentModalComponent } from './edit-instrument/add-instrument-mo
 import { ComplianceWhistleblowingComponent } from './about/compliance-whistleblowing/compliance-whistleblowing.component';
 import { HelpdeskFormComponent } from './about/compliance-whistleblowing/helpdesk-form/helpdesk-form.component';
 import { CommingSoonComponent } from './comming-soon/comming-soon.component';
+import { ContactBtgComponent } from './contact-btg/contact-btg.component';
+import { AddEditContactBtgComponent } from './contact-btg/add-edit-contact-btg/add-edit-contact-btg.component';
 
 @NgModule({
   declarations: [
@@ -142,7 +144,9 @@ import { CommingSoonComponent } from './comming-soon/comming-soon.component';
     AddInstrumentModalComponent,
     ComplianceWhistleblowingComponent,
     HelpdeskFormComponent,
-    CommingSoonComponent
+    CommingSoonComponent,
+    ContactBtgComponent,
+    AddEditContactBtgComponent
   ],
   imports: [
 

@@ -54,4 +54,14 @@ export class ContactBtgService {
       }
     })
   }
+
+  async addFileContact(body) {
+    return this._http.post(`${environment.apiUrl}api/contact/uploadfile`, body, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
+
 }

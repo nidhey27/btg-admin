@@ -19,6 +19,7 @@ export class AddEditContactBtgComponent implements OnInit {
   errorMsg: string = "";
   successMsg: string = "";
   country: any;
+  contactFileForm = new FormData();
   constructor(
     public dialogRef: MatDialogRef<ContactBtgComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -98,6 +99,42 @@ export class AddEditContactBtgComponent implements OnInit {
       },(error: any) => {
 
       })
+  }
+
+  async setImage(e){
+    if (e.target.files) {
+      const file = e.target.files[0];
+      const type = file.type;
+      this.contactFileForm.append('file', file, 'ContactSheet');
+    } 
+  }
+
+  changeFile(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+  }
+
+  async uploadFileForm(){
+    
+    (await this._contact.addFileContact(this.contactFileForm)).subscribe( (res:any) => {
+      if (res?.status) {
+        this.errorMsg = "";
+
+        this.successMsg = res?.message;
+        this.submit = false;
+        console.log(res)
+        setTimeout(() => { window.location.reload() }, 1000)
+
+      } else {
+        this.submit = false;
+        this.successMsg = "";
+        this.errorMsg = res.message;
+      }
+    })
   }
 
   async getSingleTestimonial(){

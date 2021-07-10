@@ -97,6 +97,8 @@ export class EditSubcategoryComponent implements OnInit {
     let val = data.target.innerHTML
     let key = data.target.getAttribute('data-fieldName')
     this.heading = val;
+    console.log(this.heading);
+    
   }
 
 

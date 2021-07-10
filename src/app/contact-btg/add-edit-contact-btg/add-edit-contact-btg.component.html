@@ -187,6 +187,24 @@
         </div>
     </form>
 
+    <form *ngIf="!isLoading && type=='upload-file'" (ngSubmit)="uploadFileForm()">
+        <div class="form-group">
+            <b>Add Contact through File</b>
+            <br>
+            <input type="file" (change)="setImage($event)">
+        </div>
+
+        <button [disabled]="submit" class="btn btn-danger w-100 my-2">Add</button>
+
+        <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+            {{ successMsg }}
+        </div>
+
+        <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+            {{ errorMsg }}
+        </div>
+    </form>
+
     <mat-dialog-actions align="end">
         <button mat-button mat-dialog-close>Cancel</button>
 

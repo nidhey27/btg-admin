@@ -1,3 +1,9 @@
+<div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border text-danger" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
 <div class="red-title-banner mt-5">
     <h2 class="text-white" data-fieldName="heading" (blur)="onKey($event)" contenteditable [innerHTML]="indusSolFor?.heading || 'Industry Solution for Name'"> </h2>
 </div>
@@ -16,7 +22,7 @@
         <!-- <button  color="accent" class="btn btn-danger mx-1">
             <i aria-hidden="true" class="fa fa-pencil-square-o"></i>
         </button> -->
-        <input id="gifURL" data-fieldName="gifURL" (change)="setImage($event)" type="file" style="display: none;" accept="image/*" />
+        <input id="gifURL" data-fieldName="gifURL" (change)="onFileChange($event, 'gifURL')" type="file" style="display: none;" accept="image/*" />
         <div class="row  mx-auto">
             <div class="col-sm-5 justify-content-center" style="position: relative;">
                 <img [src]="indusSolFor?.gifURL" style="position: absolute;left: -20%;top: -2%" alt="" class="img-fluid">
@@ -78,8 +84,8 @@
                         <angular-editor [(ngModel)]="section1" [config]="config"></angular-editor>
                     </div>
                     <div class="col-sm-4">
-                        <div [innerHTML]="section2"></div>
-                        <angular-editor [(ngModel)]="section2" [config]="config"></angular-editor>
+                        <input  type="file" (change)="onFileChange($event, 'section2')" >
+                        <img style="width: 100%; height:100%;" [src]="section2" alt="">
                     </div>
                     <div class="col-sm-4">
                         <div [innerHTML]="section3"></div>
@@ -96,8 +102,8 @@
                         <angular-editor [(ngModel)]="section4" [config]="config"></angular-editor>
                     </div>
                     <div class="col-sm-4">
-                        <div [innerHTML]="section5"></div>
-                        <angular-editor [(ngModel)]="section5" [config]="config"></angular-editor>
+                        <input  type="file" (change)="onFileChange($event, 'section5')" >
+                        <img style="width: 100%; height:100%;" [src]="section5" alt="">
                     </div>
                     <div class="col-sm-4">
                         <div [innerHTML]="section6"></div>
@@ -111,8 +117,8 @@
                         <angular-editor [(ngModel)]="section7" [config]="config"></angular-editor>
                     </div>
                     <div class="col-sm-4">
-                        <div [innerHTML]="section8"></div>
-                        <angular-editor [(ngModel)]="section8" [config]="config"></angular-editor>
+                        <input  type="file" (change)="onFileChange($event, 'section8')" >
+                        <img style="width: 100%; height:100%;" [src]="section8" alt="">
                     </div>
                     <div class="col-sm-4">
                         <div [innerHTML]="section9"></div>
@@ -126,8 +132,8 @@
                         <angular-editor [(ngModel)]="section10" [config]="config"></angular-editor>
                     </div>
                     <div class="col-sm-4">
-                        <div [innerHTML]="section11"></div>
-                        <angular-editor [(ngModel)]="section11" [config]="config"></angular-editor>
+                        <input  type="file" (change)="onFileChange($event, 'section11')" >
+                        <img style="width: 100%; height:100%;" [src]="section11" alt="">
                     </div>
                     <div class="col-sm-4">
                         <div [innerHTML]="section12"></div>

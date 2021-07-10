@@ -82,6 +82,8 @@ import { AddInstrumentModalComponent } from './edit-instrument/add-instrument-mo
 import { ComplianceWhistleblowingComponent } from './about/compliance-whistleblowing/compliance-whistleblowing.component';
 import { HelpdeskFormComponent } from './about/compliance-whistleblowing/helpdesk-form/helpdesk-form.component';
 import { CommingSoonComponent } from './comming-soon/comming-soon.component';
+import { ManageAzureFilesComponent } from './manage-azure-files/manage-azure-files.component';
+import { AddEditAzureFilesNewComponent } from './manage-azure-files/add-edit-azure-files-new/add-edit-azure-files-new.component';
 
 @NgModule({
   declarations: [
@@ -142,7 +144,9 @@ import { CommingSoonComponent } from './comming-soon/comming-soon.component';
     AddInstrumentModalComponent,
     ComplianceWhistleblowingComponent,
     HelpdeskFormComponent,
-    CommingSoonComponent
+    CommingSoonComponent,
+    ManageAzureFilesComponent,
+    AddEditAzureFilesNewComponent,
   ],
   imports: [
 

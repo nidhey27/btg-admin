@@ -19,14 +19,19 @@
                 *ngIf="(!newsForm.controls['heading'].valid) && (newsForm.controls['heading'].touched) || (newsForm.hasError('heading') && !newsForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
 
-            <mat-form-field class="example-full-width w-100">
+            <!-- <mat-form-field class="example-full-width w-100">
 
                 <mat-label for="name">Description</mat-label>
                 <textarea matInput placeholder="Enter Description" formControlName="description" type="text"></textarea>
             </mat-form-field>
             <mat-error
                 *ngIf="(!newsForm.controls['description'].valid) && (newsForm.controls['description'].touched) || (newsForm.hasError('description') && !newsForm.hasError('required'))"
-                class="text-danger">This field is required.</mat-error>
+                class="text-danger">This field is required.</mat-error> -->
+                <label for=""><b>Description</b></label>
+                <div [innerHTML]="editDescription"></div>
+
+
+                <angular-editor  [ngModelOptions]="{standalone: true}" [(ngModel)]="editDescription" [config]="config"></angular-editor>
 
             <!-- <input type="file" accept="image/*" (change)="setImage($event)"> -->
             
@@ -58,15 +63,19 @@
                 *ngIf="(!newsForm.controls['heading'].valid) && (newsForm.controls['heading'].touched) || (newsForm.hasError('heading') && !newsForm.hasError('required'))"
                 class="text-danger">This field is required.</mat-error>
 
-            <mat-form-field class="example-full-width w-100">
+                <label for=""><b>Description</b></label>
+            <!-- <mat-form-field class="example-full-width w-100">
 
                 <mat-label for="name">Description</mat-label>
                 <textarea matInput placeholder="Enter Description" formControlName="description" type="text"></textarea>
             </mat-form-field>
             <mat-error
                 *ngIf="(!newsForm.controls['description'].valid) && (newsForm.controls['description'].touched) || (newsForm.hasError('description') && !newsForm.hasError('required'))"
-                class="text-danger">This field is required.</mat-error>
+                class="text-danger">This field is required.</mat-error> -->
+                <div [innerHTML]="editDescription"></div>
 
+
+                <angular-editor  [ngModelOptions]="{standalone: true}" [(ngModel)]="editDescription" [config]="config"></angular-editor>
             <!-- <input type="file" accept="image/*" (change)="setImage($event)"> -->
             
             

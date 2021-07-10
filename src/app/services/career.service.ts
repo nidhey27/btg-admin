@@ -11,12 +11,7 @@ export class CareerService {
   ) { }
 
   async getCareerApplication() {
-    return this._http.get(`${environment.apiUrl}api/careers/get-all-job-applications`, {
-      headers:{
-        "auth-token": localStorage.getItem('auth-token'),
-        "role": localStorage.getItem('role')
-      }
-    })
+    return this._http.get(`${environment.apiUrl}api/careers/get-all-job-applications`)
   }
 
   async getCareer() {

@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NewAndPressComponent } from '../new-and-press.component';
 import { NewsService } from 'src/app/services/news.service';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 @Component({
   selector: 'app-add-news',
   templateUrl: './add-news.component.html',
@@ -17,6 +18,38 @@ export class AddNewsComponent implements OnInit {
   submit: boolean = false;
   errorMsg: string = "";
   successMsg: string = "";
+  editDescription: any = "Add description here";
+  
+
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Arial',
+    toolbarHiddenButtons: [
+      ['bold']
+    ],
+    customClasses: [
+      {
+        name: "quote",
+        class: "quote",
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: "titleText",
+        class: "titleText",
+        tag: "h1",
+      },
+    ]
+  };
+
   constructor(
     public dialogRef: MatDialogRef<NewAndPressComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -32,7 +65,7 @@ export class AddNewsComponent implements OnInit {
     this.newsForm = this.formBuilder.group({
       heading: ['', [Validators.required]],
       // image: ['', [Validators.required]],
-      description: ['', [Validators.required]]
+      description: ['']
     });
 
     this.getSingleNews();
@@ -43,8 +76,13 @@ export class AddNewsComponent implements OnInit {
       return;
     }
 
+    let body = {
+      heading: this.newsForm.value.heading,
+      description: this.editDescription
+    }
+
     this.submit = true;
-      await (await (this._news.addNews(this.newsForm.value))).subscribe((response: any) => {
+      await (await (this._news.addNews(body))).subscribe((response: any) => {
         if (response?.status) {
           this.errorMsg = "";
 
@@ -68,10 +106,15 @@ export class AddNewsComponent implements OnInit {
     // return 0;
     if (this.newsForm.invalid) {
       return;
+    } 
+
+    let body = {
+      heading: this.newsForm.value.heading,
+      description: this.editDescription
     }
 
     this.submit = true;
-      await (await (this._news.editNews(this.newsForm.value, this.id))).subscribe((response: any) => {
+      await (await (this._news.editNews(body, this.id))).subscribe((response: any) => {
         if (response?.status) {
           this.errorMsg = "";
 
@@ -116,6 +159,7 @@ export class AddNewsComponent implements OnInit {
   async getSingleNews(){
     (await (this._news.getSingleNews(this.id))).subscribe( (res:any) => {
       console.log(res);
+      this.editDescription = res.data.description
       this.newsForm.setValue({
         heading: res.data.heading,
         description: res.data.description,

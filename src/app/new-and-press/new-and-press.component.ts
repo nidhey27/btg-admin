@@ -32,6 +32,7 @@ export class NewAndPressComponent implements OnInit {
   openFormDialog(type = '', id = ''): void {
     const dialogRef = this.dialog.open(AddNewsComponent, {
       width: '50%',
+      height: '90%',
 
       data: { type, id }
     });

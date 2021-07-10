@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TestimonialsService } from '../services/testimonials.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AddEditTestimonialsComponent } from './add-edit-testimonials/add-edit-testimonials.component';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-tesmonials',
@@ -39,14 +40,43 @@ export class TesmonialsComponent implements OnInit {
   }
 
   async delete(type = '', id){
-    (await this._test.deleteTestimonials(type, id)).subscribe((resp: any) => {
-      console.log(resp);
-      
-      if(resp.status){
-        setTimeout(() => { window.location.reload() }, 1000)
-      }else{
-        alert(resp.message)
+
+    Swal.fire({
+      title: 'Are you sure want to remove?',
+      text: 'All datasheets will be deleted if any!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then(async (result) => {
+      if (result.value) {
+        (await this._test.deleteTestimonials(type, id)).subscribe((resp: any) => {
+          console.log(resp);
+          
+          if(resp.status){
+            Swal.fire(
+              'Deleted!',
+              'Deleted Successfully',
+              'success'
+            ).then(() => {
+              setTimeout(() => { window.location.reload() }, 500);
+            })
+          }else{
+            Swal.fire(
+              'Failed to delete!',
+              'Unable to delete.',
+              'error'
+            )
+          }
+        })
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe :)',
+          'error'
+        )
       }
     })
   }
+
 }

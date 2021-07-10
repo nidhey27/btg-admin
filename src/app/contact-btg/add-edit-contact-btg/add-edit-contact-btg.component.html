@@ -1,0 +1,212 @@
+<div class="container">
+
+    <div *ngIf="isLoading" class="text-center">
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <!-- {{type}} {{navId}} {{category}} -->
+
+    <form *ngIf="!isLoading && type=='add'" [formGroup]="contactForm" (ngSubmit)="addForm()">
+        <div class="form-group">
+            <b>Add Contact</b>
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Office Name</mat-label>
+                <input matInput placeholder="Enter Office Name" formControlName="office_name" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['office_name'].valid) && (contactForm.controls['office_name'].touched) || (contactForm.hasError('office_name') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+            
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Display Country</mat-label>
+                <input matInput placeholder="Enter Display Country" formControlName="display_country" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['display_country'].valid) && (contactForm.controls['display_country'].touched) || (contactForm.hasError('display_country') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Other Countries</mat-label>
+                <textarea matInput placeholder="Enter Other Countries" formControlName="other_countries" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['other_countries'].valid) && (contactForm.controls['other_countries'].touched) || (contactForm.hasError('other_countries') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Products</mat-label>
+                <textarea matInput placeholder="Enter Products" formControlName="products" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['products'].valid) && (contactForm.controls['products'].touched) || (contactForm.hasError('products') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Contact Number</mat-label>
+                <textarea matInput placeholder="Enter Contact Number" formControlName="contact_number" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['contact_number'].valid) && (contactForm.controls['contact_number'].touched) || (contactForm.hasError('contact_number') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+            
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Email Address</mat-label>
+                <textarea matInput placeholder="Enter Email Address" formControlName="email_address" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['email_address'].valid) && (contactForm.controls['email_address'].touched) || (contactForm.hasError('email_address') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Fax</mat-label>
+                <textarea matInput placeholder="Enter Fax" formControlName="fax" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['fax'].valid) && (contactForm.controls['fax'].touched) || (contactForm.hasError('fax') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Address</mat-label>
+                <textarea matInput placeholder="Enter Address" formControlName="address" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['address'].valid) && (contactForm.controls['address'].touched) || (contactForm.hasError('address') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+            
+            
+        </div>
+
+        <button [disabled]="submit" class="btn btn-danger w-100 my-2">Add</button>
+
+        <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+            {{ successMsg }}
+        </div>
+
+        <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+            {{ errorMsg }}
+        </div>
+    </form>
+
+    <!-- edit -->
+
+    <form *ngIf="!isLoading && type=='edit'" [formGroup]="contactForm" (ngSubmit)="editForm()">
+        <div class="form-group">
+            <b>Update Contact {{country}}</b>
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Office Name</mat-label>
+                <input matInput placeholder="Enter Office Name" formControlName="office_name" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['office_name'].valid) && (contactForm.controls['office_name'].touched) || (contactForm.hasError('office_name') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+            
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Display Country</mat-label>
+                <input matInput placeholder="Enter Display Country" formControlName="display_country" type="text">
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['display_country'].valid) && (contactForm.controls['display_country'].touched) || (contactForm.hasError('display_country') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Other Countries</mat-label>
+                <textarea matInput placeholder="Enter Other Countries" formControlName="other_countries" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['other_countries'].valid) && (contactForm.controls['other_countries'].touched) || (contactForm.hasError('other_countries') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Products</mat-label>
+                <textarea matInput placeholder="Enter Products" formControlName="products" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['products'].valid) && (contactForm.controls['products'].touched) || (contactForm.hasError('products') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Contact Number</mat-label>
+                <textarea matInput placeholder="Enter Contact Number" formControlName="contact_number" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['contact_number'].valid) && (contactForm.controls['contact_number'].touched) || (contactForm.hasError('contact_number') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+            
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Email Address</mat-label>
+                <textarea matInput placeholder="Enter Email Address" formControlName="email_address" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['email_address'].valid) && (contactForm.controls['email_address'].touched) || (contactForm.hasError('email_address') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Fax</mat-label>
+                <textarea matInput placeholder="Enter Fax" formControlName="fax" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['fax'].valid) && (contactForm.controls['fax'].touched) || (contactForm.hasError('fax') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+
+            <mat-form-field class="example-full-width w-100">
+
+                <mat-label for="name">Address</mat-label>
+                <textarea matInput placeholder="Enter Address" formControlName="address" type="text"></textarea>
+            </mat-form-field>
+            <mat-error
+                *ngIf="(!contactForm.controls['address'].valid) && (contactForm.controls['address'].touched) || (contactForm.hasError('address') && !contactForm.hasError('required'))"
+                class="text-danger">This field is required.</mat-error>
+            
+            
+        </div>
+
+        <button [disabled]="submit" class="btn btn-danger w-100 my-2">Update</button>
+
+        <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+            {{ successMsg }}
+        </div>
+
+        <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+            {{ errorMsg }}
+        </div>
+    </form>
+
+    <form *ngIf="!isLoading && type=='upload-file'" (ngSubmit)="uploadFileForm()">
+        <div class="form-group">
+            <b>Add Contact through File</b>
+            <br>
+            <input type="file" (change)="setImage($event)">
+        </div>
+
+        <button [disabled]="submit" class="btn btn-danger w-100 my-2">Add</button>
+
+        <div class="alert mt-2 alert-success" *ngIf="successMsg?.length > 0">
+            {{ successMsg }}
+        </div>
+
+        <div class="alert mt-2 alert-danger" *ngIf="errorMsg?.length > 0">
+            {{ errorMsg }}
+        </div>
+    </form>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+
+    </mat-dialog-actions>
+</div>

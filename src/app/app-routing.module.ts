@@ -72,6 +72,7 @@ const routes: Routes = [
   { path: 'manage-data-sheet/:id/:name', component: ManageDataSheetsComponent, canActivate: [AuthGuard] },
   { path: 'manage-users', component: ManageUsersComponent, canActivate: [AuthGuard] },
   { path: 'manage-azure-files', component: ManageAzureFilesComponent, canActivate: [AuthGuard] },
+  { path: 'contact-btg', component: ContactBtgComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

@@ -147,6 +147,7 @@ import { AddEditAzureFilesNewComponent } from './manage-azure-files/add-edit-azu
     CommingSoonComponent,
     ManageAzureFilesComponent,
     AddEditAzureFilesNewComponent,
+    
   ],
   imports: [
 

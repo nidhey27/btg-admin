@@ -9,6 +9,15 @@ export class ContactBtgService {
   constructor(
     private _http: HttpClient
   ) { }
+
+  async getAllContacts() {
+    return this._http.get(`${environment.apiUrl}api/contact/get-all`, {
+      headers:{
+        "auth-token": localStorage.getItem('auth-token'),
+        "role": localStorage.getItem('role')
+      }
+    })
+  }
   
   async getContacts(search) {
     return this._http.get(`${environment.apiUrl}api/contact/get/${search}`, {

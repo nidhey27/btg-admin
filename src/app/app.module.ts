@@ -84,6 +84,8 @@ import { HelpdeskFormComponent } from './about/compliance-whistleblowing/helpdes
 import { CommingSoonComponent } from './comming-soon/comming-soon.component';
 import { ManageAzureFilesComponent } from './manage-azure-files/manage-azure-files.component';
 import { AddEditAzureFilesNewComponent } from './manage-azure-files/add-edit-azure-files-new/add-edit-azure-files-new.component';
+import { ContactBtgComponent } from './contact-btg/contact-btg.component';
+import { AddEditContactBtgComponent } from './contact-btg/add-edit-contact-btg/add-edit-contact-btg.component';
 
 @NgModule({
   declarations: [
@@ -147,7 +149,8 @@ import { AddEditAzureFilesNewComponent } from './manage-azure-files/add-edit-azu
     CommingSoonComponent,
     ManageAzureFilesComponent,
     AddEditAzureFilesNewComponent,
-    
+    ContactBtgComponent,
+    AddEditContactBtgComponent
   ],
   imports: [
 

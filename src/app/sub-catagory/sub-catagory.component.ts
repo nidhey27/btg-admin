@@ -46,7 +46,7 @@ export class SubCatagoryComponent implements OnInit {
   };
 
   async onFileChange(event, type) {
-  
+
     if (event.target.files.length > 0) {
       this.formData.append('file', event.target.files[0] )
     }
@@ -68,9 +68,9 @@ export class SubCatagoryComponent implements OnInit {
         this.section11 = res.data.link
       else if(type == 'gifURL')
         this.indusSolFor.gifURL = res.data.link
-        
+
       console.log(this.indusSolFor);
-      
+
     })
   }
 
@@ -120,7 +120,7 @@ export class SubCatagoryComponent implements OnInit {
     (await this._indSol.getIndSolFor(id)).subscribe((res: any) => {
 
       console.log(res);
-      
+
       this.indusSolFor = res.data[0]
       this.section1 = res.data[0]?.data[0].section1
       this.section2 = res.data[0]?.data[0].section2
@@ -163,9 +163,12 @@ export class SubCatagoryComponent implements OnInit {
     // this.heading = val;
     // console.log(this.heading);
     // key = 'heading1';
-    console.log(val);
-    console.log(key);
+    console.warn(val);
+    console.warn(key);
     this.indusSolFor[key] = val;
+
+    console.warn(this.indusSolFor);
+
 
   }
 
@@ -192,6 +195,8 @@ export class SubCatagoryComponent implements OnInit {
   }
 
   async update() {
+
+
     let body = {
       section1: this.section1,
       section2: this.section2,

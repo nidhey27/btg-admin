@@ -86,6 +86,7 @@ import { ManageAzureFilesComponent } from './manage-azure-files/manage-azure-fil
 import { AddEditAzureFilesNewComponent } from './manage-azure-files/add-edit-azure-files-new/add-edit-azure-files-new.component';
 import { ContactBtgComponent } from './contact-btg/contact-btg.component';
 import { AddEditContactBtgComponent } from './contact-btg/add-edit-contact-btg/add-edit-contact-btg.component';
+import { SubscribeComponent } from './subscribe/subscribe.component';
 
 @NgModule({
   declarations: [
@@ -150,7 +151,8 @@ import { AddEditContactBtgComponent } from './contact-btg/add-edit-contact-btg/a
     ManageAzureFilesComponent,
     AddEditAzureFilesNewComponent,
     ContactBtgComponent,
-    AddEditContactBtgComponent
+    AddEditContactBtgComponent,
+    SubscribeComponent
   ],
   imports: [
 

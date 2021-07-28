@@ -34,6 +34,7 @@ import { ProMainCatEditComponent } from './pro-main-cat-edit/pro-main-cat-edit.c
 import { SeeWhatWeDoComponent } from './see-what-we-do/see-what-we-do.component';
 import { SocialLinkComponent } from './social-link/social-link.component';
 import { SubCatagoryComponent } from './sub-catagory/sub-catagory.component';
+import { SubscribeComponent } from './subscribe/subscribe.component';
 import { TesmonialsComponent } from './tesmonials/tesmonials.component';
 
 const routes: Routes = [
@@ -73,6 +74,7 @@ const routes: Routes = [
   { path: 'manage-users', component: ManageUsersComponent, canActivate: [AuthGuard] },
   { path: 'manage-azure-files', component: ManageAzureFilesComponent, canActivate: [AuthGuard] },
   { path: 'contact-btg', component: ContactBtgComponent, canActivate: [AuthGuard] },
+  { path: 'subscribe', component: SubscribeComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

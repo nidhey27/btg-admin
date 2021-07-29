@@ -21,6 +21,7 @@ export class AddEditContactBtgComponent implements OnInit {
   country: any;
   contactFileForm = new FormData();
   allProduct:any;
+  uniqueChars:any;
   allCountry = [
     {name: 'Afghanistan', code: 'AF'},
     {name: 'Åland Islands', code: 'AX'},
@@ -299,12 +300,22 @@ export class AddEditContactBtgComponent implements OnInit {
   }
 
   async addForm() {
+    
     if (this.contactForm.invalid) {
       return;
     }
-
+    let form = {
+      office_name: this.contactForm.value.office_name,
+      display_country: this.contactForm.value.display_country,
+      other_countries: this.contactForm.value.other_countries.toString(),
+      products: this.contactForm.value.products.toString(),
+      contact_number: this.contactForm.value.contact_number,
+      email_address: this.contactForm.value.email_address,
+      fax: this.contactForm.value.fax,
+      address: this.contactForm.value.address
+    }
     this.submit = true;
-      await (await (this._contact.addContact(this.contactForm.value))).subscribe((response: any) => {
+      await (await (this._contact.addContact(form))).subscribe((response: any) => {
         if (response?.status) {
           this.errorMsg = "";
 
@@ -444,10 +455,11 @@ export class AddEditContactBtgComponent implements OnInit {
           reduntProducts.push(curr1)
         })
       })
+      // console.log(reduntProducts);
+      
+      this.uniqueChars = [...new Set(reduntProducts)];
 
-      let uniqueChars = [...new Set(reduntProducts)];
-
-      console.log(uniqueChars);
+      console.log(this.uniqueChars);
 
     })
   }
